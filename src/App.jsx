@@ -13,6 +13,7 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <div className="app-bg"></div>
         <Header />
         <AnimatePresence mode="wait">
           <Routes>
