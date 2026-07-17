@@ -11,9 +11,15 @@ import {
   SiCplusplus,
   SiPython,
   SiGit,
-  SiGithub
+  SiGithub,
+  SiNodedotjs,
+  SiExpress,
+  SiMongodb,
+  SiPostgresql,
+  SiVercel,
+  SiNetlify
 } from 'react-icons/si';
-import { FiCode } from 'react-icons/fi';
+import { FiCode, FiDatabase, FiCloud, FiServer, FiTerminal, FiCpu, FiCommand } from 'react-icons/fi';
 
 const Skills = () => {
   const skillCategories = [
@@ -25,18 +31,40 @@ const Skills = () => {
         { name: 'TypeScript', icon: <SiTypescript />, color: '#3178C6' },
         { name: 'HTML5', icon: <SiHtml5 />, color: '#E34F26' },
         { name: 'CSS3', icon: <SiCss3 />, color: '#1572B6' },
-        { name: 'Tailwind CSS', icon: <SiTailwindcss />, color: '#06B6D4' },
+        { name: 'Tailwind', icon: <SiTailwindcss />, color: '#06B6D4' },
         { name: 'Bootstrap', icon: <SiBootstrap />, color: '#7952B3' },
         { name: 'C++', icon: <SiCplusplus />, color: '#00599C' },
         { name: 'Python', icon: <SiPython />, color: '#3776AB' }
       ]
     },
     {
-      title: 'Tools & Version Control',
+      title: 'Backend & Databases',
       skills: [
+        { name: 'Node.js', icon: <SiNodedotjs />, color: '#339933' },
+        { name: 'Express.js', icon: <SiExpress />, color: '#ffffff' },
+        { name: 'MongoDB', icon: <SiMongodb />, color: '#47A248' },
+        { name: 'PostgreSQL', icon: <SiPostgresql />, color: '#4169E1' },
+        { name: 'Neon.tech', icon: <FiDatabase />, color: '#00E599' }
+      ]
+    },
+    {
+      title: 'Deployment & Tools',
+      skills: [
+        { name: 'Vercel', icon: <SiVercel />, color: '#ffffff' },
+        { name: 'Netlify', icon: <SiNetlify />, color: '#00C7B7' },
+        { name: 'Render', icon: <FiCloud />, color: '#46E3B7' },
+        { name: 'Railway', icon: <FiServer />, color: '#ffffff' },
         { name: 'Git', icon: <SiGit />, color: '#F05032' },
         { name: 'GitHub', icon: <SiGithub />, color: '#ffffff' },
         { name: 'VS Code', icon: <FiCode />, color: '#007ACC' }
+      ]
+    },
+    {
+      title: 'AI & Advanced Editors',
+      skills: [
+        { name: 'Cursor', icon: <FiTerminal />, color: '#ffffff' },
+        { name: 'Antigravity', icon: <FiCpu />, color: '#6366f1' },
+        { name: 'Kiro', icon: <FiCommand />, color: '#f59e0b' }
       ]
     }
   ];
