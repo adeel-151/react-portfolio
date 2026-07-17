@@ -190,6 +190,8 @@ h1, h2, h3, h4, h5, h6 {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 .section-title {
@@ -270,20 +272,14 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 2rem;
   }
   
-  .grid-responsive {
-    grid-template-columns: 1fr;
-  }
-  
-  .grid-responsive-2 {
+  .grid-responsive,
+  .grid-responsive-2,
+  .grid-responsive-form {
     grid-template-columns: 1fr;
   }
   
   .grid-responsive-skills {
     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  }
-  
-  .grid-responsive-form {
-    grid-template-columns: 1fr;
   }
 
   .page-wrapper {
@@ -297,10 +293,26 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 480px) {
+  .container {
+    padding: 0 16px !important;
+  }
+
   .section-title {
     font-size: 1.8rem;
   }
+  
+  .glass, .glass-card {
+    padding: 1.2rem !important;
+  }
+  
   .grid-responsive-skills {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  
+  /* Guarantee no horizontal overflow by breaking long words globally inside these cards */
+  .glass p, .glass-card p, .glass h3, .glass h4 {
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
 }

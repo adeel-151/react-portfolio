@@ -56,7 +56,7 @@ const Home = () => {
               </span>
             </motion.div>
             
-            <motion.h1 variants={itemVariants} style={{ fontSize: 'clamp(2.2rem, 8vw, 5rem)', marginBottom: '0.5rem', lineHeight: '1.1' }}>
+            <motion.h1 variants={itemVariants} style={{ fontSize: 'clamp(1.8rem, 8vw, 5rem)', marginBottom: '0.5rem', lineHeight: '1.1' }}>
               EXPERT<br />
               <span className="text-gradient">FRONTEND</span><br />
               ENGINEER
