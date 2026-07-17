@@ -103,7 +103,7 @@ const Contact = () => {
             transition={{ delay: 0.4 }}
             style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}
           >
-            <div className="glass" style={{ padding: '2.5rem', borderRadius: '24px', flexGrow: 1 }}>
+            <div className="glass" style={{ padding: '2.5rem', borderRadius: '24px', flexGrow: 1, overflow: 'hidden' }}>
               <h3 style={{ fontSize: '1.8rem', color: 'var(--light)', marginBottom: '1rem' }}>Get In Touch</h3>
               <p style={{ color: 'var(--gray)', lineHeight: '1.8', marginBottom: '2.5rem' }}>
                 Whether you have a question, a project proposition, or just want to say hi, my inbox is always open. I'll try my best to get back to you!
@@ -127,6 +127,7 @@ const Contact = () => {
                     <div style={{
                       width: '60px',
                       height: '60px',
+                      minWidth: '60px',
                       borderRadius: '50%',
                       background: 'rgba(99, 102, 241, 0.1)',
                       display: 'flex',
@@ -138,7 +139,7 @@ const Contact = () => {
                     }}>
                       {item.icon}
                     </div>
-                    <div style={{ wordBreak: 'break-word', overflow: 'hidden' }}>
+                    <div style={{ wordBreak: 'break-all', overflow: 'hidden' }}>
                       <h4 style={{ color: 'var(--light)', fontSize: '1.2rem', marginBottom: '0.25rem' }}>{item.title}</h4>
                       <p style={{ color: 'var(--gray)', fontSize: '1rem' }}>{item.info}</p>
                     </div>

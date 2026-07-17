@@ -26,12 +26,13 @@
   box-sizing: border-box;
 }
 
-body {
+html, body, #root {
   font-family: var(--font-body);
   background-color: var(--darker);
   color: var(--light);
   line-height: 1.6;
   overflow-x: hidden;
+  width: 100%;
 }
 
 /* Background animated gradient */
