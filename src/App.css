@@ -236,3 +236,70 @@ h1, h2, h3, h4, h5, h6 {
 .glass-input::placeholder {
   color: var(--gray);
 }
+
+/* Responsive Grid Utilities */
+.grid-responsive {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.grid-responsive-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.grid-responsive-skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1.5rem;
+}
+
+.grid-responsive-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .grid-responsive {
+    grid-template-columns: 1fr;
+  }
+  
+  .grid-responsive-2 {
+    grid-template-columns: 1fr;
+  }
+  
+  .grid-responsive-skills {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+  
+  .grid-responsive-form {
+    grid-template-columns: 1fr;
+  }
+
+  .page-wrapper {
+    padding-top: 80px;
+    padding-bottom: 40px;
+  }
+
+  .glass, .glass-card {
+    padding: 1.5rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.8rem;
+  }
+  .grid-responsive-skills {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

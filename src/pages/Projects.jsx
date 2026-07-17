@@ -87,11 +87,7 @@ const Projects = () => {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
-            gap: '2.5rem'
-          }}
+          className="grid-responsive"
         >
           {projects.map((project) => (
             <motion.div

@@ -37,7 +37,7 @@ const Home = () => {
       style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}
     >
       <div className="container">
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem', alignItems: 'center' }}>
+        <div className="grid-responsive" style={{ alignItems: 'center' }}>
           
           {/* Text Content */}
           <motion.div variants={containerVariants} style={{ zIndex: 10 }}>

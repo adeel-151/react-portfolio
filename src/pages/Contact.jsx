@@ -95,7 +95,7 @@ const Contact = () => {
           </p>
         </motion.div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '3rem' }}>
+        <div className="grid-responsive">
           {/* Contact Info */}
           <motion.div 
             initial={{ x: -50, opacity: 0 }}
@@ -182,7 +182,7 @@ const Contact = () => {
                 </motion.div>
               )}
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+              <div className="grid-responsive-form">
                 <input
                   className="glass-input"
                   type="text"

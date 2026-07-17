@@ -11,9 +11,9 @@ import {
   SiCplusplus,
   SiPython,
   SiGit,
-  SiGithub,
-  SiVisualstudiocode,
+  SiGithub
 } from 'react-icons/si';
+import { FiCode } from 'react-icons/fi';
 
 const Skills = () => {
   const skillCategories = [
@@ -36,7 +36,7 @@ const Skills = () => {
       skills: [
         { name: 'Git', icon: <SiGit />, color: '#F05032' },
         { name: 'GitHub', icon: <SiGithub />, color: '#ffffff' },
-        { name: 'VS Code', icon: <SiVisualstudiocode />, color: '#007ACC' }
+        { name: 'VS Code', icon: <FiCode />, color: '#007ACC' }
       ]
     }
   ];
@@ -94,11 +94,7 @@ const Skills = () => {
                 {category.title}
               </h3>
               
-              <div style={{ 
-                display: 'grid', 
-                gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))', 
-                gap: '1.5rem' 
-              }}>
+              <div className="grid-responsive-skills">
                 {category.skills.map((skill) => (
                   <motion.div
                     key={skill.name}

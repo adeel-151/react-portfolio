@@ -61,7 +61,7 @@ const About = () => {
           </h2>
         </motion.div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '3rem', marginTop: '2rem' }}>
+        <div className="grid-responsive" style={{ marginTop: '2rem' }}>
           {/* Left Column: Interactive Story */}
           <motion.div 
             className="glass"
@@ -118,7 +118,7 @@ const About = () => {
             initial={{ x: 30, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.4 }}
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1.5rem' }}
+            className="grid-responsive-2"
           >
             {stats.map((stat, index) => (
               <motion.div 
