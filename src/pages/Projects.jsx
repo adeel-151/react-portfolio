@@ -12,39 +12,39 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: 'Weather App',
-      description: 'A responsive weather application built using HTML, CSS, and JavaScript that displays real-time weather information for any city.',
-      image: weather,
-      technologies: ['HTML', 'CSS', 'JavaScript', 'API'],
+      title: 'School Management System',
+      description: 'A comprehensive management system for schools, handling student enrollments, attendance, grading, and faculty management efficiently.',
+      image: portfolio,
+      technologies: ['React', 'Node.js', 'MongoDB', 'Express'],
       github: 'https://github.com/adeel-151',
-      live: 'https://weather-app-smoky-beta-85.vercel.app/'
+      live: '#'
     },
     {
       id: 2,
-      title: 'Portfolio Website',
-      description: 'A modern and fully responsive portfolio website built to showcase projects, skills, and experience with a clean design and smooth animations.',
-      image: portfolio,
-      technologies: ['HTML', 'CSS', 'JavaScript', 'React'],
+      title: 'Smart Hostel & Dera Management',
+      description: 'An all-in-one smart solution for managing hostels and deras, tracking room allocations, dues, and resident records seamlessly.',
+      image: weather,
+      technologies: ['React', 'Node.js', 'PostgreSQL', 'Tailwind'],
       github: 'https://github.com/adeel-151',
-      live: 'https://adeel-qaiser.vercel.app/'
+      live: '#'
     },
     {
       id: 3,
-      title: 'Digital Clock',
-      description: 'A digital clock made using HTML, CSS, and JavaScript with dynamic time updates.',
+      title: 'E-commerce Website',
+      description: 'A fully functional modern e-commerce platform with cart functionality, user authentication, and a scalable database architecture.',
       image: clock,
-      technologies: ['HTML', 'CSS', 'JavaScript'],
+      technologies: ['React', 'TypeScript', 'Node.js', 'MongoDB'],
       github: 'https://github.com/adeel-151',
-      live: 'https://digital-clock-seven-phi.vercel.app/'
+      live: '#'
     },
     {
       id: 4,
-      title: 'Quiz App',
-      description: 'An interactive quiz application built with React, featuring smooth animations and responsive UI.',
+      title: 'Project Showcasing Platform',
+      description: 'A dedicated platform for developers to showcase their projects, receive feedback, and collaborate with peers in real-time.',
       image: quiz,
-      technologies: ['HTML', 'CSS', 'JavaScript', 'React'],
+      technologies: ['React', 'Tailwind', 'Express', 'Neon.tech'],
       github: 'https://github.com/adeel-151',
-      live: 'https://quizz-pp.vercel.app/'
+      live: '#'
     }
   ];
 
