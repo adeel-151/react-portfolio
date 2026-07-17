@@ -56,7 +56,7 @@ const Home = () => {
               </span>
             </motion.div>
             
-            <motion.h1 variants={itemVariants} style={{ fontSize: 'clamp(3rem, 5vw, 5rem)', marginBottom: '0.5rem', lineHeight: '1.1' }}>
+            <motion.h1 variants={itemVariants} style={{ fontSize: 'clamp(2.2rem, 8vw, 5rem)', marginBottom: '0.5rem', lineHeight: '1.1' }}>
               EXPERT<br />
               <span className="text-gradient">FRONTEND</span><br />
               ENGINEER
@@ -111,7 +111,8 @@ const Home = () => {
               transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
               style={{
                 position: 'absolute',
-                width: '350px',
+                width: '100%',
+                maxWidth: '350px',
                 height: '350px',
                 background: 'radial-gradient(circle, rgba(99,102,241,0.4) 0%, rgba(6,182,212,0) 70%)',
                 borderRadius: '50%',
@@ -126,8 +127,10 @@ const Home = () => {
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
               style={{
-                width: '320px',
-                height: '400px',
+                width: '100%',
+                maxWidth: '320px',
+                height: 'auto',
+                aspectRatio: '4/5',
                 borderRadius: '24px',
                 padding: '10px',
                 position: 'relative',

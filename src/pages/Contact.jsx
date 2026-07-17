@@ -138,7 +138,7 @@ const Contact = () => {
                     }}>
                       {item.icon}
                     </div>
-                    <div>
+                    <div style={{ wordBreak: 'break-word', overflow: 'hidden' }}>
                       <h4 style={{ color: 'var(--light)', fontSize: '1.2rem', marginBottom: '0.25rem' }}>{item.title}</h4>
                       <p style={{ color: 'var(--gray)', fontSize: '1rem' }}>{item.info}</p>
                     </div>

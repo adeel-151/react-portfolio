@@ -74,7 +74,7 @@ const About = () => {
             
             <h3 style={{ fontSize: '2rem', marginBottom: '1.5rem', color: 'var(--light)' }}>Behind the Code</h3>
             
-            <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '1rem' }}>
+            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginBottom: '2rem', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '1rem' }}>
               {tabs.map((tab) => (
                 <button
                   key={tab.id}
