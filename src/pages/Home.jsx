@@ -54,7 +54,7 @@ const Home = () => {
     <section
       ref={containerRef}
       className="page-wrapper"
-      style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}
+      style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
     >
       <div className="container">
         <div className="grid-responsive" style={{ alignItems: 'center' }}>
