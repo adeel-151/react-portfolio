@@ -69,8 +69,8 @@ const Projects = () => {
         "A professional and dynamic corporate website built for Elite Engineers, featuring their services, portfolio, and an interactive contact system.",
       image: elite,
       technologies: ["React", "Node.js", "Express", "MongoDB", "Tailwind"],
-      github: "https://github.com/adeel-151",
-      live: "#",
+      github: "https://github.com/adeel-151/Elite-Engineers",
+      live: "https://elite-engineers-phi.vercel.app/",
     },
   ];
 
