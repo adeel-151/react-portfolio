@@ -1,14 +1,28 @@
 import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 const CustomCursor = () => {
-  const [mousePosition, setMousePosition] = useState({ x: -100, y: -100 });
+  // Use MotionValues for butter-smooth performance (bypasses React state re-renders completely)
+  const cursorX = useMotionValue(-100);
+  const cursorY = useMotionValue(-100);
+
+  // Smooth springs for the outer ring trailing effect
+  const springConfig = { damping: 25, stiffness: 250, mass: 0.5 };
+  const outerX = useSpring(cursorX, springConfig);
+  const outerY = useSpring(cursorY, springConfig);
+
+  // Stiffer springs for the inner dot to follow exactly
+  const innerSpringConfig = { damping: 40, stiffness: 1000, mass: 0.1 };
+  const innerX = useSpring(cursorX, innerSpringConfig);
+  const innerY = useSpring(cursorY, innerSpringConfig);
+
   const [isHovering, setIsHovering] = useState(false);
   const [isClicking, setIsClicking] = useState(false);
 
   useEffect(() => {
     const updateMousePosition = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+      cursorX.set(e.clientX);
+      cursorY.set(e.clientY);
     };
 
     const handleMouseOver = (e) => {
@@ -31,7 +45,8 @@ const CustomCursor = () => {
     const handleMouseDown = () => setIsClicking(true);
     const handleMouseUp = () => setIsClicking(false);
 
-    window.addEventListener('mousemove', updateMousePosition);
+    // Use passive listener for better scroll/movement performance
+    window.addEventListener('mousemove', updateMousePosition, { passive: true });
     window.addEventListener('mouseover', handleMouseOver);
     window.addEventListener('mousedown', handleMouseDown);
     window.addEventListener('mouseup', handleMouseUp);
@@ -42,15 +57,10 @@ const CustomCursor = () => {
       window.removeEventListener('mousedown', handleMouseDown);
       window.removeEventListener('mouseup', handleMouseUp);
     };
-  }, []);
-
-  const cursorX = mousePosition.x;
-  const cursorY = mousePosition.y;
+  }, [cursorX, cursorY]);
 
   const outerVariants = {
     default: {
-      x: cursorX - 20,
-      y: cursorY - 20,
       scale: 1,
       opacity: 1,
       backgroundColor: 'rgba(99, 102, 241, 0.05)',
@@ -58,8 +68,6 @@ const CustomCursor = () => {
       boxShadow: '0 0 15px rgba(99, 102, 241, 0.3), inset 0 0 10px rgba(99, 102, 241, 0.1)'
     },
     hover: {
-      x: cursorX - 20,
-      y: cursorY - 20,
       scale: 1.6,
       opacity: 1,
       backgroundColor: 'rgba(6, 182, 212, 0.1)',
@@ -67,8 +75,6 @@ const CustomCursor = () => {
       boxShadow: '0 0 30px rgba(6, 182, 212, 0.6), inset 0 0 15px rgba(6, 182, 212, 0.2)'
     },
     click: {
-      x: cursorX - 20,
-      y: cursorY - 20,
       scale: 0.8,
       backgroundColor: 'rgba(99, 102, 241, 0.4)',
       border: '2px solid var(--primary)',
@@ -77,24 +83,9 @@ const CustomCursor = () => {
   };
 
   const innerVariants = {
-    default: { 
-      x: cursorX - 4, 
-      y: cursorY - 4, 
-      scale: 1,
-      opacity: 1
-    },
-    hover: { 
-      x: cursorX - 4, 
-      y: cursorY - 4, 
-      scale: 0,
-      opacity: 0
-    },
-    click: {
-      x: cursorX - 4, 
-      y: cursorY - 4, 
-      scale: 0.5,
-      opacity: 0.5
-    }
+    default: { scale: 1, opacity: 1 },
+    hover: { scale: 0, opacity: 0 },
+    click: { scale: 0.5, opacity: 0.5 }
   };
 
   if (typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches) {
@@ -108,14 +99,17 @@ const CustomCursor = () => {
       <motion.div
         variants={outerVariants}
         animate={activeVariant}
-        // Lower stiffness and damping for a smooth, premium trailing effect
-        transition={{ type: 'spring', stiffness: 250, damping: 25, mass: 0.6 }}
+        transition={{ type: 'spring', stiffness: 300, damping: 20 }}
         style={{
           position: 'fixed',
           top: 0,
           left: 0,
           width: '40px',
           height: '40px',
+          marginLeft: '-20px', // Perfect centering independent of scale
+          marginTop: '-20px',
+          x: outerX,           // Directly bound to useSpring (no re-renders)
+          y: outerY,
           borderRadius: '50%',
           pointerEvents: 'none',
           zIndex: 9999,
@@ -125,14 +119,17 @@ const CustomCursor = () => {
       <motion.div
         variants={innerVariants}
         animate={activeVariant}
-        // High stiffness for instant precise tracking of the dot
-        transition={{ type: 'spring', stiffness: 1000, damping: 40, mass: 0.1 }}
+        transition={{ type: 'spring', stiffness: 500, damping: 30 }}
         style={{
           position: 'fixed',
           top: 0,
           left: 0,
           width: '8px',
           height: '8px',
+          marginLeft: '-4px',
+          marginTop: '-4px',
+          x: innerX,
+          y: innerY,
           borderRadius: '50%',
           backgroundColor: 'var(--secondary)',
           boxShadow: '0 0 10px var(--secondary), 0 0 20px var(--secondary)',
