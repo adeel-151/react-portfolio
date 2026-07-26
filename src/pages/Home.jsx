@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FiInstagram, FiGithub, FiLinkedin, FiDownload, FiArrowRight } from "react-icons/fi";
-import { Link } from "react-router-dom";
+
 import cv from "../assets/Adeel-Qaiser.pdf";
 import profile from "../assets/profile.jpg";
 
@@ -67,9 +67,9 @@ const Home = () => {
             </motion.p>
 
             <motion.div variants={itemVariants} style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap', marginBottom: '3rem' }}>
-              <Link to="/projects" className="btn-premium solid">
+              <a href="#projects" className="btn-premium solid">
                 View My Work <FiArrowRight />
-              </Link>
+              </a>
               <a href={cv} download className="btn-premium">
                 <FiDownload /> Resume
               </a>

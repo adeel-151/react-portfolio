@@ -1,5 +1,6 @@
+
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 import { AnimatePresence } from 'framer-motion';
 import Header from './components/Header';
 import Home from './pages/Home';
@@ -15,27 +16,24 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   return (
-    <Router>
-      <div className="App">
-        <CustomCursor />
-        
-        <AnimatePresence>
-          {loading && <Loader onLoadingComplete={() => setLoading(false)} />}
-        </AnimatePresence>
+    <div className="App">
+      <CustomCursor />
+      
+      <AnimatePresence>
+        {loading && <Loader onLoadingComplete={() => setLoading(false)} />}
+      </AnimatePresence>
 
-        <div className="app-bg"></div>
-        <Header />
-        <AnimatePresence mode="wait">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/skills" element={<Skills />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
-        </AnimatePresence>
-      </div>
-    </Router>
+      <div className="app-bg"></div>
+      <Header />
+      
+      <main>
+        <div id="home"><Home /></div>
+        <div id="about"><About /></div>
+        <div id="projects"><Projects /></div>
+        <div id="skills"><Skills /></div>
+        <div id="contact"><Contact /></div>
+      </main>
+    </div>
   );
 }
 

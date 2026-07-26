@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiMenu, FiX } from 'react-icons/fi';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const location = useLocation();
+  const [activePath, setActivePath] = useState('#home');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,11 +17,11 @@ const Header = () => {
   }, []);
 
   const navItems = [
-    { path: '/', label: 'HOME' },
-    { path: '/about', label: 'ABOUT' },
-    { path: '/projects', label: 'PROJECTS' },
-    { path: '/skills', label: 'SKILLS' },
-    { path: '/contact', label: 'CONTACT' }
+    { path: '#home', label: 'HOME' },
+    { path: '#about', label: 'ABOUT' },
+    { path: '#projects', label: 'PROJECTS' },
+    { path: '#skills', label: 'SKILLS' },
+    { path: '#contact', label: 'CONTACT' }
   ];
 
   return (
@@ -47,21 +47,22 @@ const Header = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Link to="/" style={{ textDecoration: 'none' }}>
+            <a href="#home" style={{ textDecoration: 'none' }} onClick={() => setActivePath('#home')}>
               <span className="text-gradient" style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', fontWeight: 800, letterSpacing: '2px' }}>
                 AQ
               </span>
-            </Link>
+            </a>
           </motion.div>
 
           {/* Desktop Nav */}
           <nav style={{ display: 'flex', gap: '1rem' }} className="desktop-nav">
             {navItems.map((item) => {
-              const isActive = location.pathname === item.path;
+              const isActive = activePath === item.path;
               return (
-                <Link
+                <a
                   key={item.path}
-                  to={item.path}
+                  href={item.path}
+                  onClick={() => setActivePath(item.path)}
                   style={{
                     position: 'relative',
                     padding: '8px 16px',
@@ -88,7 +89,7 @@ const Header = () => {
                     />
                   )}
                   {item.label}
-                </Link>
+                </a>
               );
             })}
           </nav>
@@ -137,22 +138,25 @@ const Header = () => {
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: index * 0.1 }}
                 >
-                  <Link
-                    to={item.path}
-                    onClick={() => setIsMenuOpen(false)}
+                  <a
+                    href={item.path}
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      setActivePath(item.path);
+                    }}
                     style={{
                       display: 'block',
                       padding: '10px',
-                      color: location.pathname === item.path ? 'var(--primary)' : 'var(--light)',
+                      color: activePath === item.path ? 'var(--primary)' : 'var(--light)',
                       textDecoration: 'none',
                       fontFamily: 'var(--font-display)',
                       fontSize: '1.2rem',
                       fontWeight: 600,
-                      borderLeft: location.pathname === item.path ? '3px solid var(--primary)' : '3px solid transparent'
+                      borderLeft: activePath === item.path ? '3px solid var(--primary)' : '3px solid transparent'
                     }}
                   >
                     {item.label}
-                  </Link>
+                  </a>
                 </motion.div>
               ))}
             </div>
