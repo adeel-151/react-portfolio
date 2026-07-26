@@ -1,14 +1,8 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FiMail, FiPhone, FiMapPin, FiSend, FiCheckCircle } from 'react-icons/fi';
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const Contact = () => {
-  const containerRef = useRef();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -78,50 +72,19 @@ const Contact = () => {
     }
   ];
 
-  useGSAP(() => {
-    gsap.from(".contact-header", {
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top 85%",
-      },
-      y: 50,
-      opacity: 0,
-      duration: 1,
-      ease: "power3.out"
-    });
-
-    gsap.from(".contact-info", {
-      scrollTrigger: {
-        trigger: ".grid-responsive",
-        start: "top 80%",
-      },
-      x: -50,
-      opacity: 0,
-      duration: 1,
-      ease: "power3.out"
-    });
-
-    gsap.from(".contact-form", {
-      scrollTrigger: {
-        trigger: ".grid-responsive",
-        start: "top 80%",
-      },
-      x: 50,
-      opacity: 0,
-      duration: 1,
-      ease: "power3.out"
-    });
-
-  }, { scope: containerRef });
-
   return (
-    <section 
-      ref={containerRef}
+    <motion.section 
       className="page-wrapper"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ duration: 0.5 }}
     >
       <div className="container">
-        <div 
-          className="contact-header"
+        <motion.div 
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.2 }}
           style={{ marginBottom: '4rem' }}
         >
           <h2 className="section-title">
@@ -130,12 +93,14 @@ const Contact = () => {
           <p style={{ textAlign: 'center', color: 'var(--gray)', fontSize: '1.1rem', marginTop: '1rem' }}>
             Have a project in mind? Let's build something amazing together.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid-responsive">
           {/* Contact Info */}
-          <div 
-            className="contact-info"
+          <motion.div 
+            initial={{ x: -50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ delay: 0.4 }}
             style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}
           >
             <div className="glass" style={{ padding: '2.5rem', borderRadius: '24px', flexGrow: 1, overflow: 'hidden' }}>
@@ -182,10 +147,14 @@ const Contact = () => {
                 ))}
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Contact Form */}
-          <div className="contact-form">
+          <motion.div 
+            initial={{ x: 50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ delay: 0.6 }}
+          >
             <form 
               className="glass"
               onSubmit={handleSubmit}
@@ -282,10 +251,10 @@ const Contact = () => {
                 </p>
               )}
             </form>
-          </div>
+          </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { 
   SiReact, 
@@ -20,15 +20,8 @@ import {
   SiNetlify
 } from 'react-icons/si';
 import { FiCode, FiDatabase, FiCloud, FiServer, FiTerminal, FiCpu, FiCommand } from 'react-icons/fi';
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const Skills = () => {
-  const containerRef = useRef();
-
   const skillCategories = [
     {
       title: 'Frontend & Languages',
@@ -76,66 +69,47 @@ const Skills = () => {
     }
   ];
 
-  useGSAP(() => {
-    gsap.from(".skills-header", {
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top 85%",
-      },
-      y: 50,
-      opacity: 0,
-      duration: 1,
-      ease: "power3.out"
-    });
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
 
-    // Stagger each category
-    const categories = gsap.utils.toArray('.skill-category');
-    categories.forEach((cat) => {
-      gsap.from(cat.querySelectorAll('.skill-badge'), {
-        scrollTrigger: {
-          trigger: cat,
-          start: "top 85%",
-        },
-        y: 40,
-        opacity: 0,
-        duration: 0.6,
-        stagger: 0.1,
-        ease: "back.out(1.5)"
-      });
-      
-      gsap.from(cat.querySelector('.category-title'), {
-        scrollTrigger: {
-          trigger: cat,
-          start: "top 85%",
-        },
-        x: -30,
-        opacity: 0,
-        duration: 0.8,
-        ease: "power3.out"
-      });
-    });
-
-  }, { scope: containerRef });
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { type: 'spring', stiffness: 100 }
+    }
+  };
 
   return (
-    <section 
-      ref={containerRef}
+    <motion.section 
       className="page-wrapper"
+      initial="hidden"
+      animate="visible"
+      exit={{ opacity: 0, y: -20 }}
+      variants={containerVariants}
     >
       <div className="container">
-        <div className="skills-header" style={{ marginBottom: '4rem' }}>
+        <motion.div variants={itemVariants} style={{ marginBottom: '4rem' }}>
           <h2 className="section-title">
             <span className="text-gradient">TECH</span> ARSENAL
           </h2>
           <p style={{ textAlign: 'center', color: 'var(--gray)', fontSize: '1.1rem', marginTop: '1rem' }}>
             The tools and technologies I use to build high-performance applications
           </p>
-        </div>
+        </motion.div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '4rem' }}>
           {skillCategories.map((category, idx) => (
-            <div key={category.title} className="skill-category">
-              <h3 className="category-title" style={{ 
+            <motion.div key={category.title} variants={itemVariants}>
+              <h3 style={{ 
                 fontFamily: 'var(--font-accent)', 
                 fontSize: '1.8rem', 
                 marginBottom: '2rem', 
@@ -152,7 +126,7 @@ const Skills = () => {
                 {category.skills.map((skill) => (
                   <motion.div
                     key={skill.name}
-                    className="glass-card skill-badge"
+                    className="glass-card"
                     whileHover={{ scale: 1.05, y: -5 }}
                     whileTap={{ scale: 0.95 }}
                     style={{
@@ -180,7 +154,7 @@ const Skills = () => {
                       }}
                     />
                     
-                    <div 
+                    <motion.div 
                       style={{ 
                         fontSize: '3.5rem', 
                         color: skill.color, 
@@ -189,7 +163,7 @@ const Skills = () => {
                       }}
                     >
                       {skill.icon}
-                    </div>
+                    </motion.div>
                     
                     <span style={{ 
                       fontFamily: 'var(--font-mono)', 
@@ -204,11 +178,11 @@ const Skills = () => {
                   </motion.div>
                 ))}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

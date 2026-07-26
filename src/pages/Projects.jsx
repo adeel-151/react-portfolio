@@ -1,20 +1,14 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiGithub, FiExternalLink, FiFolder } from "react-icons/fi";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
 import hostel from "../assets/hostel.jpg";
 import school from "../assets/school.jpg";
 import hospital from "../assets/hospital.jpg";
 import jobs from "../assets/jobs.jpg";
 import ecommerce from "../assets/e-commerce.jpg";
 
-gsap.registerPlugin(ScrollTrigger);
-
 const Projects = () => {
   const [hoveredProject, setHoveredProject] = useState(null);
-  const containerRef = useRef();
 
   const projects = [
     {
@@ -69,39 +63,35 @@ const Projects = () => {
     },
   ];
 
-  useGSAP(() => {
-    gsap.from(".projects-header", {
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top 85%",
-      },
-      y: 50,
-      opacity: 0,
-      duration: 1,
-      ease: "power3.out"
-    });
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2 },
+    },
+  };
 
-    gsap.from(".project-card", {
-      scrollTrigger: {
-        trigger: ".grid-responsive",
-        start: "top 80%",
-      },
-      y: 50,
-      opacity: 0,
-      duration: 0.8,
-      stagger: 0.2,
-      ease: "power3.out"
-    });
-  }, { scope: containerRef });
+  const itemVariants = {
+    hidden: { y: 50, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { type: "spring", stiffness: 100 },
+    },
+  };
 
   return (
-    <section
-      ref={containerRef}
+    <motion.section
       className="page-wrapper"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0, y: -20 }}
     >
       <div className="container">
-        <div
-          className="projects-header"
+        <motion.div
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.2 }}
           style={{ marginBottom: "4rem" }}
         >
           <h2 className="section-title">
@@ -117,17 +107,21 @@ const Projects = () => {
           >
             A selection of my best projects that showcase my frontend skills
           </p>
-        </div>
+        </motion.div>
 
-        <div
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
           className="grid-responsive"
         >
           {projects.map((project) => (
             <motion.div
               key={project.id}
+              variants={itemVariants}
               onMouseEnter={() => setHoveredProject(project.id)}
               onMouseLeave={() => setHoveredProject(null)}
-              className="glass-card project-card"
+              className="glass-card"
               style={{
                 position: "relative",
                 borderRadius: "24px",
@@ -296,9 +290,9 @@ const Projects = () => {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
