@@ -61,6 +61,16 @@ const Projects = () => {
       github: "https://github.com/adeel-151",
       live: "https://hospital-mgt-system-kappa.vercel.app/",
     },
+    {
+      id: 6,
+      title: "Elite Engineers Company Website",
+      description:
+        "A professional and dynamic corporate website built for Elite Engineers, featuring their services, portfolio, and an interactive contact system.",
+      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80",
+      technologies: ["React", "Node.js", "Express", "MongoDB", "Tailwind"],
+      github: "https://github.com/adeel-151",
+      live: "#",
+    },
   ];
 
   const containerVariants = {
