@@ -1,9 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiAward, FiUsers, FiFolder, FiCode, FiCoffee, FiGlobe } from 'react-icons/fi';
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
   const [activeTab, setActiveTab] = useState('journey');
+  const containerRef = useRef();
 
   const stats = [
     { icon: <FiAward />, number: '1+', text: 'Years Experience' },
@@ -42,32 +48,58 @@ const About = () => {
     )
   };
 
+  useGSAP(() => {
+    gsap.from(".section-title", {
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top 85%",
+      },
+      y: 50,
+      opacity: 0,
+      duration: 1,
+      ease: "power3.out"
+    });
+
+    gsap.from(".about-glass", {
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top 75%",
+      },
+      x: -50,
+      opacity: 0,
+      duration: 1,
+      ease: "power3.out"
+    });
+
+    gsap.from(".stat-card", {
+      scrollTrigger: {
+        trigger: ".grid-responsive-2",
+        start: "top 85%",
+      },
+      x: 50,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.2,
+      ease: "back.out(1.5)"
+    });
+  }, { scope: containerRef });
+
   return (
-    <motion.section 
+    <section 
+      ref={containerRef}
       className="page-wrapper"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0, y: -20 }}
-      transition={{ duration: 0.5 }}
     >
       <div className="container">
-        <motion.div 
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.2 }}
-        >
+        <div>
           <h2 className="section-title">
             <span className="text-gradient">ABOUT</span> ME
           </h2>
-        </motion.div>
+        </div>
 
         <div className="grid-responsive" style={{ marginTop: '2rem' }}>
           {/* Left Column: Interactive Story */}
-          <motion.div 
-            className="glass"
-            initial={{ x: -30, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 0.3 }}
+          <div 
+            className="glass about-glass"
             style={{ borderRadius: '24px', padding: '2rem', overflow: 'hidden', position: 'relative' }}
           >
             <div style={{ position: 'absolute', top: '-50px', right: '-50px', width: '150px', height: '150px', background: 'rgba(99, 102, 241, 0.2)', filter: 'blur(40px)', borderRadius: '50%' }} />
@@ -111,19 +143,14 @@ const About = () => {
                 </motion.div>
               </AnimatePresence>
             </div>
-          </motion.div>
+          </div>
 
           {/* Right Column: Stats Grid */}
-          <motion.div 
-            initial={{ x: 30, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 0.4 }}
-            className="grid-responsive-2"
-          >
+          <div className="grid-responsive-2">
             {stats.map((stat, index) => (
               <motion.div 
                 key={index}
-                className="glass-card"
+                className="glass-card stat-card"
                 whileHover={{ y: -10, scale: 1.02 }}
                 style={{
                   padding: '2rem',
@@ -150,10 +177,10 @@ const About = () => {
                 </div>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 };
 

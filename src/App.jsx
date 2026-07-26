@@ -10,30 +10,33 @@ import Skills from './pages/Skills';
 import Contact from './pages/Contact';
 import Loader from './components/Loader';
 import CustomCursor from './components/CustomCursor';
+import SmoothScroll from './components/SmoothScroll';
 import './App.css';
 
 function App() {
   const [loading, setLoading] = useState(true);
 
   return (
-    <div className="App">
-      <CustomCursor />
-      
-      <AnimatePresence>
-        {loading && <Loader onLoadingComplete={() => setLoading(false)} />}
-      </AnimatePresence>
+    <SmoothScroll>
+      <div className="App">
+        <CustomCursor />
+        
+        <AnimatePresence>
+          {loading && <Loader onLoadingComplete={() => setLoading(false)} />}
+        </AnimatePresence>
 
-      <div className="app-bg"></div>
-      <Header />
-      
-      <main>
-        <div id="home"><Home /></div>
-        <div id="about"><About /></div>
-        <div id="projects"><Projects /></div>
-        <div id="skills"><Skills /></div>
-        <div id="contact"><Contact /></div>
-      </main>
-    </div>
+        <div className="app-bg"></div>
+        <Header />
+        
+        <main>
+          <div id="home"><Home /></div>
+          <div id="about"><About /></div>
+          <div id="projects"><Projects /></div>
+          <div id="skills"><Skills /></div>
+          <div id="contact"><Contact /></div>
+        </main>
+      </div>
+    </SmoothScroll>
   );
 }
 
