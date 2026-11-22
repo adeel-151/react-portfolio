@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
   /* Option 1: Volt Minimalist / Swiss Creative */
@@ -18,10 +18,10 @@
   --glass-bg: rgba(18, 20, 24, 0.7);
   --glass-border: rgba(255, 255, 255, 0.08);
 
-  /* Modern Editorial Typography */
-  --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  /* Modern Manrope Typography */
+  --font-display: manrope, "manrope Fallback", "Helvetica Neue", Arial, sans-serif;
+  --font-heading: manrope, "manrope Fallback", "Helvetica Neue", Arial, sans-serif;
+  --font-body: manrope, "manrope Fallback", "Helvetica Neue", Arial, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 }
 
@@ -37,7 +37,7 @@ html {
 }
 
 body, #root {
-  font-family: var(--font-body);
+  font-family: manrope, "manrope Fallback", "Helvetica Neue", Arial, sans-serif;
   background-color: var(--darker);
   color: var(--light);
   line-height: 1.6;
