@@ -1,28 +1,138 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap');
 
-:root {
-  /* Option 1: Volt Minimalist / Swiss Creative */
+:root,
+[data-theme="dark"] {
+  /* Option 1: Volt Minimalist / Swiss Creative (Dark Mode) */
   --primary: #ccff00;          /* Electric Volt Lime */
+  --primary-accent: #ccff00;
+  --primary-hover: #ddff33;
   --primary-dark: #b8e600;     /* Deeper Volt */
   --secondary: #38bdf8;        /* Clean Ice Blue */
   --accent: #ccff00;           /* Volt Accent */
+  
   --dark: #121418;             /* Charcoal Surface */
   --darker: #08090b;           /* Pitch Onyx */
   --card-bg: #101216;          /* Card Dark */
   --card-hover: #161920;       /* Card Hover */
+  
   --light: #f8fafc;            /* Pure Crisp White */
   --gray: #a1a1aa;             /* Ash Gray */
   --gray-dark: #52525b;        /* Darker Slate */
+  
   --border-light: rgba(255, 255, 255, 0.08);
   --border-subtle: rgba(255, 255, 255, 0.04);
   --glass-bg: rgba(18, 20, 24, 0.7);
   --glass-border: rgba(255, 255, 255, 0.08);
+  
+  --header-bg: rgba(8, 9, 11, 0.88);
+  --header-border: rgba(255, 255, 255, 0.06);
+  --mobile-menu-bg: rgba(8, 9, 11, 0.98);
+  
+  --ambient-glow-1: rgba(204, 255, 0, 0.04);
+  --ambient-glow-2: rgba(56, 189, 248, 0.035);
+  
+  --btn-pill-bg: #f8fafc;
+  --btn-pill-text: #08090b;
+  --btn-pill-border: #f8fafc;
+  
+  --btn-pill-outline-border: rgba(255, 255, 255, 0.22);
+  --btn-pill-outline-hover-bg: rgba(204, 255, 0, 0.08);
+  
+  --contact-card-bg: linear-gradient(145deg, #12141a 0%, #08090b 100%);
+  --contact-card-border: rgba(255, 255, 255, 0.08);
+  --contact-card-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.7);
+  
+  --outside-box-bg: rgba(15, 23, 42, 0.5);
+  --outside-card-bg: rgba(6, 9, 19, 0.6);
+  --outside-dashed-border: rgba(255, 255, 255, 0.2);
+  
+  --badge-bg: rgba(255, 255, 255, 0.05);
+  --badge-border: rgba(255, 255, 255, 0.08);
+  
+  --cube-bg: linear-gradient(145deg, #161f36, #090e1c);
+  --cube-border: rgba(255, 255, 255, 0.12);
+  --cube-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  --cube-text-gradient: linear-gradient(135deg, #ffffff 40%, #ccff00 70%, #38bdf8 100%);
+  
+  --corner-arrow-bg: rgba(8, 9, 11, 0.85);
+  --corner-arrow-border: rgba(255, 255, 255, 0.15);
+  
+  --theme-toggle-bg: rgba(255, 255, 255, 0.06);
+  --theme-toggle-border: rgba(255, 255, 255, 0.12);
+  --theme-toggle-color: #f8fafc;
+  
+  --scrollbar-track: #08090b;
+  --scrollbar-thumb: rgba(204, 255, 0, 0.35);
 
-  /* Modern Manrope Typography */
+  /* Modern Manrope Typography (Strictly 400 & 500) */
   --font-display: manrope, "manrope Fallback", "Helvetica Neue", Arial, sans-serif;
   --font-heading: manrope, "manrope Fallback", "Helvetica Neue", Arial, sans-serif;
   --font-body: manrope, "manrope Fallback", "Helvetica Neue", Arial, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
+}
+
+[data-theme="light"] {
+  /* Option 1: Volt Minimalist / Swiss Creative (Light Mode) */
+  --primary: #7aa500;          /* High-contrast Volt Green for readable links */
+  --primary-accent: #ccff00;   /* Electric Volt Accent for buttons & highlights */
+  --primary-hover: #6b9100;
+  --primary-dark: #5c7c00;
+  --secondary: #0284c7;        /* Crisp Ice Blue */
+  --accent: #7aa500;
+  
+  --dark: #f1f3f6;             /* Clean gray surface */
+  --darker: #fcfcfd;           /* Pure editorial off-white/ivory canvas */
+  --card-bg: #ffffff;          /* Pure crisp white cards */
+  --card-hover: #f8f9fa;
+  
+  --light: #0d0f12;            /* Deep Carbon Obsidian Text */
+  --gray: #596474;             /* Polished slate muted text */
+  --gray-dark: #94a3b8;        /* Subtle slate text */
+  
+  --border-light: rgba(0, 0, 0, 0.09);
+  --border-subtle: rgba(0, 0, 0, 0.04);
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  
+  --header-bg: rgba(252, 252, 253, 0.88);
+  --header-border: rgba(0, 0, 0, 0.06);
+  --mobile-menu-bg: rgba(252, 252, 253, 0.98);
+  
+  --ambient-glow-1: rgba(204, 255, 0, 0.12);
+  --ambient-glow-2: rgba(56, 189, 248, 0.08);
+  
+  --btn-pill-bg: #0d0f12;
+  --btn-pill-text: #ffffff;
+  --btn-pill-border: #0d0f12;
+  
+  --btn-pill-outline-border: rgba(0, 0, 0, 0.15);
+  --btn-pill-outline-hover-bg: rgba(204, 255, 0, 0.15);
+  
+  --contact-card-bg: linear-gradient(145deg, #ffffff 0%, #f4f6f8 100%);
+  --contact-card-border: rgba(0, 0, 0, 0.08);
+  --contact-card-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.04);
+  
+  --outside-box-bg: #ffffff;
+  --outside-card-bg: #f8fafc;
+  --outside-dashed-border: rgba(0, 0, 0, 0.15);
+  
+  --badge-bg: rgba(0, 0, 0, 0.04);
+  --badge-border: rgba(0, 0, 0, 0.07);
+  
+  --cube-bg: linear-gradient(145deg, #ffffff, #f0f4f8);
+  --cube-border: rgba(0, 0, 0, 0.08);
+  --cube-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  --cube-text-gradient: linear-gradient(135deg, #0d0f12 40%, #7aa500 75%, #0284c7 100%);
+  
+  --corner-arrow-bg: rgba(255, 255, 255, 0.92);
+  --corner-arrow-border: rgba(0, 0, 0, 0.12);
+  
+  --theme-toggle-bg: rgba(0, 0, 0, 0.05);
+  --theme-toggle-border: rgba(0, 0, 0, 0.1);
+  --theme-toggle-color: #0d0f12;
+  
+  --scrollbar-track: #f1f3f6;
+  --scrollbar-thumb: rgba(122, 165, 0, 0.5);
 }
 
 * {
@@ -45,6 +155,7 @@ body, #root {
   width: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Subtle volt and ice ambient glow */
@@ -56,9 +167,10 @@ body, #root {
   height: 100vh;
   z-index: -1;
   background: 
-    radial-gradient(circle at 18% 25%, rgba(204, 255, 0, 0.04), transparent 30%),
-    radial-gradient(circle at 82% 65%, rgba(56, 189, 248, 0.035), transparent 30%);
+    radial-gradient(circle at 18% 25%, var(--ambient-glow-1), transparent 30%),
+    radial-gradient(circle at 82% 65%, var(--ambient-glow-2), transparent 30%);
   pointer-events: none;
+  transition: background 0.3s ease;
 }
 
 .App {
@@ -79,17 +191,17 @@ body, #root {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--darker);
+  background: var(--scrollbar-track);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(204, 255, 0, 0.35);
+  background: var(--scrollbar-thumb);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--primary);
+  background: var(--primary-accent);
 }
 
-/* Typography Utilities */
+/* Typography Utilities - strictly 400 & 500 */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
   font-weight: 500;
@@ -98,14 +210,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, var(--light) 40%, var(--primary) 100%);
+  background: linear-gradient(135deg, var(--light) 40%, var(--primary-accent) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-accent-gradient {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  background: linear-gradient(135deg, var(--primary-accent) 0%, var(--secondary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -128,6 +240,7 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.06em;
   color: var(--gray);
   font-family: var(--font-mono);
+  font-weight: 400;
   text-transform: uppercase;
 }
 
@@ -154,6 +267,29 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
 }
 
+/* Theme Toggle Button */
+.theme-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--theme-toggle-bg);
+  border: 1px solid var(--theme-toggle-border);
+  color: var(--theme-toggle-color);
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.theme-toggle-btn:hover {
+  background: var(--primary-accent);
+  color: #08090b;
+  border-color: var(--primary-accent);
+  transform: rotate(15deg) scale(1.05);
+}
+
 /* Pill & Modern Editorial Buttons */
 .btn-pill {
   display: inline-flex;
@@ -170,29 +306,29 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-pill-dark {
-  background: var(--light);
-  color: var(--darker);
-  border: 1px solid var(--light);
+  background: var(--btn-pill-bg);
+  color: var(--btn-pill-text);
+  border: 1px solid var(--btn-pill-border);
 }
 
 .btn-pill-dark:hover {
-  background: var(--primary);
-  border-color: var(--primary);
-  color: var(--darker);
+  background: var(--primary-accent);
+  border-color: var(--primary-accent);
+  color: #08090b;
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px -5px rgba(204, 255, 0, 0.4);
+  box-shadow: 0 10px 25px -5px rgba(204, 255, 0, 0.45);
 }
 
 .btn-pill-outline {
   background: transparent;
   color: var(--light);
-  border: 1px solid var(--border-light);
+  border: 1px solid var(--btn-pill-outline-border);
 }
 
 .btn-pill-outline:hover {
   border-color: var(--primary);
   color: var(--primary);
-  background: rgba(204, 255, 0, 0.05);
+  background: var(--btn-pill-outline-hover-bg);
   transform: translateY(-2px);
 }
 
@@ -226,11 +362,12 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 10;
-  background: #11141a;
+  background: var(--card-bg);
   border-radius: 16px;
   overflow: hidden;
   border: 1px solid var(--border-light);
   margin-bottom: 1.25rem;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
 }
 
 .project-image-box img {
@@ -251,9 +388,9 @@ h1, h2, h3, h4, h5, h6 {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: rgba(8, 9, 11, 0.85);
+  background: var(--corner-arrow-bg);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid var(--corner-arrow-border);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -265,9 +402,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .project-editorial-card:hover .project-corner-arrow {
-  background: var(--primary);
-  color: var(--darker);
-  border-color: var(--primary);
+  background: var(--primary-accent);
+  color: #08090b;
+  border-color: var(--primary-accent);
   transform: translate(2px, -2px);
 }
 
@@ -282,6 +419,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.85rem;
   color: var(--gray);
   font-family: var(--font-body);
+  font-weight: 400;
 }
 
 .project-expand-btn {
@@ -302,7 +440,7 @@ h1, h2, h3, h4, h5, h6 {
 .project-expand-btn:hover {
   border-color: var(--primary);
   color: var(--primary);
-  background: rgba(204, 255, 0, 0.08);
+  background: var(--badge-bg);
 }
 
 .project-title {
@@ -354,6 +492,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-mono);
   font-size: 0.95rem;
   color: var(--gray);
+  font-weight: 400;
 }
 
 .accordion-title {
@@ -395,6 +534,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--light);
   font-family: var(--font-body);
   font-size: 1rem;
+  font-weight: 400;
   outline: none;
   transition: border-color 0.3s ease;
 }

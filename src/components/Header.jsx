@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiMenu, FiX, FiArrowUpRight } from 'react-icons/fi';
+import { FiMenu, FiX, FiArrowUpRight, FiSun, FiMoon } from 'react-icons/fi';
 
-const Header = () => {
+const Header = ({ theme = 'dark', toggleTheme }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -30,11 +30,11 @@ const Header = () => {
         width: '100%',
         zIndex: 1000,
         transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
-        padding: isScrolled ? '14px 0' : '28px 0',
-        backgroundColor: isScrolled ? 'rgba(8, 9, 11, 0.88)' : 'transparent',
+        padding: isScrolled ? '14px 0' : '26px 0',
+        backgroundColor: isScrolled ? 'var(--header-bg)' : 'transparent',
         backdropFilter: isScrolled ? 'blur(16px)' : 'none',
         WebkitBackdropFilter: isScrolled ? 'blur(16px)' : 'none',
-        borderBottom: isScrolled ? '1px solid rgba(255, 255, 255, 0.06)' : '1px solid transparent',
+        borderBottom: isScrolled ? '1px solid var(--header-border)' : '1px solid transparent',
       }}
     >
       <div className="container">
@@ -59,7 +59,7 @@ const Header = () => {
                 color: 'var(--light)',
               }}
             >
-              adeel qaiser<span style={{ color: 'var(--primary)' }}>*</span>
+              adeel qaiser<span style={{ color: 'var(--primary-accent)' }}>*</span>
             </span>
 
             <span
@@ -70,6 +70,7 @@ const Header = () => {
                 letterSpacing: '0.02em',
                 lineHeight: 1.2,
                 display: 'none',
+                fontWeight: 400,
               }}
             >
               Software Engineer<br />(MERN)
@@ -81,16 +82,16 @@ const Header = () => {
               @media (min-width: 640px) {
                 .header-subtitle { display: block !important; }
               }
-              @media (max-width: 820px) {
+              @media (max-width: 860px) {
                 .desktop-nav-wrap { display: none !important; }
-                .mobile-nav-toggle { display: flex !important; }
+                .mobile-nav-toggle-wrap { display: flex !important; }
               }
-              .mobile-nav-toggle { display: none; }
+              .mobile-nav-toggle-wrap { display: none; }
             `}
           </style>
 
           {/* Desktop Navigation */}
-          <div className="desktop-nav-wrap" style={{ display: 'flex', alignItems: 'center', gap: '2.5rem' }}>
+          <div className="desktop-nav-wrap" style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
             <nav style={{ display: 'flex', gap: '2rem' }}>
               {navLinks.map((link) => (
                 <a
@@ -118,13 +119,23 @@ const Header = () => {
               ))}
             </nav>
 
+            {/* Theme Toggle Button */}
+            <button
+              onClick={toggleTheme}
+              className="theme-toggle-btn"
+              aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+              title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+            >
+              {theme === 'dark' ? <FiSun /> : <FiMoon />}
+            </button>
+
             {/* Pill CTA button (Let's talk) */}
             <a
               href="#contact"
               style={{
                 padding: '0.55rem 1.35rem',
                 borderRadius: '9999px',
-                border: '1px solid rgba(255, 255, 255, 0.25)',
+                border: '1px solid var(--btn-pill-outline-border)',
                 color: 'var(--light)',
                 textDecoration: 'none',
                 fontSize: '0.88rem',
@@ -135,36 +146,48 @@ const Header = () => {
                 gap: '0.3rem',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'var(--primary)';
-                e.currentTarget.style.color = 'var(--darker)';
-                e.currentTarget.style.borderColor = 'var(--primary)';
+                e.currentTarget.style.background = 'var(--primary-accent)';
+                e.currentTarget.style.color = '#08090b';
+                e.currentTarget.style.borderColor = 'var(--primary-accent)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.background = 'transparent';
                 e.currentTarget.style.color = 'var(--light)';
-                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.25)';
+                e.currentTarget.style.borderColor = 'var(--btn-pill-outline-border)';
               }}
             >
               Let's talk
             </a>
           </div>
 
-          {/* Mobile Hamburger Toggle */}
-          <button
-            className="mobile-nav-toggle"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            style={{
-              background: 'transparent',
-              border: 'none',
-              color: 'var(--light)',
-              fontSize: '1.6rem',
-              cursor: 'pointer',
-              padding: '4px',
-            }}
-            aria-label="Toggle navigation"
-          >
-            {isMenuOpen ? <FiX /> : <FiMenu />}
-          </button>
+          {/* Mobile Navigation Controls */}
+          <div className="mobile-nav-toggle-wrap" style={{ alignItems: 'center', gap: '0.75rem' }}>
+            <button
+              onClick={toggleTheme}
+              className="theme-toggle-btn"
+              aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+              title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+            >
+              {theme === 'dark' ? <FiSun /> : <FiMoon />}
+            </button>
+
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              style={{
+                background: 'transparent',
+                border: 'none',
+                color: 'var(--light)',
+                fontSize: '1.6rem',
+                cursor: 'pointer',
+                padding: '4px',
+                display: 'flex',
+                alignItems: 'center',
+              }}
+              aria-label="Toggle navigation"
+            >
+              {isMenuOpen ? <FiX /> : <FiMenu />}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -177,10 +200,10 @@ const Header = () => {
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
             style={{
-              background: 'rgba(6, 9, 19, 0.98)',
+              background: 'var(--mobile-menu-bg)',
               backdropFilter: 'blur(20px)',
               WebkitBackdropFilter: 'blur(20px)',
-              borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+              borderBottom: '1px solid var(--border-light)',
               padding: '1.5rem 0',
             }}
           >
@@ -201,14 +224,25 @@ const Header = () => {
                   {link.name}
                 </a>
               ))}
-              <a
-                href="#contact"
-                onClick={() => setIsMenuOpen(false)}
-                className="btn-pill btn-pill-dark"
-                style={{ alignSelf: 'flex-start', marginTop: '0.5rem' }}
-              >
-                Let's talk <FiArrowUpRight />
-              </a>
+              
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginTop: '0.5rem' }}>
+                <a
+                  href="#contact"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="btn-pill btn-pill-dark"
+                >
+                  Let's talk <FiArrowUpRight />
+                </a>
+                
+                <button
+                  onClick={toggleTheme}
+                  className="theme-toggle-btn"
+                  style={{ width: '44px', height: '44px' }}
+                  aria-label="Toggle theme"
+                >
+                  {theme === 'dark' ? <FiSun /> : <FiMoon />}
+                </button>
+              </div>
             </div>
           </motion.div>
         )}

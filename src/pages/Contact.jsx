@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FiArrowUpRight, FiSend, FiCheckCircle } from 'react-icons/fi';
+import { FiArrowUpRight, FiCheckCircle } from 'react-icons/fi';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -55,16 +55,17 @@ const Contact = () => {
     <section id="contact" className="section-wrapper" style={{ paddingBottom: '40px' }}>
       <div className="container">
         
-        {/* High-Impact Editorial CTA Container (matching Page 5 reference with Adeel's theme) */}
+        {/* High-Impact Editorial CTA Container with Theme Adaptability */}
         <div
           style={{
-            background: 'linear-gradient(145deg, #12141a 0%, #08090b 100%)',
-            border: '1px solid var(--border-light)',
+            background: 'var(--contact-card-bg)',
+            border: '1px solid var(--contact-card-border)',
             borderRadius: '32px',
-            padding: ' clamp(2rem, 5vw, 4.5rem)',
+            padding: 'clamp(2rem, 5vw, 4.5rem)',
             position: 'relative',
             overflow: 'hidden',
-            boxShadow: '0 30px 60px -20px rgba(0, 0, 0, 0.7)'
+            boxShadow: 'var(--contact-card-shadow)',
+            transition: 'background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease',
           }}
         >
           {/* Subtle gradient light in corner */}
@@ -75,7 +76,7 @@ const Contact = () => {
               right: '-10%',
               width: '350px',
               height: '350px',
-              background: 'radial-gradient(circle, rgba(204, 255, 0, 0.12) 0%, rgba(56, 189, 248, 0.04) 50%, transparent 70%)',
+              background: 'radial-gradient(circle, var(--ambient-glow-1) 0%, var(--ambient-glow-2) 50%, transparent 70%)',
               borderRadius: '50%',
               filter: 'blur(50px)',
               pointerEvents: 'none'
@@ -91,7 +92,8 @@ const Contact = () => {
               marginBottom: '3rem',
               color: 'var(--gray)',
               fontSize: '0.88rem',
-              fontFamily: 'var(--font-mono)'
+              fontFamily: 'var(--font-mono)',
+              fontWeight: 400,
             }}
           >
             <span>Have something in mind?</span>
@@ -112,7 +114,7 @@ const Contact = () => {
             >
               Let's make<br />it matter.
             </h2>
-            <div style={{ fontSize: 'clamp(3rem, 7vw, 6rem)', color: 'var(--primary)' }}>
+            <div style={{ fontSize: 'clamp(3rem, 7vw, 6rem)', color: 'var(--primary-accent)' }}>
               ↗
             </div>
           </div>
@@ -131,7 +133,7 @@ const Contact = () => {
             {/* Left Contact Information */}
             <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
               <div>
-                <div style={{ fontSize: '0.85rem', color: 'var(--gray)', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', marginBottom: '0.8rem' }}>
+                <div style={{ fontSize: '0.85rem', color: 'var(--gray)', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', marginBottom: '0.8rem', fontWeight: 400 }}>
                   Direct Contact
                 </div>
                 <a
@@ -159,6 +161,7 @@ const Contact = () => {
                     textDecoration: 'none',
                     display: 'block',
                     marginBottom: '1.5rem',
+                    fontWeight: 400,
                     transition: 'color 0.2s ease'
                   }}
                   onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--light)')}
@@ -166,12 +169,12 @@ const Contact = () => {
                 >
                   +92 301 5355509
                 </a>
-                <div style={{ color: 'var(--gray-dark)', fontSize: '0.95rem' }}>
+                <div style={{ color: 'var(--gray-dark)', fontSize: '0.95rem', fontWeight: 400 }}>
                   Based in Pakistan • Available Worldwide
                 </div>
               </div>
 
-              {/* Social Channels (matching reference Page 5) */}
+              {/* Social Channels */}
               <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', marginTop: '3rem' }}>
                 <a href="https://github.com/adeel-151" target="_blank" rel="noopener noreferrer" className="text-arrow-link">
                   GitHub <FiArrowUpRight />

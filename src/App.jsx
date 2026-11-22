@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -12,6 +12,18 @@ import './App.css';
 
 function App() {
   const [loading, setLoading] = useState(true);
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem('aq-portfolio-theme') || 'dark';
+  });
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('aq-portfolio-theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+  };
 
   return (
     <div className="App">
@@ -20,10 +32,10 @@ function App() {
       </AnimatePresence>
 
       <div className="app-bg"></div>
-      <Header />
+      <Header theme={theme} toggleTheme={toggleTheme} />
       
       <main>
-        <div id="home"><Home /></div>
+        <div id="home"><Home theme={theme} /></div>
         <div id="projects"><Projects /></div>
         <div id="skills"><Skills /></div>
         <div id="about"><About /></div>

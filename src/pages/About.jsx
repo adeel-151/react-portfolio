@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiArrowUpRight, FiAward, FiUsers, FiFolder, FiDownload, FiCamera, FiCheckCircle } from 'react-icons/fi';
+import { FiArrowUpRight, FiDownload, FiCamera } from 'react-icons/fi';
 import cv from '../assets/Adeel-Qaiser.pdf';
-import profile from '../assets/profile.jpg';
 
 const About = () => {
   const [activeTab, setActiveTab] = useState('journey');
@@ -15,21 +14,21 @@ const About = () => {
 
   const tabContent = {
     journey: (
-      <p style={{ lineHeight: '1.8', color: 'var(--gray)', fontSize: '1.05rem' }}>
+      <p style={{ lineHeight: '1.8', color: 'var(--gray)', fontSize: '1.05rem', fontWeight: 400 }}>
         I started my web development journey with a deep curiosity for how things work on the internet. 
         Over the past year, I've transitioned into a confident Software Engineer (MERN). I've built everything from responsive landing pages to complex, state-driven 
         platforms including hostel management and healthcare systems.
       </p>
     ),
     philosophy: (
-      <p style={{ lineHeight: '1.8', color: 'var(--gray)', fontSize: '1.05rem' }}>
+      <p style={{ lineHeight: '1.8', color: 'var(--gray)', fontSize: '1.05rem', fontWeight: 400 }}>
         I believe that a great user interface goes far beyond just visual aesthetics—it’s about creating seamless, 
         intuitive experiences that delight users while maintaining clean, maintainable architecture and 
         pixel-perfect responsiveness under the hood.
       </p>
     ),
     focus: (
-      <p style={{ lineHeight: '1.8', color: 'var(--gray)', fontSize: '1.05rem' }}>
+      <p style={{ lineHeight: '1.8', color: 'var(--gray)', fontSize: '1.05rem', fontWeight: 400 }}>
         Right now, I am heavily focused on mastering modern React patterns, advanced interactive animations, 
         and scalable full-stack web architectures with Node.js and PostgreSQL/MongoDB to deliver blazing-fast 
         performant web products.
@@ -70,7 +69,7 @@ const About = () => {
           <span>Beyond the screen</span>
         </div>
 
-        {/* Two-Column Editorial Biography Layout (Page 4 reference) */}
+        {/* Two-Column Editorial Biography Layout */}
         <div 
           style={{ 
             display: 'grid', 
@@ -88,7 +87,7 @@ const About = () => {
             <div style={{ color: 'var(--gray)', fontSize: '1.1rem', fontWeight: 500 }}>
               Adeel Qaiser
             </div>
-            <div style={{ fontSize: '0.9rem', color: 'var(--primary)', fontFamily: 'var(--font-mono)', marginTop: '0.4rem' }}>
+            <div style={{ fontSize: '0.9rem', color: 'var(--primary)', fontFamily: 'var(--font-mono)', marginTop: '0.4rem', fontWeight: 500 }}>
               Available for freelance & full-time roles
             </div>
 
@@ -166,7 +165,7 @@ const About = () => {
           </div>
         </div>
 
-        {/* Experience & Education Strip (Page 4 lower reference) */}
+        {/* Experience & Education Strip */}
         <div 
           style={{ 
             borderTop: '1px solid var(--border-light)', 
@@ -179,7 +178,7 @@ const About = () => {
           className="experience-strip"
         >
           <div>
-            <span style={{ fontSize: '0.9rem', color: 'var(--gray)', fontFamily: 'var(--font-mono)', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.9rem', color: 'var(--gray)', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', fontWeight: 400 }}>
               Experience & milestones
             </span>
           </div>
@@ -196,10 +195,10 @@ const About = () => {
                 <div style={{ fontSize: '1.25rem', fontWeight: 500, color: 'var(--light)', marginBottom: '0.25rem' }}>
                   {item.role}
                 </div>
-                <div style={{ fontSize: '0.95rem', color: 'var(--primary)', marginBottom: '0.4rem', fontFamily: 'var(--font-mono)' }}>
+                <div style={{ fontSize: '0.95rem', color: 'var(--primary)', marginBottom: '0.4rem', fontFamily: 'var(--font-mono)', fontWeight: 400 }}>
                   {item.context}
                 </div>
-                <div style={{ fontSize: '0.9rem', color: 'var(--gray)' }}>
+                <div style={{ fontSize: '0.9rem', color: 'var(--gray)', fontWeight: 400 }}>
                   {item.detail}
                 </div>
               </div>
@@ -207,10 +206,10 @@ const About = () => {
           </div>
         </div>
 
-        {/* Outside the Browser Feature Box (Page 5 top reference) */}
+        {/* Outside the Browser Feature Box */}
         <div
           style={{
-            background: 'rgba(15, 23, 42, 0.5)',
+            background: 'var(--outside-box-bg)',
             border: '1px solid var(--border-light)',
             borderRadius: '24px',
             padding: '3rem',
@@ -218,6 +217,8 @@ const About = () => {
             gridTemplateColumns: '1fr 1fr',
             gap: '3rem',
             alignItems: 'center',
+            boxShadow: '0 20px 40px -15px rgba(0, 0, 0, 0.05)',
+            transition: 'background 0.3s ease, border-color 0.3s ease',
           }}
           className="outside-browser-box"
         >
@@ -225,7 +226,7 @@ const About = () => {
             <h3 style={{ fontSize: '2.4rem', fontWeight: 500, color: 'var(--light)', marginBottom: '1rem', letterSpacing: '-0.02em' }}>
               Outside the browser.
             </h3>
-            <p style={{ color: 'var(--gray)', fontSize: '1.05rem', lineHeight: '1.7', marginBottom: '2rem' }}>
+            <p style={{ color: 'var(--gray)', fontSize: '1.05rem', lineHeight: '1.7', marginBottom: '2rem', fontWeight: 400 }}>
               Passionate about problem solving, clean engineering architectures, and continuous self-learning. Always exploring new horizons in software development.
             </p>
             <a href="#contact" className="text-arrow-link" style={{ fontSize: '1rem', fontWeight: 500 }}>
@@ -236,13 +237,14 @@ const About = () => {
           {/* Right Frame Spotlight Card with Dashed Border */}
           <div
             style={{
-              border: '1px dashed rgba(255, 255, 255, 0.2)',
+              border: '1px dashed var(--outside-dashed-border)',
               borderRadius: '16px',
               padding: '2.5rem',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'flex-start',
-              background: 'rgba(6, 9, 19, 0.6)',
+              background: 'var(--outside-card-bg)',
+              transition: 'background 0.3s ease, border-color 0.3s ease',
             }}
           >
             <div style={{ color: 'var(--primary)', fontSize: '1.8rem', marginBottom: '1.2rem' }}>
@@ -251,10 +253,10 @@ const About = () => {
             <div style={{ fontSize: '1.2rem', fontWeight: 500, color: 'var(--light)', marginBottom: '0.6rem' }}>
               Continuous craftsmanship
             </div>
-            <p style={{ color: 'var(--gray)', fontSize: '0.92rem', lineHeight: '1.6' }}>
+            <p style={{ color: 'var(--gray)', fontSize: '0.92rem', lineHeight: '1.6', fontWeight: 400 }}>
               Focused on modern frontend standards, accessible web interfaces, and high-performance React architectures.
             </p>
-            <div style={{ marginTop: '1.2rem', fontSize: '0.78rem', fontFamily: 'var(--font-mono)', color: 'var(--gray-dark)' }}>
+            <div style={{ marginTop: '1.2rem', fontSize: '0.78rem', fontFamily: 'var(--font-mono)', color: 'var(--gray-dark)', fontWeight: 400 }}>
               100% committed to quality & performance
             </div>
           </div>

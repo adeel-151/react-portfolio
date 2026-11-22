@@ -12,7 +12,9 @@ import {
 import cv from '../assets/Adeel-Qaiser.pdf';
 
 // Sub-component for individual card with horizontal slide-in
-const HorizontalCard = ({ card, index, scrollYProgress }) => {
+const HorizontalCard = ({ card, index, scrollYProgress, theme }) => {
+  const isLight = theme === 'light';
+  
   // Base card (Card 1) stationed on screen
   if (index === 0) {
     return (
@@ -26,8 +28,10 @@ const HorizontalCard = ({ card, index, scrollYProgress }) => {
           borderRadius: '22px',
           background: card.bg,
           color: card.textColor,
-          border: card.border || '1px solid rgba(255, 255, 255, 0.8)',
-          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.65)',
+          border: card.border || (isLight ? '1px solid rgba(0, 0, 0, 0.09)' : '1px solid rgba(255, 255, 255, 0.8)'),
+          boxShadow: isLight 
+            ? '0 20px 45px -12px rgba(0, 0, 0, 0.14), 0 0 0 1px rgba(0, 0, 0, 0.05)' 
+            : '0 25px 50px -12px rgba(0, 0, 0, 0.65)',
           zIndex: 1,
           transform: `rotate(${card.rotate}deg)`,
         }}
@@ -57,8 +61,10 @@ const HorizontalCard = ({ card, index, scrollYProgress }) => {
         borderRadius: '22px',
         background: card.bg,
         color: card.textColor,
-        border: card.border || 'none',
-        boxShadow: '0 25px 60px -15px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.08)',
+        border: card.border || (isLight ? '1px solid rgba(0, 0, 0, 0.09)' : 'none'),
+        boxShadow: isLight
+          ? '0 25px 50px -15px rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.06)'
+          : '0 25px 60px -15px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.08)',
         zIndex: index + 1,
         x,
         y,
@@ -121,6 +127,7 @@ const CardBody = ({ card }) => (
         color: card.descColor,
         fontFamily: 'var(--font-body)',
         lineHeight: 1.4,
+        fontWeight: 400,
       }}
     >
       {card.tech}
@@ -128,11 +135,10 @@ const CardBody = ({ card }) => (
   </div>
 );
 
-const Home = () => {
+const Home = ({ theme = 'dark' }) => {
   const manifestoContainerRef = useRef(null);
 
   // Tracks scroll progress through the tall container so the section stays pinned
-  // while cards slide in horizontally from the right!
   const { scrollYProgress } = useScroll({
     target: manifestoContainerRef,
     offset: ['start start', 'end end']
@@ -161,7 +167,7 @@ const Home = () => {
       icon: <FiLayers />,
       title: 'The right connections.',
       tech: 'Node.js / Express / REST APIs',
-      bg: '#c5f82a', // Signature lime card from the reference screenshot
+      bg: '#c5f82a', // Signature lime card from reference screenshot
       textColor: '#090e1c',
       descColor: '#27272a',
       accentColor: '#090e1c',
@@ -274,12 +280,12 @@ const Home = () => {
                 <span style={{ fontSize: '1.05rem', fontWeight: 500, color: 'var(--light)', display: 'block' }}>
                   Adeel Qaiser
                 </span>
-                <span style={{ fontSize: '0.92rem', color: 'var(--gray)' }}>
+                <span style={{ fontSize: '0.92rem', color: 'var(--gray)', fontWeight: 400 }}>
                   Software Engineer (MERN)
                 </span>
               </div>
 
-              <p style={{ color: 'var(--gray)', fontSize: '1rem', lineHeight: '1.65', marginTop: '0.6rem' }}>
+              <p style={{ color: 'var(--gray)', fontSize: '1rem', lineHeight: '1.65', marginTop: '0.6rem', fontWeight: 400 }}>
                 I build high-performance web applications and digital products by bringing clean code, modern architecture, and intuitive user experiences together.
               </p>
             </div>
@@ -328,7 +334,7 @@ const Home = () => {
                   position: 'absolute',
                   width: '240px',
                   height: '240px',
-                  background: 'radial-gradient(circle, rgba(204, 255, 0, 0.22) 0%, rgba(56, 189, 248, 0.05) 60%, transparent 80%)',
+                  background: 'radial-gradient(circle, var(--ambient-glow-1) 0%, var(--ambient-glow-2) 60%, transparent 80%)',
                   borderRadius: '50%',
                   filter: 'blur(40px)',
                   zIndex: 0,
@@ -348,9 +354,9 @@ const Home = () => {
                   width: '260px',
                   height: '260px',
                   borderRadius: '32px',
-                  background: 'linear-gradient(145deg, #161f36, #090e1c)',
-                  border: '1px solid rgba(255, 255, 255, 0.12)',
-                  boxShadow: '0 30px 60px -15px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+                  background: 'var(--cube-bg)',
+                  border: '1px solid var(--cube-border)',
+                  boxShadow: 'var(--cube-shadow)',
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
@@ -379,11 +385,10 @@ const Home = () => {
                     fontWeight: 500,
                     lineHeight: 1,
                     letterSpacing: '-0.05em',
-                    background: 'linear-gradient(135deg, #ffffff 40%, #ccff00 70%, #38bdf8 100%)',
+                    background: 'var(--cube-text-gradient)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
-                    textShadow: '0 10px 30px rgba(0, 0, 0, 0.5)',
-                    filter: 'drop-shadow(0 15px 25px rgba(0,0,0,0.6))'
+                    filter: theme === 'dark' ? 'drop-shadow(0 15px 25px rgba(0,0,0,0.6))' : 'drop-shadow(0 10px 15px rgba(0,0,0,0.1))'
                   }}
                 >
                   AQ*
@@ -397,12 +402,12 @@ const Home = () => {
                     marginTop: '0.8rem',
                     padding: '4px 14px',
                     borderRadius: '20px',
-                    background: 'rgba(255, 255, 255, 0.05)',
-                    border: '1px solid rgba(255, 255, 255, 0.08)'
+                    background: 'var(--badge-bg)',
+                    border: '1px solid var(--badge-border)'
                   }}
                 >
-                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#ccff00' }}></span>
-                  <span style={{ fontSize: '0.75rem', fontFamily: 'var(--font-mono)', color: 'var(--gray)' }}>
+                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--primary-accent)' }}></span>
+                  <span style={{ fontSize: '0.75rem', fontFamily: 'var(--font-mono)', color: 'var(--gray)', fontWeight: 400 }}>
                     Open to opportunities
                   </span>
                 </div>
@@ -415,7 +420,8 @@ const Home = () => {
                 color: 'var(--gray)', 
                 fontFamily: 'var(--font-mono)', 
                 marginTop: '1.5rem',
-                opacity: 0.8
+                opacity: 0.8,
+                fontWeight: 400,
               }}
             >
               A different dimension of code.
@@ -423,12 +429,12 @@ const Home = () => {
           </motion.div>
         </div>
 
-        {/* Hero Bottom Strip with Brand Watermark & Indicators */}
+        {/* Hero Bottom Strip with Brand Statement & Indicator */}
         <div style={{ marginTop: '2.5rem', paddingTop: '1.5rem' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <div style={{ fontSize: '0.85rem', color: 'var(--gray)', lineHeight: 1.5 }}>
+            <div style={{ fontSize: '0.85rem', color: 'var(--gray)', lineHeight: 1.5, fontWeight: 400 }}>
               Available for remote projects<br />
-              <span style={{ color: 'var(--light)' }}>Working worldwide</span>
+              <span style={{ color: 'var(--light)', fontWeight: 500 }}>Working worldwide</span>
             </div>
 
             <a 
@@ -456,7 +462,7 @@ const Home = () => {
                 userSelect: 'none'
               }}
             >
-              adeel qaiser<span style={{ color: 'var(--primary)' }}>*</span>
+              adeel qaiser<span style={{ color: 'var(--primary-accent)' }}>*</span>
             </motion.h2>
           </div>
         </div>
@@ -488,6 +494,7 @@ const Home = () => {
             borderBottom: '1px solid var(--border-light)',
             zIndex: 10,
             paddingTop: '60px',
+            transition: 'background-color 0.3s ease, border-color 0.3s ease',
           }}
         >
           <div className="container" style={{ width: '100%', padding: '0 32px' }}>
@@ -522,7 +529,8 @@ const Home = () => {
                     fontSize: '1.15rem', 
                     lineHeight: 1.7, 
                     maxWidth: '460px',
-                    marginBottom: '2.5rem' 
+                    marginBottom: '2.5rem',
+                    fontWeight: 400,
                   }}
                 >
                   I connect clean code, modern architecture and thoughtful interfaces. Different disciplines, one considered experience.
@@ -544,7 +552,8 @@ const Home = () => {
                     borderTop: '1px solid var(--border-subtle)',
                     color: 'var(--gray)',
                     fontSize: '0.85rem',
-                    fontFamily: 'var(--font-mono)'
+                    fontFamily: 'var(--font-mono)',
+                    fontWeight: 400,
                   }}
                   className="discipline-tags-row"
                 >
@@ -573,6 +582,7 @@ const Home = () => {
                       card={card}
                       index={index}
                       scrollYProgress={scrollYProgress}
+                      theme={theme}
                     />
                   ))}
                 </div>
