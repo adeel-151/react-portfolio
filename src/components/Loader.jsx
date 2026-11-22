@@ -115,7 +115,7 @@ const Loader = ({ onLoadingComplete }) => {
           <span
             style={{
               fontFamily: 'var(--font-display)',
-              fontSize: 'clamp(5rem, 18vw, 13rem)',
+              fontSize: 'clamp(3.6rem, 16vw, 13rem)',
               fontWeight: 500,
               letterSpacing: '-0.05em',
               color: 'var(--light)',

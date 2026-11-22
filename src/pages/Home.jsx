@@ -215,11 +215,10 @@ const Home = ({ theme = 'dark' }) => {
                   rotateY: [-10, -4, -10]
                 }}
                 transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+                className="hero-perspective-cube"
                 style={{
                   position: 'relative',
                   zIndex: 1,
-                  width: '260px',
-                  height: '260px',
                   borderRadius: '32px',
                   background: 'var(--cube-bg)',
                   border: '1px solid var(--cube-border)',
@@ -298,7 +297,7 @@ const Home = ({ theme = 'dark' }) => {
 
         {/* Hero Bottom Strip with Brand Statement & Indicator */}
         <div style={{ marginTop: '2.5rem', paddingTop: '1.5rem' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div className="hero-status-row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
             <div style={{ fontSize: '0.85rem', color: 'var(--gray)', lineHeight: 1.5, fontWeight: 400 }}>
               Available for remote & full-time roles<br />
               <span style={{ color: 'var(--light)', fontWeight: 500 }}>Working worldwide</span>
@@ -320,7 +319,7 @@ const Home = ({ theme = 'dark' }) => {
               viewport={{ once: true }}
               transition={{ duration: 1 }}
               style={{
-                fontSize: 'clamp(3.8rem, 15vw, 12rem)',
+                fontSize: 'clamp(2.4rem, 13vw, 12rem)',
                 fontWeight: 500,
                 letterSpacing: '-0.04em',
                 lineHeight: 0.9,
@@ -359,7 +358,7 @@ const Home = ({ theme = 'dark' }) => {
             className="manifesto-grid"
           >
             {/* Left Column: Fixed / Sticky on desktop */}
-            <div style={{ position: 'sticky', top: '130px' }}>
+            <div className="manifesto-left-col" style={{ position: 'sticky', top: '130px' }}>
               <h2
                 style={{
                   fontSize: 'clamp(2.4rem, 5.2vw, 4.4rem)',

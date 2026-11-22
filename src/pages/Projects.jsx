@@ -171,7 +171,7 @@ const Projects = () => {
         </div>
 
         {/* Category Filter Pills */}
-        <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '3.5rem' }}>
+        <div className="projects-filter-bar" style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '3.5rem' }}>
           {filterTabs.map((tab) => {
             const isActive = activeFilter === tab;
             return (
