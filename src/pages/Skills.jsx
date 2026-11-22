@@ -1,188 +1,227 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FiPlus, FiMinus, FiArrowUpRight, FiCode, FiDatabase, FiCloud, FiCpu } from 'react-icons/fi';
 import { 
   SiReact, 
-  SiJavascript,
-  SiTypescript,
-  SiHtml5,
-  SiCss3,
-  SiTailwindcss,
-  SiBootstrap,
-  SiCplusplus,
+  SiJavascript, 
+  SiTypescript, 
+  SiHtml5, 
+  SiCss3, 
+  SiTailwindcss, 
+  SiBootstrap, 
+  SiCplusplus, 
   SiPython,
-  SiGit,
-  SiGithub,
-  SiNodedotjs,
-  SiExpress,
-  SiMongodb,
-  SiPostgresql,
-  SiVercel,
-  SiNetlify
+  SiNodedotjs, 
+  SiExpress, 
+  SiMongodb, 
+  SiPostgresql, 
+  SiVercel, 
+  SiNetlify, 
+  SiGit, 
+  SiGithub 
 } from 'react-icons/si';
-import { FiCode, FiDatabase, FiCloud, FiServer, FiTerminal, FiCpu, FiCommand } from 'react-icons/fi';
 
 const Skills = () => {
-  const skillCategories = [
+  const [openIndex, setOpenIndex] = useState(0); // 01 open by default matching screenshot
+
+  const capabilities = [
     {
-      title: 'Frontend & Languages',
-      skills: [
+      index: '01',
+      title: 'Frontend & Interactive Web Applications',
+      subtitle: 'Fast, thoughtful interfaces and custom web applications.',
+      description:
+        'From initial component architecture to smooth, state-driven user experiences. I specialize in crafting clean, accessible, and responsive user interfaces using modern React ecosystem tools.',
+      technologies: [
         { name: 'React', icon: <SiReact />, color: '#61DAFB' },
         { name: 'JavaScript', icon: <SiJavascript />, color: '#F7DF1E' },
         { name: 'TypeScript', icon: <SiTypescript />, color: '#3178C6' },
+        { name: 'Tailwind CSS', icon: <SiTailwindcss />, color: '#06B6D4' },
         { name: 'HTML5', icon: <SiHtml5 />, color: '#E34F26' },
         { name: 'CSS3', icon: <SiCss3 />, color: '#1572B6' },
-        { name: 'Tailwind', icon: <SiTailwindcss />, color: '#06B6D4' },
         { name: 'Bootstrap', icon: <SiBootstrap />, color: '#7952B3' },
+        { name: 'Python', icon: <SiPython />, color: '#3776AB' },
         { name: 'C++', icon: <SiCplusplus />, color: '#00599C' },
-        { name: 'Python', icon: <SiPython />, color: '#3776AB' }
-      ]
+      ],
+      linkText: 'Explore frontend projects',
+      linkHref: '#projects',
     },
     {
-      title: 'Backend & Databases',
-      skills: [
+      index: '02',
+      title: 'Backend Systems & Database Architecture',
+      subtitle: 'Robust APIs, server-side logic, and scalable data models.',
+      description:
+        'Building reliable server foundations with Node.js and Express. Experienced in designing relational schemes with PostgreSQL and flexible document stores with MongoDB and Neon.tech.',
+      technologies: [
         { name: 'Node.js', icon: <SiNodedotjs />, color: '#339933' },
         { name: 'Express.js', icon: <SiExpress />, color: '#ffffff' },
         { name: 'MongoDB', icon: <SiMongodb />, color: '#47A248' },
         { name: 'PostgreSQL', icon: <SiPostgresql />, color: '#4169E1' },
-        { name: 'Neon.tech', icon: <FiDatabase />, color: '#00E599' }
-      ]
+        { name: 'Neon.tech', icon: <FiDatabase />, color: '#00E599' },
+      ],
+      linkText: 'View backend implementations',
+      linkHref: '#projects',
     },
     {
-      title: 'Deployment & Tools',
-      skills: [
+      index: '03',
+      title: 'Cloud Deployment & DevOps Workflows',
+      subtitle: 'Continuous delivery, edge hosting, and seamless deployments.',
+      description:
+        'Setting up modern deployment pipelines, monitoring production builds, and maintaining clean git version control across branches and environments.',
+      technologies: [
         { name: 'Vercel', icon: <SiVercel />, color: '#ffffff' },
         { name: 'Netlify', icon: <SiNetlify />, color: '#00C7B7' },
         { name: 'Render', icon: <FiCloud />, color: '#46E3B7' },
-        { name: 'Railway', icon: <FiServer />, color: '#ffffff' },
         { name: 'Git', icon: <SiGit />, color: '#F05032' },
         { name: 'GitHub', icon: <SiGithub />, color: '#ffffff' },
-        { name: 'VS Code', icon: <FiCode />, color: '#007ACC' }
-      ]
+      ],
+      linkText: 'Inspect GitHub workflow',
+      linkHref: 'https://github.com/adeel-151',
     },
     {
-      title: 'AI & Advanced Editors',
-      skills: [
-        { name: 'Cursor', icon: <FiTerminal />, color: '#ffffff' },
+      index: '04',
+      title: 'AI Tooling & Next-Gen Developer Environments',
+      subtitle: 'Supercharging development velocity with AI-native workflows.',
+      description:
+        'Leveraging cutting-edge tools to accelerate prototyping, automate testing, and deliver production-ready features with high precision.',
+      technologies: [
+        { name: 'Cursor', icon: <FiCode />, color: '#ffffff' },
         { name: 'Antigravity', icon: <FiCpu />, color: '#6366f1' },
-        { name: 'Kiro', icon: <FiCommand />, color: '#f59e0b' }
-      ]
-    }
+        { name: 'Kiro', icon: <FiCode />, color: '#f59e0b' },
+      ],
+      linkText: 'Connect & collaborate',
+      linkHref: '#contact',
+    },
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { type: 'spring', stiffness: 100 }
-    }
+  const handleToggle = (index) => {
+    setOpenIndex(openIndex === index ? -1 : index);
   };
 
   return (
-    <motion.section 
-      className="page-wrapper"
-      initial="hidden"
-      animate="visible"
-      exit={{ opacity: 0, y: -20 }}
-      variants={containerVariants}
-    >
+    <section id="skills" className="section-wrapper">
       <div className="container">
-        <motion.div variants={itemVariants} style={{ marginBottom: '4rem' }}>
-          <h2 className="section-title">
-            <span className="text-gradient">TECH</span> ARSENAL
-          </h2>
-          <p style={{ textAlign: 'center', color: 'var(--gray)', fontSize: '1.1rem', marginTop: '1rem' }}>
-            The tools and technologies I use to build high-performance applications
-          </p>
-        </motion.div>
-
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '4rem' }}>
-          {skillCategories.map((category, idx) => (
-            <motion.div key={category.title} variants={itemVariants}>
-              <h3 style={{ 
-                fontFamily: 'var(--font-accent)', 
-                fontSize: '1.8rem', 
-                marginBottom: '2rem', 
-                color: 'var(--light)',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '1rem'
-              }}>
-                <span style={{ width: '40px', height: '2px', background: 'var(--primary)' }}></span>
-                {category.title}
-              </h3>
-              
-              <div className="grid-responsive-skills">
-                {category.skills.map((skill) => (
-                  <motion.div
-                    key={skill.name}
-                    className="glass-card"
-                    whileHover={{ scale: 1.05, y: -5 }}
-                    whileTap={{ scale: 0.95 }}
-                    style={{
-                      padding: '2rem 1rem',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: '1rem',
-                      cursor: 'pointer',
-                      position: 'relative',
-                      overflow: 'hidden'
-                    }}
-                  >
-                    {/* Hover Glow Effect */}
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      whileHover={{ opacity: 0.15 }}
-                      style={{
-                        position: 'absolute',
-                        inset: 0,
-                        background: skill.color,
-                        filter: 'blur(20px)',
-                        zIndex: 0
-                      }}
-                    />
-                    
-                    <motion.div 
-                      style={{ 
-                        fontSize: '3.5rem', 
-                        color: skill.color, 
-                        zIndex: 1,
-                        filter: `drop-shadow(0 0 10px ${skill.color}40)`
-                      }}
-                    >
-                      {skill.icon}
-                    </motion.div>
-                    
-                    <span style={{ 
-                      fontFamily: 'var(--font-mono)', 
-                      fontSize: '1rem', 
-                      fontWeight: 600, 
-                      color: 'var(--light)',
-                      zIndex: 1,
-                      textAlign: 'center'
-                    }}>
-                      {skill.name}
-                    </span>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          ))}
+        
+        {/* Section Eyebrow Row (02 / What I bring) */}
+        <div className="section-eyebrow-row">
+          <span>02 / What I bring</span>
+          <span>From idea to launch</span>
         </div>
+
+        {/* Editorial Heading Grid */}
+        <div className="editorial-header-grid">
+          <div>
+            <h2 className="editorial-title">
+              Good thinking.<br />Better making.
+            </h2>
+          </div>
+          <div>
+            <p className="editorial-subtitle" style={{ marginBottom: '1.2rem' }}>
+              One collaborator across the technical architecture and interactive frontend of your next application.
+            </p>
+            <a href="#contact" className="text-arrow-link" style={{ fontWeight: 600 }}>
+              Explore web development services <FiArrowUpRight />
+            </a>
+          </div>
+        </div>
+
+        {/* Editorial Accordion List */}
+        <div style={{ marginTop: '2rem' }}>
+          {capabilities.map((item, index) => {
+            const isOpen = openIndex === index;
+            return (
+              <div key={item.index} className="accordion-item">
+                <button
+                  className="accordion-header"
+                  onClick={() => handleToggle(index)}
+                  aria-expanded={isOpen}
+                >
+                  <div className="accordion-index-title">
+                    <span className="accordion-index">{item.index}</span>
+                    <span className="accordion-title">{item.title}</span>
+                  </div>
+                  <div className="accordion-toggle-icon">
+                    {isOpen ? <FiMinus /> : <FiPlus />}
+                  </div>
+                </button>
+
+                <AnimatePresence>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                      style={{ overflow: 'hidden' }}
+                    >
+                      <div className="accordion-body">
+                        {/* Description Column */}
+                        <div>
+                          <p style={{ color: 'var(--light)', fontSize: '1.05rem', fontWeight: 500, marginBottom: '0.8rem' }}>
+                            {item.subtitle}
+                          </p>
+                          <p style={{ color: 'var(--gray)', fontSize: '0.98rem', lineHeight: '1.7', marginBottom: '1.5rem' }}>
+                            {item.description}
+                          </p>
+                          <a
+                            href={item.linkHref}
+                            className="text-arrow-link"
+                            style={{ fontSize: '0.92rem', color: 'var(--secondary)' }}
+                            target={item.linkHref.startsWith('http') ? '_blank' : '_self'}
+                            rel="noopener noreferrer"
+                          >
+                            {item.linkText} <FiArrowUpRight />
+                          </a>
+                        </div>
+
+                        {/* Technology Badges Column */}
+                        <div>
+                          <div style={{ fontSize: '0.82rem', fontFamily: 'var(--font-mono)', color: 'var(--gray)', textTransform: 'uppercase', marginBottom: '1rem' }}>
+                            Core Technologies
+                          </div>
+                          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
+                            {item.technologies.map((tech) => (
+                              <div
+                                key={tech.name}
+                                style={{
+                                  display: 'inline-flex',
+                                  alignItems: 'center',
+                                  gap: '0.5rem',
+                                  padding: '8px 16px',
+                                  background: 'rgba(255, 255, 255, 0.04)',
+                                  border: '1px solid var(--border-light)',
+                                  borderRadius: '100px',
+                                  fontSize: '0.88rem',
+                                  color: 'var(--light)',
+                                  transition: 'all 0.25s ease',
+                                }}
+                                onMouseEnter={(e) => {
+                                  e.currentTarget.style.borderColor = tech.color;
+                                  e.currentTarget.style.transform = 'translateY(-2px)';
+                                }}
+                                onMouseLeave={(e) => {
+                                  e.currentTarget.style.borderColor = 'var(--border-light)';
+                                  e.currentTarget.style.transform = 'translateY(0)';
+                                }}
+                              >
+                                <span style={{ color: tech.color, display: 'flex', fontSize: '1rem' }}>
+                                  {tech.icon}
+                                </span>
+                                <span>{tech.name}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            );
+          })}
+        </div>
+
       </div>
-    </motion.section>
+    </section>
   );
 };
 

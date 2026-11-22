@@ -1,169 +1,219 @@
 import React, { useState, useEffect } from 'react';
-
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiMenu, FiX } from 'react-icons/fi';
+import { FiMenu, FiX, FiArrowUpRight } from 'react-icons/fi';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [activePath, setActivePath] = useState('#home');
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 25);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems = [
-    { path: '#home', label: 'HOME' },
-    { path: '#about', label: 'ABOUT' },
-    { path: '#projects', label: 'PROJECTS' },
-    { path: '#skills', label: 'SKILLS' },
-    { path: '#contact', label: 'CONTACT' }
+  const navLinks = [
+    { name: 'Work', href: '#projects' },
+    { name: 'Services', href: '#skills' },
+    { name: 'About', href: '#about' },
+    { name: 'Contact', href: '#contact' },
   ];
 
   return (
-    <motion.header 
+    <header
       style={{
         position: 'fixed',
         top: 0,
+        left: 0,
         width: '100%',
         zIndex: 1000,
-        transition: 'all 0.3s ease',
-        padding: isScrolled ? '10px 0' : '20px 0',
-        background: isScrolled ? 'rgba(15, 23, 42, 0.8)' : 'transparent',
-        backdropFilter: isScrolled ? 'blur(12px)' : 'none',
-        borderBottom: isScrolled ? '1px solid rgba(255,255,255,0.05)' : '1px solid transparent'
+        transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
+        padding: isScrolled ? '14px 0' : '28px 0',
+        backgroundColor: isScrolled ? 'rgba(6, 9, 19, 0.85)' : 'transparent',
+        backdropFilter: isScrolled ? 'blur(16px)' : 'none',
+        WebkitBackdropFilter: isScrolled ? 'blur(16px)' : 'none',
+        borderBottom: isScrolled ? '1px solid rgba(255, 255, 255, 0.06)' : '1px solid transparent',
       }}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
     >
       <div className="container">
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <motion.div 
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+          {/* Logo Brand with Subtitle (Editorial Style) */}
+          <a
+            href="#home"
+            style={{
+              textDecoration: 'none',
+              color: 'inherit',
+              display: 'flex',
+              alignItems: 'baseline',
+              gap: '1.25rem',
+            }}
           >
-            <a href="#home" style={{ textDecoration: 'none' }} onClick={() => setActivePath('#home')}>
-              <span className="text-gradient" style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', fontWeight: 800, letterSpacing: '2px' }}>
-                AQ
-              </span>
-            </a>
-          </motion.div>
+            <span
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: '1.45rem',
+                fontWeight: 800,
+                letterSpacing: '-0.03em',
+                color: 'var(--light)',
+              }}
+            >
+              adeel qaiser<span style={{ color: 'var(--secondary)' }}>*</span>
+            </span>
 
-          {/* Desktop Nav */}
-          <nav style={{ display: 'flex', gap: '1rem' }} className="desktop-nav">
-            {navItems.map((item) => {
-              const isActive = activePath === item.path;
-              return (
-                <a
-                  key={item.path}
-                  href={item.path}
-                  onClick={() => setActivePath(item.path)}
-                  style={{
-                    position: 'relative',
-                    padding: '8px 16px',
-                    color: isActive ? '#fff' : 'var(--gray)',
-                    textDecoration: 'none',
-                    fontWeight: 600,
-                    fontFamily: 'var(--font-accent)',
-                    letterSpacing: '1px',
-                    transition: 'color 0.3s ease'
-                  }}
-                >
-                  {isActive && (
-                    <motion.div
-                      layoutId="nav-pill"
-                      style={{
-                        position: 'absolute',
-                        inset: 0,
-                        background: 'rgba(99, 102, 241, 0.2)',
-                        border: '1px solid rgba(99, 102, 241, 0.5)',
-                        borderRadius: '8px',
-                        zIndex: -1
-                      }}
-                      transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                    />
-                  )}
-                  {item.label}
-                </a>
-              );
-            })}
-          </nav>
+            <span
+              className="header-subtitle"
+              style={{
+                fontSize: '0.75rem',
+                color: 'var(--gray)',
+                letterSpacing: '0.02em',
+                lineHeight: 1.2,
+                display: 'none',
+              }}
+            >
+              Software Engineer<br />(MERN)
+            </span>
+          </a>
 
           <style>
             {`
-              @media (max-width: 768px) {
-                .desktop-nav { display: none !important; }
-                .mobile-toggle { display: block !important; }
+              @media (min-width: 640px) {
+                .header-subtitle { display: block !important; }
               }
-              .mobile-toggle { display: none; }
+              @media (max-width: 820px) {
+                .desktop-nav-wrap { display: none !important; }
+                .mobile-nav-toggle { display: flex !important; }
+              }
+              .mobile-nav-toggle { display: none; }
             `}
           </style>
 
-          <motion.button
-            className="mobile-toggle"
+          {/* Desktop Navigation */}
+          <div className="desktop-nav-wrap" style={{ display: 'flex', alignItems: 'center', gap: '2.5rem' }}>
+            <nav style={{ display: 'flex', gap: '2rem' }}>
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  style={{
+                    color: 'var(--light)',
+                    opacity: 0.85,
+                    textDecoration: 'none',
+                    fontSize: '0.92rem',
+                    fontWeight: 500,
+                    transition: 'opacity 0.2s ease, color 0.2s ease',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.opacity = '1';
+                    e.currentTarget.style.color = 'var(--secondary)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.opacity = '0.85';
+                    e.currentTarget.style.color = 'var(--light)';
+                  }}
+                >
+                  {link.name}
+                </a>
+              ))}
+            </nav>
+
+            {/* Pill CTA button (Let's talk) */}
+            <a
+              href="#contact"
+              style={{
+                padding: '0.55rem 1.35rem',
+                borderRadius: '9999px',
+                border: '1px solid rgba(255, 255, 255, 0.25)',
+                color: 'var(--light)',
+                textDecoration: 'none',
+                fontSize: '0.88rem',
+                fontWeight: 600,
+                transition: 'all 0.25s ease',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.3rem',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = 'var(--light)';
+                e.currentTarget.style.color = 'var(--darker)';
+                e.currentTarget.style.borderColor = 'var(--light)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'transparent';
+                e.currentTarget.style.color = 'var(--light)';
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.25)';
+              }}
+            >
+              Let's talk
+            </a>
+          </div>
+
+          {/* Mobile Hamburger Toggle */}
+          <button
+            className="mobile-nav-toggle"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            style={{ background: 'transparent', border: 'none', color: '#fff', fontSize: '1.5rem', cursor: 'pointer' }}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
+            style={{
+              background: 'transparent',
+              border: 'none',
+              color: 'var(--light)',
+              fontSize: '1.6rem',
+              cursor: 'pointer',
+              padding: '4px',
+            }}
+            aria-label="Toggle navigation"
           >
             {isMenuOpen ? <FiX /> : <FiMenu />}
-          </motion.button>
+          </button>
         </div>
       </div>
 
-      {/* Mobile Nav */}
+      {/* Mobile Drawer */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
             style={{
-              background: 'rgba(2, 6, 23, 0.95)',
-              backdropFilter: 'blur(10px)',
-              overflow: 'hidden',
-              borderBottom: '1px solid rgba(255,255,255,0.05)'
+              background: 'rgba(6, 9, 19, 0.98)',
+              backdropFilter: 'blur(20px)',
+              WebkitBackdropFilter: 'blur(20px)',
+              borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+              padding: '1.5rem 0',
             }}
           >
-            <div className="container" style={{ padding: '20px', display: 'flex', flexDirection: 'column', gap: '15px' }}>
-              {navItems.map((item, index) => (
-                <motion.div
-                  key={item.path}
-                  initial={{ x: -20, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: index * 0.1 }}
+            <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setIsMenuOpen(false)}
+                  style={{
+                    color: 'var(--light)',
+                    textDecoration: 'none',
+                    fontSize: '1.15rem',
+                    fontWeight: 500,
+                    padding: '0.5rem 0',
+                  }}
                 >
-                  <a
-                    href={item.path}
-                    onClick={() => {
-                      setIsMenuOpen(false);
-                      setActivePath(item.path);
-                    }}
-                    style={{
-                      display: 'block',
-                      padding: '10px',
-                      color: activePath === item.path ? 'var(--primary)' : 'var(--light)',
-                      textDecoration: 'none',
-                      fontFamily: 'var(--font-display)',
-                      fontSize: '1.2rem',
-                      fontWeight: 600,
-                      borderLeft: activePath === item.path ? '3px solid var(--primary)' : '3px solid transparent'
-                    }}
-                  >
-                    {item.label}
-                  </a>
-                </motion.div>
+                  {link.name}
+                </a>
               ))}
+              <a
+                href="#contact"
+                onClick={() => setIsMenuOpen(false)}
+                className="btn-pill btn-pill-dark"
+                style={{ alignSelf: 'flex-start', marginTop: '0.5rem' }}
+              >
+                Let's talk <FiArrowUpRight />
+              </a>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.header>
+    </header>
   );
 };
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FiMail, FiPhone, FiMapPin, FiSend, FiCheckCircle } from 'react-icons/fi';
+import { FiArrowUpRight, FiSend, FiCheckCircle } from 'react-icons/fi';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -40,7 +40,7 @@ const Contact = () => {
       if (data.success) {
         setStatus('success');
         setFormData({ name: "", email: "", subject: "", message: "" });
-        setTimeout(() => setStatus('idle'), 4000);
+        setTimeout(() => setStatus('idle'), 5000);
       } else {
         setStatus('error');
         setTimeout(() => setStatus('idle'), 4000);
@@ -51,210 +51,263 @@ const Contact = () => {
     }
   };
 
-  const contactInfo = [
-    {
-      icon: <FiMail />,
-      title: 'Email',
-      info: 'adeelkhattak223@gmail.com',
-      link: 'mailto:adeelkhattak223@gmail.com'
-    },
-    {
-      icon: <FiPhone />,
-      title: 'Phone',
-      info: '+92 301 5355509',
-      link: 'tel:+923015355509'
-    },
-    {
-      icon: <FiMapPin />,
-      title: 'Location',
-      info: 'Pakistan',
-      link: '#'
-    }
-  ];
-
   return (
-    <motion.section 
-      className="page-wrapper"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0, y: -20 }}
-      transition={{ duration: 0.5 }}
-    >
+    <section id="contact" className="section-wrapper" style={{ paddingBottom: '40px' }}>
       <div className="container">
-        <motion.div 
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.2 }}
-          style={{ marginBottom: '4rem' }}
+        
+        {/* High-Impact Editorial CTA Container (matching Page 5 reference with Adeel's theme) */}
+        <div
+          style={{
+            background: 'linear-gradient(145deg, #0d1527 0%, #060a14 100%)',
+            border: '1px solid var(--border-light)',
+            borderRadius: '32px',
+            padding: ' clamp(2rem, 5vw, 4.5rem)',
+            position: 'relative',
+            overflow: 'hidden',
+            boxShadow: '0 30px 60px -20px rgba(0, 0, 0, 0.7)'
+          }}
         >
-          <h2 className="section-title">
-            <span className="text-gradient">LET'S</span> CONNECT
-          </h2>
-          <p style={{ textAlign: 'center', color: 'var(--gray)', fontSize: '1.1rem', marginTop: '1rem' }}>
-            Have a project in mind? Let's build something amazing together.
-          </p>
-        </motion.div>
+          {/* Subtle gradient light in corner */}
+          <div
+            style={{
+              position: 'absolute',
+              top: '-15%',
+              right: '-10%',
+              width: '350px',
+              height: '350px',
+              background: 'radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(6, 182, 212, 0.05) 50%, transparent 70%)',
+              borderRadius: '50%',
+              filter: 'blur(50px)',
+              pointerEvents: 'none'
+            }}
+          />
 
-        <div className="grid-responsive">
-          {/* Contact Info */}
-          <motion.div 
-            initial={{ x: -50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 0.4 }}
-            style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}
+          {/* Top Eyebrow Row */}
+          <div 
+            style={{ 
+              display: 'flex', 
+              justifyContent: 'space-between', 
+              alignItems: 'center', 
+              marginBottom: '3rem',
+              color: 'var(--gray)',
+              fontSize: '0.88rem',
+              fontFamily: 'var(--font-mono)'
+            }}
           >
-            <div className="glass" style={{ padding: '2.5rem', borderRadius: '24px', flexGrow: 1, overflow: 'hidden' }}>
-              <h3 style={{ fontSize: '1.8rem', color: 'var(--light)', marginBottom: '1rem' }}>Get In Touch</h3>
-              <p style={{ color: 'var(--gray)', lineHeight: '1.8', marginBottom: '2.5rem' }}>
-                Whether you have a question, a project proposition, or just want to say hi, my inbox is always open. I'll try my best to get back to you!
-              </p>
-              
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-                {contactInfo.map((item, index) => (
-                  <motion.a
-                    key={item.title}
-                    href={item.link}
-                    whileHover={{ x: 10, color: 'var(--primary)' }}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '1.5rem',
-                      textDecoration: 'none',
-                      color: 'inherit',
-                      transition: 'color 0.3s'
-                    }}
-                  >
-                    <div style={{
-                      width: '60px',
-                      height: '60px',
-                      minWidth: '60px',
-                      borderRadius: '50%',
-                      background: 'rgba(99, 102, 241, 0.1)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      fontSize: '1.5rem',
-                      color: 'var(--primary)',
-                      border: '1px solid rgba(99, 102, 241, 0.2)'
-                    }}>
-                      {item.icon}
-                    </div>
-                    <div style={{ wordBreak: 'break-all', overflow: 'hidden' }}>
-                      <h4 style={{ color: 'var(--light)', fontSize: '1.2rem', marginBottom: '0.25rem' }}>{item.title}</h4>
-                      <p style={{ color: 'var(--gray)', fontSize: '1rem' }}>{item.info}</p>
-                    </div>
-                  </motion.a>
-                ))}
-              </div>
-            </div>
-          </motion.div>
+            <span>Have something in mind?</span>
+            <span>Let's make it happen.</span>
+          </div>
 
-          {/* Contact Form */}
-          <motion.div 
-            initial={{ x: 50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 0.6 }}
-          >
-            <form 
-              className="glass"
-              onSubmit={handleSubmit}
+          {/* Giant Statement Headline */}
+          <div style={{ marginBottom: '4rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '2rem' }}>
+            <h2
               style={{
-                padding: '2.5rem',
-                borderRadius: '24px',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '1.5rem',
-                position: 'relative',
-                overflow: 'hidden'
+                fontSize: 'clamp(2.8rem, 8vw, 6.5rem)',
+                fontWeight: 800,
+                lineHeight: 0.95,
+                letterSpacing: '-0.04em',
+                color: 'var(--light)',
+                margin: 0
               }}
             >
-              {status === 'success' && (
-                <motion.div 
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
+              Let's make<br />it matter.
+            </h2>
+            <div style={{ fontSize: 'clamp(3rem, 7vw, 6rem)', color: 'var(--secondary)' }}>
+              ↗
+            </div>
+          </div>
+
+          {/* Contact Details & Direct Form Grid */}
+          <div 
+            style={{ 
+              display: 'grid', 
+              gridTemplateColumns: '1fr 1.2fr', 
+              gap: '4rem', 
+              paddingTop: '3rem',
+              borderTop: '1px solid var(--border-light)'
+            }}
+            className="contact-details-grid"
+          >
+            {/* Left Contact Information */}
+            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+              <div>
+                <div style={{ fontSize: '0.85rem', color: 'var(--gray)', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', marginBottom: '0.8rem' }}>
+                  Direct Contact
+                </div>
+                <a
+                  href="mailto:adeelkhattak223@gmail.com"
                   style={{
-                    position: 'absolute', inset: 0, background: 'rgba(15, 23, 42, 0.95)', backdropFilter: 'blur(10px)',
-                    display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', zIndex: 10
+                    fontSize: 'clamp(1.2rem, 2.5vw, 1.8rem)',
+                    color: 'var(--light)',
+                    textDecoration: 'none',
+                    fontWeight: 600,
+                    display: 'block',
+                    marginBottom: '1rem',
+                    transition: 'color 0.2s ease',
+                    wordBreak: 'break-word'
                   }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--secondary)')}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--light)')}
                 >
-                  <FiCheckCircle style={{ fontSize: '4rem', color: 'var(--success)', marginBottom: '1rem' }} />
-                  <h3 style={{ color: 'var(--light)', fontSize: '1.5rem' }}>Message Sent!</h3>
-                  <p style={{ color: 'var(--gray)' }}>I'll get back to you shortly.</p>
-                </motion.div>
-              )}
-
-              <div className="grid-responsive-form">
-                <input
-                  className="glass-input"
-                  type="text"
-                  name="name"
-                  placeholder="Your Name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                />
-                <input
-                  className="glass-input"
-                  type="email"
-                  name="email"
-                  placeholder="Your Email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                />
+                  adeelkhattak223@gmail.com
+                </a>
+                <a
+                  href="tel:+923015355509"
+                  style={{
+                    fontSize: '1.2rem',
+                    color: 'var(--gray)',
+                    textDecoration: 'none',
+                    display: 'block',
+                    marginBottom: '1.5rem',
+                    transition: 'color 0.2s ease'
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--light)')}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--gray)')}
+                >
+                  +92 301 5355509
+                </a>
+                <div style={{ color: 'var(--gray-dark)', fontSize: '0.95rem' }}>
+                  Based in Pakistan • Available Worldwide
+                </div>
               </div>
-              <input
-                className="glass-input"
-                type="text"
-                name="subject"
-                placeholder="Subject"
-                value={formData.subject}
-                onChange={handleChange}
-                required
-              />
-              <textarea
-                className="glass-input"
-                name="message"
-                placeholder="Your Message"
-                rows="6"
-                value={formData.message}
-                onChange={handleChange}
-                required
-                style={{ resize: 'none' }}
-              ></textarea>
-              
-              <motion.button
-                type="submit"
-                className="btn-premium solid"
-                disabled={status === 'loading'}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                style={{ width: '100%', padding: '1rem', marginTop: '1rem' }}
-              >
-                {status === 'loading' ? (
-                  <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 1, ease: 'linear' }}>
-                      <FiSend />
-                    </motion.div>
-                    Sending...
-                  </span>
-                ) : (
-                  <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <FiSend /> Send Message
-                  </span>
-                )}
-              </motion.button>
 
-              {status === 'error' && (
-                <p style={{ color: '#ef4444', textAlign: 'center', fontSize: '0.9rem', marginTop: '1rem' }}>
-                  Failed to send message. Please try again.
-                </p>
-              )}
-            </form>
-          </motion.div>
+              {/* Social Channels (matching reference Page 5) */}
+              <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', marginTop: '3rem' }}>
+                <a href="https://github.com/adeel-151" target="_blank" rel="noopener noreferrer" className="text-arrow-link">
+                  GitHub <FiArrowUpRight />
+                </a>
+                <a href="https://www.linkedin.com/in/adeel-qaiser151/" target="_blank" rel="noopener noreferrer" className="text-arrow-link">
+                  LinkedIn <FiArrowUpRight />
+                </a>
+                <a href="https://www.instagram.com/adeel_qaiser_/" target="_blank" rel="noopener noreferrer" className="text-arrow-link">
+                  Instagram <FiArrowUpRight />
+                </a>
+              </div>
+            </div>
+
+            {/* Right Clean Contact Form */}
+            <div>
+              <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.8rem', position: 'relative' }}>
+                {status === 'success' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    style={{
+                      padding: '1.2rem',
+                      background: 'rgba(16, 185, 129, 0.1)',
+                      border: '1px solid rgba(16, 185, 129, 0.3)',
+                      borderRadius: '12px',
+                      color: '#10b981',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.8rem',
+                      fontSize: '0.95rem'
+                    }}
+                  >
+                    <FiCheckCircle style={{ fontSize: '1.3rem' }} />
+                    Thank you! Your message has been sent successfully.
+                  </motion.div>
+                )}
+
+                {status === 'error' && (
+                  <div
+                    style={{
+                      padding: '1rem',
+                      background: 'rgba(239, 68, 68, 0.1)',
+                      border: '1px solid rgba(239, 68, 68, 0.3)',
+                      borderRadius: '12px',
+                      color: '#ef4444',
+                      fontSize: '0.95rem'
+                    }}
+                  >
+                    Failed to send message. Please email me directly at adeelkhattak223@gmail.com.
+                  </div>
+                )}
+
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }} className="form-two-col">
+                  <div>
+                    <input
+                      className="minimal-input"
+                      type="text"
+                      name="name"
+                      placeholder="Your name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+                  <div>
+                    <input
+                      className="minimal-input"
+                      type="email"
+                      name="email"
+                      placeholder="Your email address"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <input
+                    className="minimal-input"
+                    type="text"
+                    name="subject"
+                    placeholder="Project or subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+
+                <div>
+                  <textarea
+                    className="minimal-input"
+                    name="message"
+                    placeholder="Tell me about your project or vision..."
+                    rows="4"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    style={{ resize: 'none' }}
+                  ></textarea>
+                </div>
+
+                <div>
+                  <button
+                    type="submit"
+                    className="btn-pill btn-pill-dark"
+                    disabled={status === 'loading'}
+                    style={{ width: '100%', justifyContent: 'center', padding: '1rem' }}
+                  >
+                    {status === 'loading' ? 'Sending message...' : 'Send message'} <FiArrowUpRight />
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
+
       </div>
-    </motion.section>
+
+      <style>
+        {`
+          @media (max-width: 992px) {
+            .contact-details-grid {
+              grid-template-columns: 1fr !important;
+              gap: 3rem !important;
+            }
+          }
+          @media (max-width: 640px) {
+            .form-two-col {
+              grid-template-columns: 1fr !important;
+              gap: 1.5rem !important;
+            }
+          }
+        `}
+      </style>
+    </section>
   );
 };
 
