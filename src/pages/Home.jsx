@@ -372,22 +372,18 @@ const Home = () => {
                   }}
                 />
 
-                <span
-                  style={{
-                    fontFamily: 'var(--font-display)',
-                    fontSize: '6.5rem',
-                    fontWeight: 900,
-                    lineHeight: 1,
-                    letterSpacing: '-0.05em',
-                    background: 'linear-gradient(135deg, #ffffff 45%, #ccff00 75%, #38bdf8 100%)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    textShadow: '0 10px 30px rgba(0, 0, 0, 0.5)',
-                    filter: 'drop-shadow(0 15px 25px rgba(0,0,0,0.6))'
-                  }}
-                >
-                  A*
-                </span>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0.5rem 0' }}>
+                  <img 
+                    src="/favicon.svg" 
+                    alt="AQ" 
+                    style={{ 
+                      width: '120px', 
+                      height: '120px', 
+                      borderRadius: '24px',
+                      filter: 'drop-shadow(0 15px 30px rgba(0, 0, 0, 0.7)) drop-shadow(0 0 25px rgba(204, 255, 0, 0.2))' 
+                    }} 
+                  />
+                </div>
 
                 <div 
                   style={{ 

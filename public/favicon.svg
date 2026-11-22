@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Rounded Squircle Dark Container -->
+  <rect width="64" height="64" rx="14" fill="#090c12" />
+  <rect x="0.75" y="0.75" width="62.5" height="62.5" rx="13.25" stroke="#1c2333" stroke-width="1.5" />
+  
+  <!-- Subtle Ambient Glow -->
+  <radialGradient id="cardGlow" cx="30%" cy="30%" r="60%">
+    <stop offset="0%" stop-color="#ccff00" stop-opacity="0.12" />
+    <stop offset="100%" stop-color="#38bdf8" stop-opacity="0" />
+  </radialGradient>
+  <rect width="64" height="64" rx="14" fill="url(#cardGlow)" />
+
+  <!-- Letter 'A' in Electric Volt Lime -->
+  <path d="M7 49L17.5 15H24.5L35 49H28L25.8 41.5H16.2L14 49H7ZM18 35.5H24L21 24.5L18 35.5Z" fill="#ccff00" />
+
+  <!-- Letter 'Q' Ring in Cyan Blue -->
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M47.5 15C40.6 15 35 22.4 35 31.5C35 40.6 40.6 48 47.5 48C54.4 48 60 40.6 60 31.5C60 22.4 54.4 15 47.5 15ZM47.5 21C51 21 53.5 25.5 53.5 31.5C53.5 37.5 51 42 47.5 42C44 42 41.5 37.5 41.5 31.5C41.5 25.5 44 21 47.5 21Z" fill="#38bdf8" />
+
+  <!-- Letter 'Q' Diagonal Tail in Volt Lime -->
+  <rect x="44" y="35" width="6.5" height="18" rx="3.25" transform="rotate(-40 44 35)" fill="#ccff00" />
+</svg>
