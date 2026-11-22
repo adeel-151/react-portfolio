@@ -31,13 +31,9 @@ const Footer = () => {
                 fontWeight: 800,
                 color: 'var(--light)',
                 letterSpacing: '-0.02em',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.75rem',
               }}
             >
-              <img src="/favicon.svg" alt="AQ" style={{ width: '24px', height: '24px', borderRadius: '6px' }} />
-              <span>adeel qaiser<span style={{ color: 'var(--primary)' }}>*</span></span>
+              adeel qaiser<span style={{ color: 'var(--primary)' }}>*</span>
             </a>
           </div>
 

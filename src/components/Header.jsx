@@ -46,20 +46,10 @@ const Header = () => {
               textDecoration: 'none',
               color: 'inherit',
               display: 'flex',
-              alignItems: 'center',
-              gap: '0.85rem',
+              alignItems: 'baseline',
+              gap: '1.25rem',
             }}
           >
-            <img 
-              src="/favicon.svg" 
-              alt="AQ Logo" 
-              style={{ 
-                width: '32px', 
-                height: '32px', 
-                borderRadius: '8px',
-                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.4)'
-              }} 
-            />
             <span
               style={{
                 fontFamily: 'var(--font-display)',
