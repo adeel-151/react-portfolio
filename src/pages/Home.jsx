@@ -131,7 +131,7 @@ const Home = ({ theme = 'dark' }) => {
           >
             <h1
               style={{
-                fontSize: 'clamp(2.5rem, 5.5vw, 5rem)',
+                fontSize: 'clamp(2rem, 6.2vw, 5rem)',
                 fontWeight: 500,
                 lineHeight: 1.05,
                 letterSpacing: '-0.035em',
@@ -158,7 +158,7 @@ const Home = ({ theme = 'dark' }) => {
             </div>
 
             {/* CTA Buttons - fully visible & responsive */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', flexWrap: 'wrap', position: 'relative', zIndex: 10 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap', position: 'relative', zIndex: 10 }}>
               <a href="#projects" className="btn-pill btn-pill-dark">
                 Explore my builds <FiArrowUpRight style={{ fontSize: '1.1rem' }} />
               </a>
@@ -319,7 +319,7 @@ const Home = ({ theme = 'dark' }) => {
               viewport={{ once: true }}
               transition={{ duration: 1 }}
               style={{
-                fontSize: 'clamp(2.4rem, 13vw, 12rem)',
+                fontSize: 'clamp(1.9rem, 11vw, 12rem)',
                 fontWeight: 500,
                 letterSpacing: '-0.04em',
                 lineHeight: 0.9,
