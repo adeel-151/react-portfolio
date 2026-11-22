@@ -101,7 +101,7 @@ const About = () => {
 
           {/* Right Column: Narrative & Story */}
           <div>
-            <div style={{ fontSize: '1.6rem', fontWeight: 600, color: 'var(--light)', marginBottom: '1.5rem', letterSpacing: '-0.02em' }}>
+            <div style={{ fontSize: '1.6rem', fontWeight: 500, color: 'var(--light)', marginBottom: '1.5rem', letterSpacing: '-0.02em' }}>
               I'm Adeel. Online, you'll find me as <a href="https://github.com/adeel-151" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary)', textDecoration: 'none' }}>adeel-151</a>.
             </div>
 
@@ -115,7 +115,7 @@ const About = () => {
                     background: 'none',
                     border: 'none',
                     color: activeTab === tab.id ? 'var(--light)' : 'var(--gray)',
-                    fontWeight: activeTab === tab.id ? 600 : 400,
+                    fontWeight: activeTab === tab.id ? 500 : 400,
                     fontSize: '1rem',
                     cursor: 'pointer',
                     position: 'relative',
@@ -193,7 +193,7 @@ const About = () => {
                   paddingBottom: '1.5rem'
                 }}
               >
-                <div style={{ fontSize: '1.25rem', fontWeight: 600, color: 'var(--light)', marginBottom: '0.25rem' }}>
+                <div style={{ fontSize: '1.25rem', fontWeight: 500, color: 'var(--light)', marginBottom: '0.25rem' }}>
                   {item.role}
                 </div>
                 <div style={{ fontSize: '0.95rem', color: 'var(--primary)', marginBottom: '0.4rem', fontFamily: 'var(--font-mono)' }}>
@@ -222,13 +222,13 @@ const About = () => {
           className="outside-browser-box"
         >
           <div>
-            <h3 style={{ fontSize: '2.4rem', fontWeight: 700, color: 'var(--light)', marginBottom: '1rem', letterSpacing: '-0.02em' }}>
+            <h3 style={{ fontSize: '2.4rem', fontWeight: 500, color: 'var(--light)', marginBottom: '1rem', letterSpacing: '-0.02em' }}>
               Outside the browser.
             </h3>
             <p style={{ color: 'var(--gray)', fontSize: '1.05rem', lineHeight: '1.7', marginBottom: '2rem' }}>
               Passionate about problem solving, clean engineering architectures, and continuous self-learning. Always exploring new horizons in software development.
             </p>
-            <a href="#contact" className="text-arrow-link" style={{ fontSize: '1rem', fontWeight: 600 }}>
+            <a href="#contact" className="text-arrow-link" style={{ fontSize: '1rem', fontWeight: 500 }}>
               Let's build together <FiArrowUpRight />
             </a>
           </div>
@@ -248,7 +248,7 @@ const About = () => {
             <div style={{ color: 'var(--primary)', fontSize: '1.8rem', marginBottom: '1.2rem' }}>
               <FiCamera />
             </div>
-            <div style={{ fontSize: '1.2rem', fontWeight: 600, color: 'var(--light)', marginBottom: '0.6rem' }}>
+            <div style={{ fontSize: '1.2rem', fontWeight: 500, color: 'var(--light)', marginBottom: '0.6rem' }}>
               Continuous craftsmanship
             </div>
             <p style={{ color: 'var(--gray)', fontSize: '0.92rem', lineHeight: '1.6' }}>

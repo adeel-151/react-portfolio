@@ -28,7 +28,7 @@ const Footer = () => {
                 textDecoration: 'none',
                 fontFamily: 'var(--font-display)',
                 fontSize: '1.25rem',
-                fontWeight: 800,
+                fontWeight: 500,
                 color: 'var(--light)',
                 letterSpacing: '-0.02em',
               }}

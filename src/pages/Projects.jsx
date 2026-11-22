@@ -228,7 +228,7 @@ const Projects = () => {
           }}
           className="more-work-strip"
         >
-          <div style={{ fontWeight: 600, color: 'var(--light)', fontSize: '1.05rem' }}>
+          <div style={{ fontWeight: 500, color: 'var(--light)', fontSize: '1.05rem' }}>
             More work available
           </div>
           <div style={{ color: 'var(--gray)', fontSize: '0.95rem', lineHeight: '1.6' }}>
@@ -240,7 +240,7 @@ const Projects = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="text-arrow-link"
-              style={{ fontWeight: 600 }}
+              style={{ fontWeight: 500 }}
             >
               Ask for more projects <FiArrowUpRight />
             </a>

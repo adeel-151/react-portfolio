@@ -81,7 +81,7 @@ const CardBody = ({ card }) => (
           fontSize: '1.25rem', 
           color: card.accentColor,
           fontFamily: 'var(--font-mono)',
-          fontWeight: 700,
+          fontWeight: 500,
           display: 'flex',
           alignItems: 'center'
         }}
@@ -104,7 +104,7 @@ const CardBody = ({ card }) => (
     <div
       style={{
         fontSize: '1.45rem',
-        fontWeight: 700,
+        fontWeight: 500,
         color: card.textColor,
         lineHeight: 1.25,
         marginBottom: '0.6rem',
@@ -259,7 +259,7 @@ const Home = () => {
             <h1
               style={{
                 fontSize: 'clamp(2.5rem, 5.5vw, 5rem)',
-                fontWeight: 700,
+                fontWeight: 500,
                 lineHeight: 1.05,
                 letterSpacing: '-0.035em',
                 marginBottom: '1.25rem',
@@ -271,7 +271,7 @@ const Home = () => {
 
             <div style={{ maxWidth: '520px', marginBottom: '1.75rem' }}>
               <div style={{ marginBottom: '0.4rem' }}>
-                <span style={{ fontSize: '1.05rem', fontWeight: 600, color: 'var(--light)', display: 'block' }}>
+                <span style={{ fontSize: '1.05rem', fontWeight: 500, color: 'var(--light)', display: 'block' }}>
                   Adeel Qaiser
                 </span>
                 <span style={{ fontSize: '0.92rem', color: 'var(--gray)' }}>
@@ -376,7 +376,7 @@ const Home = () => {
                   style={{
                     fontFamily: 'var(--font-display)',
                     fontSize: '6rem',
-                    fontWeight: 900,
+                    fontWeight: 500,
                     lineHeight: 1,
                     letterSpacing: '-0.05em',
                     background: 'linear-gradient(135deg, #ffffff 40%, #ccff00 70%, #38bdf8 100%)',
@@ -448,7 +448,7 @@ const Home = () => {
               transition={{ duration: 1 }}
               style={{
                 fontSize: 'clamp(3.8rem, 15vw, 12rem)',
-                fontWeight: 800,
+                fontWeight: 500,
                 letterSpacing: '-0.04em',
                 lineHeight: 0.9,
                 color: 'var(--light)',
@@ -505,7 +505,7 @@ const Home = () => {
                 <h2
                   style={{
                     fontSize: 'clamp(2.4rem, 5.2vw, 4.4rem)',
-                    fontWeight: 700,
+                    fontWeight: 500,
                     lineHeight: 1.08,
                     letterSpacing: '-0.035em',
                     color: 'var(--light)',
@@ -529,7 +529,7 @@ const Home = () => {
                 </p>
 
                 <div>
-                  <a href="#about" className="text-arrow-link" style={{ fontSize: '1.05rem', fontWeight: 600 }}>
+                  <a href="#about" className="text-arrow-link" style={{ fontSize: '1.05rem', fontWeight: 500 }}>
                     Meet the person behind the work <FiArrowUpRight />
                   </a>
                 </div>

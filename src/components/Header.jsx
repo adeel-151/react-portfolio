@@ -54,7 +54,7 @@ const Header = () => {
               style={{
                 fontFamily: 'var(--font-display)',
                 fontSize: '1.45rem',
-                fontWeight: 800,
+                fontWeight: 500,
                 letterSpacing: '-0.03em',
                 color: 'var(--light)',
               }}
@@ -128,7 +128,7 @@ const Header = () => {
                 color: 'var(--light)',
                 textDecoration: 'none',
                 fontSize: '0.88rem',
-                fontWeight: 600,
+                fontWeight: 500,
                 transition: 'all 0.25s ease',
                 display: 'inline-flex',
                 alignItems: 'center',

@@ -103,7 +103,7 @@ const Contact = () => {
             <h2
               style={{
                 fontSize: 'clamp(2.8rem, 8vw, 6.5rem)',
-                fontWeight: 800,
+                fontWeight: 500,
                 lineHeight: 0.95,
                 letterSpacing: '-0.04em',
                 color: 'var(--light)',
@@ -140,7 +140,7 @@ const Contact = () => {
                     fontSize: 'clamp(1.2rem, 2.5vw, 1.8rem)',
                     color: 'var(--light)',
                     textDecoration: 'none',
-                    fontWeight: 600,
+                    fontWeight: 500,
                     display: 'block',
                     marginBottom: '1rem',
                     transition: 'color 0.2s ease',

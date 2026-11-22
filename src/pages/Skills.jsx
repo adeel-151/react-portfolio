@@ -118,7 +118,7 @@ const Skills = () => {
             <p className="editorial-subtitle" style={{ marginBottom: '1.2rem' }}>
               One collaborator across the technical architecture and interactive frontend of your next application.
             </p>
-            <a href="#contact" className="text-arrow-link" style={{ fontWeight: 600 }}>
+            <a href="#contact" className="text-arrow-link" style={{ fontWeight: 500 }}>
               Explore web development services <FiArrowUpRight />
             </a>
           </div>
