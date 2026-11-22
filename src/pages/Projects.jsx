@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiArrowUpRight, FiPlus, FiMinus, FiGithub } from 'react-icons/fi';
+import { FiArrowUpRight, FiPlus, FiMinus } from 'react-icons/fi';
 
 import hostel from '../assets/hostel.jpg';
 import school from '../assets/school.jpg';
@@ -26,7 +26,7 @@ const Projects = () => {
     },
     {
       id: 2,
-      category: 'Healthcare',
+      category: 'Healthcare Systems',
       title: 'Hospital Management System',
       description:
         'A robust system for hospitals to manage patient records, appointments, billing, and staff schedules efficiently.',
@@ -59,7 +59,7 @@ const Projects = () => {
     },
     {
       id: 5,
-      category: 'E-commerce',
+      category: 'E-commerce Architecture',
       title: 'E-commerce Platform',
       description:
         'A fully functional modern e-commerce platform with cart functionality, user authentication, and a scalable database architecture.',
@@ -89,22 +89,22 @@ const Projects = () => {
     <section id="projects" className="section-wrapper">
       <div className="container">
         
-        {/* Section Eyebrow Row (01 / Selected work) */}
+        {/* Section Eyebrow Row */}
         <div className="section-eyebrow-row">
-          <span>01 / Selected work</span>
-          <span>Independent work. Real applications.</span>
+          <span>01 / Featured Builds</span>
+          <span>Full-stack applications. Production code.</span>
         </div>
 
         {/* Editorial Heading Grid */}
         <div className="editorial-header-grid">
           <div>
             <h2 className="editorial-title">
-              Built with intent.
+              Engineered for impact.
             </h2>
           </div>
           <div>
             <p className="editorial-subtitle">
-              A selection of websites and platforms, shaped around real users, speed, and clean frontend architecture.
+              A showcase of scalable web platforms, management systems, and interactive applications built to solve genuine business challenges.
             </p>
           </div>
         </div>
@@ -160,7 +160,7 @@ const Projects = () => {
                       Live website <FiArrowUpRight />
                     </a>
                   ) : (
-                    <span style={{ fontSize: '0.88rem', color: 'var(--gray-dark)' }}>Live preview soon</span>
+                    <span style={{ fontSize: '0.88rem', color: 'var(--gray-dark)' }}>Live preview coming soon</span>
                   )}
 
                   <a
@@ -184,7 +184,7 @@ const Projects = () => {
                       transition={{ duration: 0.3 }}
                       style={{ overflow: 'hidden', marginTop: '1.2rem', paddingTop: '1rem', borderTop: '1px solid var(--border-subtle)' }}
                     >
-                      <p style={{ color: 'var(--gray)', fontSize: '0.95rem', lineHeight: '1.6', marginBottom: '1rem' }}>
+                      <p style={{ color: 'var(--gray)', fontSize: '0.95rem', lineHeight: '1.6', marginBottom: '1rem', fontWeight: 400 }}>
                         {project.description}
                       </p>
                       
@@ -194,12 +194,13 @@ const Projects = () => {
                             key={tech}
                             style={{
                               padding: '4px 12px',
-                              background: 'rgba(255, 255, 255, 0.05)',
+                              background: 'var(--badge-bg)',
                               color: 'var(--light)',
                               borderRadius: '20px',
                               fontSize: '0.78rem',
                               fontFamily: 'var(--font-mono)',
-                              border: '1px solid var(--border-light)'
+                              border: '1px solid var(--border-light)',
+                              fontWeight: 400,
                             }}
                           >
                             {tech}
@@ -215,7 +216,7 @@ const Projects = () => {
           })}
         </div>
 
-        {/* More Work Available Bottom Strip (matching Page 3) */}
+        {/* Custom Builds Bottom Strip */}
         <div
           style={{
             marginTop: '6rem',
@@ -229,10 +230,10 @@ const Projects = () => {
           className="more-work-strip"
         >
           <div style={{ fontWeight: 500, color: 'var(--light)', fontSize: '1.05rem' }}>
-            More work available
+            Custom & Enterprise Builds
           </div>
-          <div style={{ color: 'var(--gray)', fontSize: '0.95rem', lineHeight: '1.6' }}>
-            Many additional projects, experiments, client builds and full stack architectures can be shared on request.
+          <div style={{ color: 'var(--gray)', fontSize: '0.95rem', lineHeight: '1.6', fontWeight: 400 }}>
+            Additional private repositories, client solutions, and microservices architectures can be walked through upon request.
           </div>
           <div style={{ textAlign: 'right' }} className="more-work-link">
             <a
@@ -242,7 +243,7 @@ const Projects = () => {
               className="text-arrow-link"
               style={{ fontWeight: 500 }}
             >
-              Ask for more projects <FiArrowUpRight />
+              Request project walkthrough <FiArrowUpRight />
             </a>
           </div>
         </div>

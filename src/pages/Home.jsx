@@ -4,11 +4,12 @@ import {
   FiArrowUpRight, 
   FiArrowDown, 
   FiLayers, 
-  FiDatabase 
+  FiDatabase,
+  FiCode
 } from 'react-icons/fi';
 import cv from '../assets/Adeel-Qaiser.pdf';
 
-// Reusable card content layout matching the reference screenshot exactly
+// Reusable card content layout
 const CardBody = ({ card }) => (
   <div>
     {/* Card Top Row: Icon & Tag */}
@@ -67,14 +68,14 @@ const CardBody = ({ card }) => (
 );
 
 const Home = ({ theme = 'dark' }) => {
-  // First 3 Cards matching the exact visual hierarchy requested
+  // First 3 Cards tailored specifically for Adeel's MERN engineering stack
   const cards = [
     {
       id: 1,
-      tag: 'Development',
-      icon: '</>',
-      title: 'Carefully engineered.',
-      tech: 'React 19 / TypeScript / Vite',
+      tag: 'Frontend Engineering',
+      icon: <FiCode />,
+      title: 'Responsive & Fluid Interfaces.',
+      tech: 'React 19 / TypeScript / Vite / Modern UI',
       bg: '#ffffff',
       textColor: '#090e1c',
       descColor: '#52525b',
@@ -83,11 +84,11 @@ const Home = ({ theme = 'dark' }) => {
     },
     {
       id: 2,
-      tag: 'Architecture',
+      tag: 'Backend Systems',
       icon: <FiLayers />,
-      title: 'The right connections.',
-      tech: 'Node.js / Express / REST APIs',
-      bg: '#c5f82a', // Signature lime card from reference screenshot
+      title: 'Scalable Server Architecture.',
+      tech: 'Node.js / Express / REST APIs / Auth',
+      bg: '#c5f82a', // Signature lime card
       textColor: '#090e1c',
       descColor: '#27272a',
       accentColor: '#090e1c',
@@ -95,10 +96,10 @@ const Home = ({ theme = 'dark' }) => {
     },
     {
       id: 3,
-      tag: 'Data Layer',
+      tag: 'Database & Cloud',
       icon: <FiDatabase />,
-      title: 'Structured for scale.',
-      tech: 'MongoDB / PostgreSQL / Neon.tech',
+      title: 'High-Throughput Data Stores.',
+      tech: 'MongoDB / PostgreSQL / Neon / SQL',
       bg: '#0c1527',
       textColor: '#ffffff',
       descColor: '#94a3b8',
@@ -138,7 +139,7 @@ const Home = ({ theme = 'dark' }) => {
                 color: 'var(--light)'
               }}
             >
-              Ideas into<br />experiences.
+              Code with intent.<br />Built to scale.
             </h1>
 
             <div style={{ maxWidth: '520px', marginBottom: '1.75rem' }}>
@@ -152,14 +153,14 @@ const Home = ({ theme = 'dark' }) => {
               </div>
 
               <p style={{ color: 'var(--gray)', fontSize: '1rem', lineHeight: '1.65', marginTop: '0.6rem', fontWeight: 400 }}>
-                I build high-performance web applications and digital products by bringing clean code, modern architecture, and intuitive user experiences together.
+                I engineer reliable full-stack applications, scalable backend APIs, and responsive interactive interfaces with clean code and modern web standards.
               </p>
             </div>
 
             {/* CTA Buttons - fully visible & responsive */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', flexWrap: 'wrap', position: 'relative', zIndex: 10 }}>
               <a href="#projects" className="btn-pill btn-pill-dark">
-                Explore my work <FiArrowUpRight style={{ fontSize: '1.1rem' }} />
+                Explore my builds <FiArrowUpRight style={{ fontSize: '1.1rem' }} />
               </a>
               <a href="#contact" className="text-arrow-link" style={{ fontSize: '1rem', fontWeight: 500 }}>
                 Let's talk
@@ -290,7 +291,7 @@ const Home = ({ theme = 'dark' }) => {
                 fontWeight: 400,
               }}
             >
-              A different dimension of code.
+              Full-stack engineering & clean architecture.
             </span>
           </motion.div>
         </div>
@@ -299,7 +300,7 @@ const Home = ({ theme = 'dark' }) => {
         <div style={{ marginTop: '2.5rem', paddingTop: '1.5rem' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <div style={{ fontSize: '0.85rem', color: 'var(--gray)', lineHeight: 1.5, fontWeight: 400 }}>
-              Available for remote projects<br />
+              Available for remote & full-time roles<br />
               <span style={{ color: 'var(--light)', fontWeight: 500 }}>Working worldwide</span>
             </div>
 
@@ -308,7 +309,7 @@ const Home = ({ theme = 'dark' }) => {
               className="text-arrow-link"
               style={{ fontSize: '0.85rem', color: 'var(--gray)' }}
             >
-              <FiArrowDown /> A little further
+              <FiArrowDown /> Explore technical manifesto
             </a>
           </div>
 
@@ -335,7 +336,7 @@ const Home = ({ theme = 'dark' }) => {
 
       </div>
 
-      {/* Editorial Manifesto Section with 3 Vertical Cards Stacked (Ek dosre ke neche) */}
+      {/* Editorial Manifesto Section */}
       <div 
         id="manifesto"
         style={{
@@ -369,8 +370,8 @@ const Home = ({ theme = 'dark' }) => {
                   marginBottom: '2rem'
                 }}
               >
-                A developer's mind.<br />
-                A creative's eye.
+                Built for performance.<br />
+                Designed for humans.
               </h2>
 
               <p 
@@ -383,16 +384,16 @@ const Home = ({ theme = 'dark' }) => {
                   fontWeight: 400,
                 }}
               >
-                I connect clean code, modern architecture and thoughtful interfaces. Different disciplines, one considered experience.
+                I bridge high-throughput server architecture with seamless, fluid client-side interfaces. Every layer is carefully planned for maintainability, speed, and effortless user flow.
               </p>
 
               <div>
                 <a href="#about" className="text-arrow-link" style={{ fontSize: '1.05rem', fontWeight: 500 }}>
-                  Meet the person behind the work <FiArrowUpRight />
+                  Discover my journey & philosophy <FiArrowUpRight />
                 </a>
               </div>
 
-              {/* Bottom tags like the reference */}
+              {/* Bottom tags */}
               <div 
                 style={{ 
                   display: 'flex', 
@@ -407,13 +408,13 @@ const Home = ({ theme = 'dark' }) => {
                 }}
                 className="discipline-tags-row"
               >
-                <span>Engineering</span>
-                <span>Architecture</span>
-                <span>Interface Design</span>
+                <span>Full-Stack MERN</span>
+                <span>System Architecture</span>
+                <span>Interactive UI/UX</span>
               </div>
             </div>
 
-            {/* Right Column: Exactly 3 Cards stacked one below the other (no overlap) */}
+            {/* Right Column: 3 Cards stacked vertically */}
             <div 
               style={{ 
                 display: 'flex', 

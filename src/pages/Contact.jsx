@@ -55,7 +55,7 @@ const Contact = () => {
     <section id="contact" className="section-wrapper" style={{ paddingBottom: '40px' }}>
       <div className="container">
         
-        {/* High-Impact Editorial CTA Container with Theme Adaptability */}
+        {/* High-Impact Editorial CTA Container */}
         <div
           style={{
             background: 'var(--contact-card-bg)',
@@ -96,8 +96,8 @@ const Contact = () => {
               fontWeight: 400,
             }}
           >
-            <span>Have something in mind?</span>
-            <span>Let's make it happen.</span>
+            <span>Have an ambitious vision?</span>
+            <span>Let's engineer it right.</span>
           </div>
 
           {/* Giant Statement Headline */}
@@ -112,7 +112,7 @@ const Contact = () => {
                 margin: 0
               }}
             >
-              Let's make<br />it matter.
+              Let's build<br />what's next.
             </h2>
             <div style={{ fontSize: 'clamp(3rem, 7vw, 6rem)', color: 'var(--primary-accent)' }}>
               ↗

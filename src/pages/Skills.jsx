@@ -22,7 +22,7 @@ import {
 } from 'react-icons/si';
 
 const Skills = () => {
-  const [openIndex, setOpenIndex] = useState(0); // 01 open by default matching screenshot
+  const [openIndex, setOpenIndex] = useState(0); // 01 open by default
 
   const capabilities = [
     {
@@ -50,7 +50,7 @@ const Skills = () => {
       title: 'Backend Systems & Database Architecture',
       subtitle: 'Robust APIs, server-side logic, and scalable data models.',
       description:
-        'Building reliable server foundations with Node.js and Express. Experienced in designing relational schemes with PostgreSQL and flexible document stores with MongoDB and Neon.tech.',
+        'Building reliable server foundations with Node.js and Express. Experienced in designing relational schemas with PostgreSQL and flexible document stores with MongoDB and Neon.tech.',
       technologies: [
         { name: 'Node.js', icon: <SiNodedotjs />, color: '#339933' },
         { name: 'Express.js', icon: <SiExpress />, color: '#ffffff' },
@@ -101,25 +101,25 @@ const Skills = () => {
     <section id="skills" className="section-wrapper">
       <div className="container">
         
-        {/* Section Eyebrow Row (02 / What I bring) */}
+        {/* Section Eyebrow Row */}
         <div className="section-eyebrow-row">
-          <span>02 / What I bring</span>
-          <span>From idea to launch</span>
+          <span>02 / Core Capabilities</span>
+          <span>Full-stack engineering toolkit</span>
         </div>
 
         {/* Editorial Heading Grid */}
         <div className="editorial-header-grid">
           <div>
             <h2 className="editorial-title">
-              Good thinking.<br />Better making.
+              Disciplined logic.<br />Decisive execution.
             </h2>
           </div>
           <div>
             <p className="editorial-subtitle" style={{ marginBottom: '1.2rem' }}>
-              One collaborator across the technical architecture and interactive frontend of your next application.
+              End-to-end technical execution across relational data models, robust backend services, and pixel-precise user interfaces.
             </p>
             <a href="#contact" className="text-arrow-link" style={{ fontWeight: 500 }}>
-              Explore web development services <FiArrowUpRight />
+              Explore technical capabilities <FiArrowUpRight />
             </a>
           </div>
         </div>
@@ -159,7 +159,7 @@ const Skills = () => {
                           <p style={{ color: 'var(--light)', fontSize: '1.05rem', fontWeight: 500, marginBottom: '0.8rem' }}>
                             {item.subtitle}
                           </p>
-                          <p style={{ color: 'var(--gray)', fontSize: '0.98rem', lineHeight: '1.7', marginBottom: '1.5rem' }}>
+                          <p style={{ color: 'var(--gray)', fontSize: '0.98rem', lineHeight: '1.7', marginBottom: '1.5rem', fontWeight: 400 }}>
                             {item.description}
                           </p>
                           <a
@@ -175,7 +175,7 @@ const Skills = () => {
 
                         {/* Technology Badges Column */}
                         <div>
-                          <div style={{ fontSize: '0.82rem', fontFamily: 'var(--font-mono)', color: 'var(--gray)', textTransform: 'uppercase', marginBottom: '1rem' }}>
+                          <div style={{ fontSize: '0.82rem', fontFamily: 'var(--font-mono)', color: 'var(--gray)', textTransform: 'uppercase', marginBottom: '1rem', fontWeight: 400 }}>
                             Core Technologies
                           </div>
                           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
@@ -187,12 +187,13 @@ const Skills = () => {
                                   alignItems: 'center',
                                   gap: '0.5rem',
                                   padding: '8px 16px',
-                                  background: 'rgba(255, 255, 255, 0.04)',
+                                  background: 'var(--badge-bg)',
                                   border: '1px solid var(--border-light)',
                                   borderRadius: '100px',
                                   fontSize: '0.88rem',
                                   color: 'var(--light)',
                                   transition: 'all 0.25s ease',
+                                  fontWeight: 400,
                                 }}
                                 onMouseEnter={(e) => {
                                   e.currentTarget.style.borderColor = tech.color;

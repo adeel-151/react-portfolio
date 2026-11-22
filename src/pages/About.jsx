@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiArrowUpRight, FiDownload, FiCamera } from 'react-icons/fi';
+import { FiArrowUpRight, FiDownload, FiTerminal } from 'react-icons/fi';
 import cv from '../assets/Adeel-Qaiser.pdf';
 
 const About = () => {
@@ -15,23 +15,22 @@ const About = () => {
   const tabContent = {
     journey: (
       <p style={{ lineHeight: '1.8', color: 'var(--gray)', fontSize: '1.05rem', fontWeight: 400 }}>
-        I started my web development journey with a deep curiosity for how things work on the internet. 
-        Over the past year, I've transitioned into a confident Software Engineer (MERN). I've built everything from responsive landing pages to complex, state-driven 
-        platforms including hostel management and healthcare systems.
+        I started my programming journey driven by a fascination for system architecture and real-world digital tools. 
+        Over the past year, I have built production-grade platforms with the MERN stack—from intelligent hostel management 
+        systems with relational PostgreSQL to hospital operational software handling patient appointments and records.
       </p>
     ),
     philosophy: (
       <p style={{ lineHeight: '1.8', color: 'var(--gray)', fontSize: '1.05rem', fontWeight: 400 }}>
-        I believe that a great user interface goes far beyond just visual aesthetics—it’s about creating seamless, 
-        intuitive experiences that delight users while maintaining clean, maintainable architecture and 
-        pixel-perfect responsiveness under the hood.
+        To me, great engineering is measured by resilience and clarity. A clean backend is meaningless if the client 
+        experience feels sluggish, and an attractive UI is fragile without robust data validation. I build every system 
+        to ensure both sides work in complete harmony.
       </p>
     ),
     focus: (
       <p style={{ lineHeight: '1.8', color: 'var(--gray)', fontSize: '1.05rem', fontWeight: 400 }}>
-        Right now, I am heavily focused on mastering modern React patterns, advanced interactive animations, 
-        and scalable full-stack web architectures with Node.js and PostgreSQL/MongoDB to deliver blazing-fast 
-        performant web products.
+        I am currently deepening my mastery of distributed backend architectures, query optimization in PostgreSQL/MongoDB, 
+        and high-efficiency component patterns in React 19 to engineer web applications that scale effortlessly.
       </p>
     )
   };
@@ -63,10 +62,10 @@ const About = () => {
     <section id="about" className="section-wrapper">
       <div className="container">
         
-        {/* Section Eyebrow Row (03 / The person) */}
+        {/* Section Eyebrow Row */}
         <div className="section-eyebrow-row">
-          <span>03 / The person</span>
-          <span>Beyond the screen</span>
+          <span>03 / About Me</span>
+          <span>Mindset, journey & principles</span>
         </div>
 
         {/* Two-Column Editorial Biography Layout */}
@@ -82,7 +81,7 @@ const About = () => {
           {/* Left Column: Heading & Author */}
           <div>
             <h2 className="editorial-title" style={{ marginBottom: '2rem' }}>
-              Curiosity is<br />the constant.
+              Continuous growth.<br />Relentless craft.
             </h2>
             <div style={{ color: 'var(--gray)', fontSize: '1.1rem', fontWeight: 500 }}>
               Adeel Qaiser
@@ -206,7 +205,7 @@ const About = () => {
           </div>
         </div>
 
-        {/* Outside the Browser Feature Box */}
+        {/* Feature Box */}
         <div
           style={{
             background: 'var(--outside-box-bg)',
@@ -224,10 +223,10 @@ const About = () => {
         >
           <div>
             <h3 style={{ fontSize: '2.4rem', fontWeight: 500, color: 'var(--light)', marginBottom: '1rem', letterSpacing: '-0.02em' }}>
-              Outside the browser.
+              The engineering mindset.
             </h3>
             <p style={{ color: 'var(--gray)', fontSize: '1.05rem', lineHeight: '1.7', marginBottom: '2rem', fontWeight: 400 }}>
-              Passionate about problem solving, clean engineering architectures, and continuous self-learning. Always exploring new horizons in software development.
+              Driven by structural problem solving, system optimization, and technical curiosity. Constantly adopting modern web standards and building tools that make a tangible difference.
             </p>
             <a href="#contact" className="text-arrow-link" style={{ fontSize: '1rem', fontWeight: 500 }}>
               Let's build together <FiArrowUpRight />
@@ -248,16 +247,16 @@ const About = () => {
             }}
           >
             <div style={{ color: 'var(--primary)', fontSize: '1.8rem', marginBottom: '1.2rem' }}>
-              <FiCamera />
+              <FiTerminal />
             </div>
             <div style={{ fontSize: '1.2rem', fontWeight: 500, color: 'var(--light)', marginBottom: '0.6rem' }}>
-              Continuous craftsmanship
+              Core Engineering Philosophy
             </div>
             <p style={{ color: 'var(--gray)', fontSize: '0.92rem', lineHeight: '1.6', fontWeight: 400 }}>
               Focused on modern frontend standards, accessible web interfaces, and high-performance React architectures.
             </p>
             <div style={{ marginTop: '1.2rem', fontSize: '0.78rem', fontFamily: 'var(--font-mono)', color: 'var(--gray-dark)', fontWeight: 400 }}>
-              100% committed to quality & performance
+              Reliability, security & clean maintainability
             </div>
           </div>
         </div>
