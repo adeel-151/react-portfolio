@@ -11,6 +11,12 @@ import {
   FiBriefcase, 
   FiCode 
 } from 'react-icons/fi';
+import { 
+  SiWhatsapp, 
+  SiGithub, 
+  SiLinkedin, 
+  SiInstagram 
+} from 'react-icons/si';
 import cv from '../assets/Adeel-Qaiser.pdf';
 import profile from '../assets/profile.jpg';
 
@@ -231,16 +237,24 @@ const About = () => {
               </AnimatePresence>
             </div>
 
-            {/* Social Links Row */}
+            {/* Social Links Row with WhatsApp included */}
             <div className="about-social-links-row">
+              <a 
+                href="https://wa.me/923015355509?text=Hi%20Adeel,%20I%20saw%20your%20portfolio!" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="about-social-chip about-social-wa"
+              >
+                <SiWhatsapp style={{ color: '#25D366' }} /> WhatsApp <span>↗</span>
+              </a>
               <a href="https://github.com/adeel-151" target="_blank" rel="noopener noreferrer" className="about-social-chip">
-                GitHub <span>↗</span>
+                <SiGithub /> GitHub <span>↗</span>
               </a>
               <a href="https://www.linkedin.com/in/adeel-qaiser151/" target="_blank" rel="noopener noreferrer" className="about-social-chip">
-                LinkedIn <span>↗</span>
+                <SiLinkedin style={{ color: '#0a66c2' }} /> LinkedIn <span>↗</span>
               </a>
               <a href="https://www.instagram.com/adeel_qaiser_/" target="_blank" rel="noopener noreferrer" className="about-social-chip">
-                Instagram <span>↗</span>
+                <SiInstagram style={{ color: '#e4405f' }} /> Instagram <span>↗</span>
               </a>
             </div>
           </div>

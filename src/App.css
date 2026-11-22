@@ -1182,7 +1182,7 @@ h1, h2, h3, h4, h5, h6 {
 .about-social-chip {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.45rem;
   padding: 0.55rem 1.25rem;
   border-radius: 100px;
   background: var(--badge-bg);
@@ -1209,6 +1209,16 @@ h1, h2, h3, h4, h5, h6 {
 .about-social-chip:hover span {
   color: #08090b;
   transform: translate(2px, -2px);
+}
+
+.about-social-wa:hover {
+  background: #25D366;
+  border-color: #25D366;
+  color: #ffffff;
+}
+
+.about-social-wa:hover span {
+  color: #ffffff;
 }
 
 /* Milestones Section */
@@ -1368,6 +1378,358 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
 
+/* =========================================
+   ENHANCED CONTACT SECTION
+   ========================================= */
+.contact-main-card {
+  background: var(--contact-card-bg);
+  border: 1px solid var(--contact-card-border);
+  border-radius: 32px;
+  padding: clamp(2rem, 5vw, 4.5rem);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--contact-card-shadow);
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-ambient-glow {
+  position: absolute;
+  top: -15%;
+  right: -10%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, var(--ambient-glow-1) 0%, var(--ambient-glow-2) 50%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(50px);
+  pointer-events: none;
+}
+
+.contact-eyebrow-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+  color: var(--gray);
+  font-size: 0.88rem;
+  font-family: var(--font-mono);
+  font-weight: 400;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.contact-availability-text {
+  display: flex;
+  align-items: center;
+  color: var(--light);
+}
+
+.contact-response-time {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.contact-headline-row {
+  margin-bottom: 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.contact-statement-title {
+  font-size: clamp(2.8rem, 8vw, 6.5rem);
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--light);
+  margin: 0;
+}
+
+.contact-statement-arrow {
+  font-size: clamp(3rem, 7vw, 6rem);
+  color: var(--primary-accent);
+}
+
+.contact-grid-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 4.5rem;
+  padding-top: 3.5rem;
+  border-top: 1px solid var(--border-light);
+}
+
+.contact-channel-eyebrow {
+  font-size: 0.82rem;
+  color: var(--gray);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.25rem;
+  font-weight: 500;
+  display: block;
+}
+
+.contact-channel-card {
+  display: flex;
+  align-items: center;
+  gap: 1.15rem;
+  padding: 1.25rem 1.4rem;
+  border-radius: 18px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-light);
+  margin-bottom: 1rem;
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  color: inherit;
+}
+
+.contact-channel-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(204, 255, 0, 0.3);
+  box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.15);
+}
+
+.contact-channel-whatsapp:hover {
+  border-color: rgba(37, 211, 102, 0.45);
+  box-shadow: 0 10px 25px -10px rgba(37, 211, 102, 0.2);
+}
+
+.channel-icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  flex-shrink: 0;
+  border: 1px solid var(--border-subtle);
+}
+
+.channel-info-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.channel-label {
+  font-size: 0.74rem;
+  color: var(--gray);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 400;
+}
+
+.channel-value {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--light);
+  line-height: 1.35;
+}
+
+.channel-value-link {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--light);
+  text-decoration: none;
+  line-height: 1.35;
+  transition: color 0.2s ease;
+}
+
+.channel-value-link:hover {
+  color: var(--primary);
+}
+
+.channel-sub {
+  font-size: 0.8rem;
+  color: var(--gray-dark);
+  font-weight: 400;
+}
+
+.channel-arrow {
+  margin-left: auto;
+  font-size: 1.2rem;
+  color: var(--gray);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.contact-channel-card:hover .channel-arrow {
+  transform: translate(2px, -2px);
+  color: var(--light);
+}
+
+.channel-copy-btn {
+  background: var(--badge-bg);
+  border: 1px solid var(--border-light);
+  color: var(--light);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.channel-copy-btn:hover {
+  background: var(--primary-accent);
+  color: #08090b;
+  border-color: var(--primary-accent);
+}
+
+.contact-social-matrix {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.contact-social-buttons {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.contact-social-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.15rem;
+  border-radius: 100px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-light);
+  color: var(--light);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+
+.contact-social-btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary-accent);
+}
+
+.contact-social-wa:hover {
+  border-color: #25D366;
+  color: #25D366;
+}
+
+.contact-enhanced-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.form-success-banner {
+  padding: 1.25rem 1.5rem;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  border-radius: 14px;
+  color: #10b981;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.95rem;
+}
+
+.form-error-banner {
+  padding: 1.2rem;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  border-radius: 14px;
+  color: #ef4444;
+  font-size: 0.95rem;
+}
+
+.form-field-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  color: var(--gray);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.6rem;
+  font-weight: 500;
+}
+
+.project-type-pills-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.project-type-pill {
+  padding: 6px 14px;
+  border-radius: 100px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-light);
+  color: var(--gray);
+  font-size: 0.82rem;
+  font-family: var(--font-mono);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.2s ease;
+  font-weight: 400;
+}
+
+.project-type-pill:hover {
+  border-color: var(--primary-accent);
+  color: var(--light);
+}
+
+.project-type-pill-active {
+  background: var(--primary-accent);
+  color: #08090b;
+  border-color: var(--primary-accent);
+  font-weight: 500;
+}
+
+.pill-check-icon {
+  font-size: 0.9rem;
+}
+
+.form-two-col-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.form-field-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.form-input-icon {
+  position: absolute;
+  left: 0;
+  color: var(--gray-dark);
+  font-size: 1rem;
+}
+
+.form-field-input {
+  padding-left: 1.8rem !important;
+}
+
+.form-field-textarea {
+  resize: none;
+}
+
+.contact-submit-btn {
+  width: 100%;
+  justify-content: center;
+  padding: 1.05rem;
+  font-size: 1rem;
+}
+
 /* Editorial Form Inputs */
 .minimal-input {
   width: 100%;
@@ -1442,6 +1804,11 @@ h1, h2, h3, h4, h5, h6 {
     padding: 2rem 1.5rem;
   }
 
+  .contact-grid-inner {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+
   .grid-editorial-2 {
     grid-template-columns: 1fr;
     gap: 3rem;
@@ -1475,5 +1842,12 @@ h1, h2, h3, h4, h5, h6 {
   .engineering-metrics-strip {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+  }
+  .form-two-col-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .contact-social-buttons {
+    flex-direction: column;
   }
 }

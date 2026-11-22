@@ -1,22 +1,60 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FiArrowUpRight, FiCheckCircle } from 'react-icons/fi';
+import { 
+  FiArrowUpRight, 
+  FiCheckCircle, 
+  FiMail, 
+  FiMapPin, 
+  FiClock, 
+  FiUser,
+  FiMessageSquare,
+  FiCheck
+} from 'react-icons/fi';
+import { 
+  SiWhatsapp, 
+  SiGithub, 
+  SiLinkedin, 
+  SiInstagram 
+} from 'react-icons/si';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    projectType: 'Full-Stack MERN',
     subject: '',
     message: ''
   });
   
+  const [copiedEmail, setCopiedEmail] = useState(false);
   const [status, setStatus] = useState('idle'); // idle, loading, success, error
+
+  const projectTypes = [
+    'Full-Stack MERN',
+    'Frontend / React 19',
+    'Backend API / DB',
+    'Freelance / Contract'
+  ];
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
+  };
+
+  const handleSelectType = (type) => {
+    setFormData((prev) => ({
+      ...prev,
+      projectType: type,
+      subject: prev.subject || `Inquiry for ${type}`
+    }));
+  };
+
+  const copyEmailToClipboard = () => {
+    navigator.clipboard.writeText('adeelkhattak223@gmail.com');
+    setCopiedEmail(true);
+    setTimeout(() => setCopiedEmail(false), 3000);
   };
 
   const handleSubmit = async (e) => {
@@ -26,8 +64,8 @@ const Contact = () => {
     const formDataToSend = new FormData();
     formDataToSend.append("access_key", "b7c38581-9e52-47dd-a110-87751434730c");
     formDataToSend.append("email", formData.email);
-    formDataToSend.append("subject", formData.subject);
-    formDataToSend.append("message", formData.message);
+    formDataToSend.append("subject", `[${formData.projectType}] ${formData.subject}`);
+    formDataToSend.append("message", `Project Type: ${formData.projectType}\n\nMessage:\n${formData.message}`);
     formDataToSend.append("name", formData.name);
 
     try {
@@ -39,7 +77,7 @@ const Contact = () => {
 
       if (data.success) {
         setStatus('success');
-        setFormData({ name: "", email: "", subject: "", message: "" });
+        setFormData({ name: "", email: "", projectType: "Full-Stack MERN", subject: "", message: "" });
         setTimeout(() => setStatus('idle'), 5000);
       } else {
         setStatus('error');
@@ -52,239 +90,254 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="section-wrapper" style={{ paddingBottom: '40px' }}>
+    <section id="contact" className="section-wrapper" style={{ paddingBottom: '50px' }}>
       <div className="container">
         
         {/* High-Impact Editorial CTA Container */}
-        <div
-          style={{
-            background: 'var(--contact-card-bg)',
-            border: '1px solid var(--contact-card-border)',
-            borderRadius: '32px',
-            padding: 'clamp(2rem, 5vw, 4.5rem)',
-            position: 'relative',
-            overflow: 'hidden',
-            boxShadow: 'var(--contact-card-shadow)',
-            transition: 'background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease',
-          }}
-        >
-          {/* Subtle gradient light in corner */}
-          <div
-            style={{
-              position: 'absolute',
-              top: '-15%',
-              right: '-10%',
-              width: '350px',
-              height: '350px',
-              background: 'radial-gradient(circle, var(--ambient-glow-1) 0%, var(--ambient-glow-2) 50%, transparent 70%)',
-              borderRadius: '50%',
-              filter: 'blur(50px)',
-              pointerEvents: 'none'
-            }}
-          />
+        <div className="contact-main-card">
+          {/* Subtle Ambient Radial Glow */}
+          <div className="contact-ambient-glow" />
 
           {/* Top Eyebrow Row */}
-          <div 
-            style={{ 
-              display: 'flex', 
-              justifyContent: 'space-between', 
-              alignItems: 'center', 
-              marginBottom: '3rem',
-              color: 'var(--gray)',
-              fontSize: '0.88rem',
-              fontFamily: 'var(--font-mono)',
-              fontWeight: 400,
-            }}
-          >
-            <span>Have an ambitious vision?</span>
-            <span>Let's engineer it right.</span>
+          <div className="contact-eyebrow-row">
+            <span className="contact-availability-text">
+              <span className="status-dot-pulse" style={{ display: 'inline-block', marginRight: '8px' }} />
+              Available for full-time & client contracts
+            </span>
+            <span className="contact-response-time">
+              <FiClock style={{ color: 'var(--primary-accent)' }} /> Typical response within 2 hours
+            </span>
           </div>
 
           {/* Giant Statement Headline */}
-          <div style={{ marginBottom: '4rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '2rem' }}>
-            <h2
-              style={{
-                fontSize: 'clamp(2.8rem, 8vw, 6.5rem)',
-                fontWeight: 500,
-                lineHeight: 0.95,
-                letterSpacing: '-0.04em',
-                color: 'var(--light)',
-                margin: 0
-              }}
-            >
+          <div className="contact-headline-row">
+            <h2 className="contact-statement-title">
               Let's build<br />what's next.
             </h2>
-            <div style={{ fontSize: 'clamp(3rem, 7vw, 6rem)', color: 'var(--primary-accent)' }}>
+            <div className="contact-statement-arrow">
               ↗
             </div>
           </div>
 
           {/* Contact Details & Direct Form Grid */}
-          <div 
-            style={{ 
-              display: 'grid', 
-              gridTemplateColumns: '1fr 1.2fr', 
-              gap: '4rem', 
-              paddingTop: '3rem',
-              borderTop: '1px solid var(--border-light)'
-            }}
-            className="contact-details-grid"
-          >
-            {/* Left Contact Information */}
-            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+          <div className="contact-grid-inner">
+            {/* Left Column: Direct Interactive Channels */}
+            <div className="contact-info-col">
               <div>
-                <div style={{ fontSize: '0.85rem', color: 'var(--gray)', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', marginBottom: '0.8rem', fontWeight: 400 }}>
-                  Direct Contact
+                <span className="contact-channel-eyebrow">
+                  Direct Communication
+                </span>
+
+                {/* WhatsApp Priority Card */}
+                <a
+                  href="https://wa.me/923015355509?text=Hi%20Adeel,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect!"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="contact-channel-card contact-channel-whatsapp"
+                >
+                  <div className="channel-icon-wrap" style={{ background: 'rgba(37, 211, 102, 0.12)', color: '#25D366', borderColor: 'rgba(37, 211, 102, 0.25)' }}>
+                    <SiWhatsapp />
+                  </div>
+                  <div className="channel-info-text">
+                    <span className="channel-label">WhatsApp (Instant Chat)</span>
+                    <span className="channel-value">+92 301 5355509</span>
+                    <span className="channel-sub">Quick inquiries, calls & consultations</span>
+                  </div>
+                  <div className="channel-arrow">
+                    <FiArrowUpRight />
+                  </div>
+                </a>
+
+                {/* Email Direct Card */}
+                <div className="contact-channel-card contact-channel-email">
+                  <div className="channel-icon-wrap" style={{ background: 'rgba(204, 255, 0, 0.1)', color: 'var(--primary-accent)' }}>
+                    <FiMail />
+                  </div>
+                  <div className="channel-info-text" style={{ flexGrow: 1 }}>
+                    <span className="channel-label">Email Direct</span>
+                    <a href="mailto:adeelkhattak223@gmail.com" className="channel-value-link">
+                      adeelkhattak223@gmail.com
+                    </a>
+                    <span className="channel-sub">Official communication & proposals</span>
+                  </div>
+                  <button 
+                    onClick={copyEmailToClipboard}
+                    className="channel-copy-btn"
+                    title="Copy email address"
+                  >
+                    {copiedEmail ? <FiCheck style={{ color: '#10b981' }} /> : 'Copy'}
+                  </button>
                 </div>
-                <a
-                  href="mailto:adeelkhattak223@gmail.com"
-                  style={{
-                    fontSize: 'clamp(1.2rem, 2.5vw, 1.8rem)',
-                    color: 'var(--light)',
-                    textDecoration: 'none',
-                    fontWeight: 500,
-                    display: 'block',
-                    marginBottom: '1rem',
-                    transition: 'color 0.2s ease',
-                    wordBreak: 'break-word'
-                  }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--primary)')}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--light)')}
-                >
-                  adeelkhattak223@gmail.com
-                </a>
-                <a
-                  href="tel:+923015355509"
-                  style={{
-                    fontSize: '1.2rem',
-                    color: 'var(--gray)',
-                    textDecoration: 'none',
-                    display: 'block',
-                    marginBottom: '1.5rem',
-                    fontWeight: 400,
-                    transition: 'color 0.2s ease'
-                  }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--light)')}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--gray)')}
-                >
-                  +92 301 5355509
-                </a>
-                <div style={{ color: 'var(--gray-dark)', fontSize: '0.95rem', fontWeight: 400 }}>
-                  Based in Pakistan • Available Worldwide
+
+                {/* Location & Timezone Card */}
+                <div className="contact-channel-card contact-channel-location">
+                  <div className="channel-icon-wrap" style={{ background: 'rgba(56, 189, 248, 0.1)', color: 'var(--secondary)' }}>
+                    <FiMapPin />
+                  </div>
+                  <div className="channel-info-text">
+                    <span className="channel-label">Location & Presence</span>
+                    <span className="channel-value">Islamabad, Pakistan</span>
+                    <span className="channel-sub">Working with teams & clients worldwide (UTC+5)</span>
+                  </div>
                 </div>
               </div>
 
-              {/* Social Channels */}
-              <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', marginTop: '3rem' }}>
-                <a href="https://github.com/adeel-151" target="_blank" rel="noopener noreferrer" className="text-arrow-link">
-                  GitHub <FiArrowUpRight />
-                </a>
-                <a href="https://www.linkedin.com/in/adeel-qaiser151/" target="_blank" rel="noopener noreferrer" className="text-arrow-link">
-                  LinkedIn <FiArrowUpRight />
-                </a>
-                <a href="https://www.instagram.com/adeel_qaiser_/" target="_blank" rel="noopener noreferrer" className="text-arrow-link">
-                  Instagram <FiArrowUpRight />
-                </a>
+              {/* Social Channels Matrix */}
+              <div className="contact-social-matrix">
+                <span className="contact-channel-eyebrow" style={{ marginBottom: '0.8rem', display: 'block' }}>
+                  Verified Networks
+                </span>
+                <div className="contact-social-buttons">
+                  <a
+                    href="https://wa.me/923015355509?text=Hi%20Adeel,%20I%20saw%20your%20portfolio!"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="contact-social-btn contact-social-wa"
+                  >
+                    <SiWhatsapp className="soc-icon" style={{ color: '#25D366' }} /> WhatsApp ↗
+                  </a>
+                  <a
+                    href="https://github.com/adeel-151"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="contact-social-btn"
+                  >
+                    <SiGithub className="soc-icon" /> GitHub ↗
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/adeel-qaiser151/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="contact-social-btn"
+                  >
+                    <SiLinkedin className="soc-icon" style={{ color: '#0a66c2' }} /> LinkedIn ↗
+                  </a>
+                  <a
+                    href="https://www.instagram.com/adeel_qaiser_/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="contact-social-btn"
+                  >
+                    <SiInstagram className="soc-icon" style={{ color: '#e4405f' }} /> Instagram ↗
+                  </a>
+                </div>
               </div>
             </div>
 
-            {/* Right Clean Contact Form */}
-            <div>
-              <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.8rem', position: 'relative' }}>
+            {/* Right Column: Upgraded Contact Form */}
+            <div className="contact-form-col">
+              <form onSubmit={handleSubmit} className="contact-enhanced-form">
                 {status === 'success' && (
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    style={{
-                      padding: '1.2rem',
-                      background: 'rgba(16, 185, 129, 0.1)',
-                      border: '1px solid rgba(16, 185, 129, 0.3)',
-                      borderRadius: '12px',
-                      color: '#10b981',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '0.8rem',
-                      fontSize: '0.95rem'
-                    }}
+                    className="form-success-banner"
                   >
-                    <FiCheckCircle style={{ fontSize: '1.3rem' }} />
-                    Thank you! Your message has been sent successfully.
+                    <FiCheckCircle style={{ fontSize: '1.4rem', flexShrink: 0 }} />
+                    <div>
+                      <strong>Message transmitted successfully!</strong>
+                      <div>Thank you! I will get back to your email within 2-4 hours.</div>
+                    </div>
                   </motion.div>
                 )}
 
                 {status === 'error' && (
-                  <div
-                    style={{
-                      padding: '1rem',
-                      background: 'rgba(239, 68, 68, 0.1)',
-                      border: '1px solid rgba(239, 68, 68, 0.3)',
-                      borderRadius: '12px',
-                      color: '#ef4444',
-                      fontSize: '0.95rem'
-                    }}
-                  >
-                    Failed to send message. Please email me directly at adeelkhattak223@gmail.com.
+                  <div className="form-error-banner">
+                    Failed to dispatch message. Please WhatsApp me directly at +92 301 5355509 or email adeelkhattak223@gmail.com.
                   </div>
                 )}
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }} className="form-two-col">
-                  <div>
+                {/* Project Type Quick Selector */}
+                <div>
+                  <label className="form-field-label">What are you looking to build?</label>
+                  <div className="project-type-pills-row">
+                    {projectTypes.map((type) => {
+                      const isSelected = formData.projectType === type;
+                      return (
+                        <button
+                          type="button"
+                          key={type}
+                          onClick={() => handleSelectType(type)}
+                          className={`project-type-pill ${isSelected ? 'project-type-pill-active' : ''}`}
+                        >
+                          {isSelected && <FiCheck className="pill-check-icon" />}
+                          {type}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                <div className="form-two-col-grid">
+                  <div className="form-field-group">
+                    <label className="form-field-label">Your Name</label>
+                    <div className="form-input-wrap">
+                      <FiUser className="form-input-icon" />
+                      <input
+                        className="minimal-input form-field-input"
+                        type="text"
+                        name="name"
+                        placeholder="John Doe"
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field-group">
+                    <label className="form-field-label">Email Address</label>
+                    <div className="form-input-wrap">
+                      <FiMail className="form-input-icon" />
+                      <input
+                        className="minimal-input form-field-input"
+                        type="email"
+                        name="email"
+                        placeholder="john@example.com"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="form-field-group">
+                  <label className="form-field-label">Project Subject</label>
+                  <div className="form-input-wrap">
+                    <FiMessageSquare className="form-input-icon" />
                     <input
-                      className="minimal-input"
+                      className="minimal-input form-field-input"
                       type="text"
-                      name="name"
-                      placeholder="Your name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
-                  <div>
-                    <input
-                      className="minimal-input"
-                      type="email"
-                      name="email"
-                      placeholder="Your email address"
-                      value={formData.email}
+                      name="subject"
+                      placeholder="e.g. MERN Stack Web Platform Architecture"
+                      value={formData.subject}
                       onChange={handleChange}
                       required
                     />
                   </div>
                 </div>
 
-                <div>
-                  <input
-                    className="minimal-input"
-                    type="text"
-                    name="subject"
-                    placeholder="Project or subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-
-                <div>
+                <div className="form-field-group">
+                  <label className="form-field-label">Project Details & Vision</label>
                   <textarea
-                    className="minimal-input"
+                    className="minimal-input form-field-textarea"
                     name="message"
-                    placeholder="Tell me about your project or vision..."
+                    placeholder="Tell me about your project goals, timelines, target users, or tech stack..."
                     rows="4"
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    style={{ resize: 'none' }}
                   ></textarea>
                 </div>
 
                 <div>
                   <button
                     type="submit"
-                    className="btn-pill btn-pill-dark"
+                    className="btn-pill btn-pill-dark contact-submit-btn"
                     disabled={status === 'loading'}
-                    style={{ width: '100%', justifyContent: 'center', padding: '1rem' }}
                   >
-                    {status === 'loading' ? 'Sending message...' : 'Send message'} <FiArrowUpRight />
+                    {status === 'loading' ? 'Transmitting message...' : 'Send Message'} <FiArrowUpRight />
                   </button>
                 </div>
               </form>
@@ -293,23 +346,6 @@ const Contact = () => {
         </div>
 
       </div>
-
-      <style>
-        {`
-          @media (max-width: 992px) {
-            .contact-details-grid {
-              grid-template-columns: 1fr !important;
-              gap: 3rem !important;
-            }
-          }
-          @media (max-width: 640px) {
-            .form-two-col {
-              grid-template-columns: 1fr !important;
-              gap: 1.5rem !important;
-            }
-          }
-        `}
-      </style>
     </section>
   );
 };
