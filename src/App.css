@@ -223,7 +223,7 @@ h1, h2, h3, h4, h5, h6 {
   background-clip: text;
 }
 
-/* Editorial Section Headers (01 / Selected work style) */
+/* Editorial Section Headers */
 .section-wrapper {
   padding: 100px 0;
   position: relative;
@@ -655,70 +655,309 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
 }
 
-/* Accordion Capability Style (02 / What I bring) */
-.accordion-item {
-  border-top: 1px solid var(--border-light);
-  padding: 2.2rem 0;
-  transition: background 0.2s ease;
+/* =========================================
+   ENHANCED CAPABILITIES PANELS & MATRIX
+   ========================================= */
+.capabilities-list-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 2rem;
 }
 
-.accordion-item:last-child {
-  border-bottom: 1px solid var(--border-light);
+.capability-panel {
+  background: var(--card-bg);
+  border: 1px solid var(--border-light);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.04);
 }
 
-.accordion-header {
+.capability-panel:hover {
+  border-color: rgba(204, 255, 0, 0.25);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
+}
+
+.capability-panel-open {
+  border-color: rgba(204, 255, 0, 0.4);
+  box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.12), 0 0 25px -5px rgba(204, 255, 0, 0.06);
+}
+
+[data-theme="dark"] .capability-panel-open {
+  box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.7), 0 0 30px -5px rgba(204, 255, 0, 0.08);
+}
+
+.capability-panel-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
+  padding: 1.5rem 2rem;
+  background: transparent;
+  border: none;
   cursor: pointer;
   user-select: none;
-  background: none;
-  border: none;
-  width: 100%;
   text-align: left;
-  color: var(--light);
+  transition: background 0.2s ease;
 }
 
-.accordion-index-title {
+.capability-panel-header:hover {
+  background: rgba(204, 255, 0, 0.02);
+}
+
+.capability-header-left {
   display: flex;
   align-items: center;
-  gap: 2.5rem;
+  gap: 1.5rem;
+  flex-wrap: wrap;
 }
 
-.accordion-index {
+.capability-index-badge {
   font-family: var(--font-mono);
   font-size: 0.95rem;
-  color: var(--gray);
-  font-weight: 400;
+  color: var(--primary-accent);
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: var(--badge-bg);
+  border: 1px solid var(--border-light);
+  font-weight: 500;
 }
 
-.accordion-title {
-  font-size: clamp(1.4rem, 3vw, 2.2rem);
+.capability-tag-pill {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.05em;
+  color: var(--gray);
+  padding: 3px 10px;
+  border-radius: 100px;
+  background: var(--badge-bg);
+  border: 1px solid var(--border-subtle);
+  font-weight: 500;
+}
+
+.capability-main-title {
+  font-size: clamp(1.25rem, 2.5vw, 1.65rem);
   font-weight: 500;
   letter-spacing: -0.02em;
+  color: var(--light);
+  margin: 0;
   transition: color 0.2s ease;
 }
 
-.accordion-header:hover .accordion-title {
+.capability-panel-header:hover .capability-main-title {
   color: var(--primary);
 }
 
-.accordion-toggle-icon {
-  font-size: 1.6rem;
+.capability-toggle-circle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--badge-bg);
+  border: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--gray);
-  transition: transform 0.3s ease, color 0.2s ease;
+  font-size: 1.2rem;
+  transition: all 0.25s ease;
+  flex-shrink: 0;
 }
 
-.accordion-header:hover .accordion-toggle-icon {
-  color: var(--primary);
+.capability-panel-open .capability-toggle-circle {
+  background: var(--primary-accent);
+  color: #08090b;
+  border-color: var(--primary-accent);
 }
 
-.accordion-body {
-  padding-left: 4.5rem;
-  padding-top: 1.5rem;
+.capability-panel-body {
+  overflow: hidden;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.capability-body-grid {
+  padding: 2rem 2rem 2.25rem;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 3rem;
+}
+
+.capability-subtitle {
+  color: var(--light);
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin-bottom: 0.8rem;
+  line-height: 1.4;
+}
+
+.capability-description {
+  color: var(--gray);
+  font-size: 0.96rem;
+  line-height: 1.65;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+
+.capability-insight-box {
+  padding: 1rem 1.25rem;
+  border-radius: 14px;
+  background: var(--badge-bg);
+  border: 1px solid var(--border-light);
+  margin-bottom: 1.5rem;
+}
+
+.capability-insight-title {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--light);
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+}
+
+.capability-insight-text {
+  font-size: 0.88rem;
+  color: var(--gray);
+  line-height: 1.55;
+  margin: 0;
+  font-weight: 400;
+}
+
+.capability-competencies-wrap {
+  margin-bottom: 1rem;
+}
+
+.capability-competencies-title {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: var(--gray);
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 0.6rem;
+  font-weight: 500;
+}
+
+.capability-competencies-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.capability-competencies-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.88rem;
+  color: var(--light);
+  font-weight: 400;
+}
+
+.competency-check-icon {
+  color: var(--primary);
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+.capability-stack-header {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: var(--gray);
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.capability-tech-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.capability-tech-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: var(--badge-bg);
+  border: 1px solid var(--border-light);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.capability-tech-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  flex-shrink: 0;
+}
+
+.capability-tech-meta {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.capability-tech-name {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--light);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.capability-tech-role {
+  font-size: 0.72rem;
+  color: var(--gray);
+  font-family: var(--font-mono);
+  font-weight: 400;
+}
+
+/* Engineering Metrics Strip */
+.engineering-metrics-strip {
+  margin-top: 5rem;
+  padding: 2.5rem 2rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border-light);
+  border-radius: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
+}
+
+.metric-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.metric-value {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 500;
+  color: var(--light);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+  letter-spacing: -0.03em;
+}
+
+.metric-label {
+  font-size: 0.85rem;
+  color: var(--gray);
+  font-family: var(--font-mono);
+  font-weight: 400;
+  line-height: 1.4;
 }
 
 /* Editorial Form Inputs */
@@ -759,12 +998,18 @@ h1, h2, h3, h4, h5, h6 {
     align-items: flex-start;
   }
   
-  .accordion-body {
-    padding-left: 0;
+  .capability-body-grid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 2rem;
+    padding: 1.5rem 1.5rem 2rem;
   }
-  
+
+  .engineering-metrics-strip {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    padding: 2rem 1.5rem;
+  }
+
   .grid-editorial-2 {
     grid-template-columns: 1fr;
     gap: 3rem;
@@ -783,8 +1028,20 @@ h1, h2, h3, h4, h5, h6 {
   .section-eyebrow-row {
     margin-bottom: 2.5rem;
   }
-  
-  .accordion-index-title {
-    gap: 1.2rem;
+}
+
+@media (max-width: 640px) {
+  .capability-panel-header {
+    padding: 1.25rem 1.25rem;
+  }
+  .capability-header-left {
+    gap: 0.75rem;
+  }
+  .capability-tech-grid {
+    grid-template-columns: 1fr;
+  }
+  .engineering-metrics-strip {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 }
