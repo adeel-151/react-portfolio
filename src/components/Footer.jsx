@@ -33,7 +33,7 @@ const Footer = () => {
                 letterSpacing: '-0.02em',
               }}
             >
-              adeel qaiser<span style={{ color: 'var(--secondary)' }}>*</span>
+              adeel qaiser<span style={{ color: 'var(--primary)' }}>*</span>
             </a>
           </div>
 

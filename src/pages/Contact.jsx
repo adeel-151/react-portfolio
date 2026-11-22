@@ -58,7 +58,7 @@ const Contact = () => {
         {/* High-Impact Editorial CTA Container (matching Page 5 reference with Adeel's theme) */}
         <div
           style={{
-            background: 'linear-gradient(145deg, #0d1527 0%, #060a14 100%)',
+            background: 'linear-gradient(145deg, #12141a 0%, #08090b 100%)',
             border: '1px solid var(--border-light)',
             borderRadius: '32px',
             padding: ' clamp(2rem, 5vw, 4.5rem)',
@@ -75,7 +75,7 @@ const Contact = () => {
               right: '-10%',
               width: '350px',
               height: '350px',
-              background: 'radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(6, 182, 212, 0.05) 50%, transparent 70%)',
+              background: 'radial-gradient(circle, rgba(204, 255, 0, 0.12) 0%, rgba(56, 189, 248, 0.04) 50%, transparent 70%)',
               borderRadius: '50%',
               filter: 'blur(50px)',
               pointerEvents: 'none'
@@ -112,7 +112,7 @@ const Contact = () => {
             >
               Let's make<br />it matter.
             </h2>
-            <div style={{ fontSize: 'clamp(3rem, 7vw, 6rem)', color: 'var(--secondary)' }}>
+            <div style={{ fontSize: 'clamp(3rem, 7vw, 6rem)', color: 'var(--primary)' }}>
               ↗
             </div>
           </div>
@@ -146,7 +146,7 @@ const Contact = () => {
                     transition: 'color 0.2s ease',
                     wordBreak: 'break-word'
                   }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--secondary)')}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--primary)')}
                   onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--light)')}
                 >
                   adeelkhattak223@gmail.com

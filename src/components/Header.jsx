@@ -31,7 +31,7 @@ const Header = () => {
         zIndex: 1000,
         transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
         padding: isScrolled ? '14px 0' : '28px 0',
-        backgroundColor: isScrolled ? 'rgba(6, 9, 19, 0.85)' : 'transparent',
+        backgroundColor: isScrolled ? 'rgba(8, 9, 11, 0.88)' : 'transparent',
         backdropFilter: isScrolled ? 'blur(16px)' : 'none',
         WebkitBackdropFilter: isScrolled ? 'blur(16px)' : 'none',
         borderBottom: isScrolled ? '1px solid rgba(255, 255, 255, 0.06)' : '1px solid transparent',
@@ -59,7 +59,7 @@ const Header = () => {
                 color: 'var(--light)',
               }}
             >
-              adeel qaiser<span style={{ color: 'var(--secondary)' }}>*</span>
+              adeel qaiser<span style={{ color: 'var(--primary)' }}>*</span>
             </span>
 
             <span
@@ -106,7 +106,7 @@ const Header = () => {
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.opacity = '1';
-                    e.currentTarget.style.color = 'var(--secondary)';
+                    e.currentTarget.style.color = 'var(--primary)';
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.opacity = '0.85';
@@ -135,9 +135,9 @@ const Header = () => {
                 gap: '0.3rem',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'var(--light)';
+                e.currentTarget.style.background = 'var(--primary)';
                 e.currentTarget.style.color = 'var(--darker)';
-                e.currentTarget.style.borderColor = 'var(--light)';
+                e.currentTarget.style.borderColor = 'var(--primary)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.background = 'transparent';

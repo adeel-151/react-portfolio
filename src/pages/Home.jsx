@@ -328,7 +328,7 @@ const Home = () => {
                   position: 'absolute',
                   width: '240px',
                   height: '240px',
-                  background: 'radial-gradient(circle, rgba(99, 102, 241, 0.25) 0%, rgba(6, 182, 212, 0.08) 60%, transparent 80%)',
+                  background: 'radial-gradient(circle, rgba(204, 255, 0, 0.22) 0%, rgba(56, 189, 248, 0.05) 60%, transparent 80%)',
                   borderRadius: '50%',
                   filter: 'blur(40px)',
                   zIndex: 0,
@@ -379,7 +379,7 @@ const Home = () => {
                     fontWeight: 900,
                     lineHeight: 1,
                     letterSpacing: '-0.05em',
-                    background: 'linear-gradient(135deg, #ffffff 40%, #6366f1 70%, #06b6d4 100%)',
+                    background: 'linear-gradient(135deg, #ffffff 45%, #ccff00 75%, #38bdf8 100%)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                     textShadow: '0 10px 30px rgba(0, 0, 0, 0.5)',
@@ -401,7 +401,7 @@ const Home = () => {
                     border: '1px solid rgba(255, 255, 255, 0.08)'
                   }}
                 >
-                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#10b981' }}></span>
+                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#ccff00' }}></span>
                   <span style={{ fontSize: '0.75rem', fontFamily: 'var(--font-mono)', color: 'var(--gray)' }}>
                     Open to opportunities
                   </span>
@@ -456,7 +456,7 @@ const Home = () => {
                 userSelect: 'none'
               }}
             >
-              adeel qaiser<span style={{ color: 'var(--secondary)' }}>*</span>
+              adeel qaiser<span style={{ color: 'var(--primary)' }}>*</span>
             </motion.h2>
           </div>
         </div>

@@ -1,21 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
-  /* Retaining Adeel's existing color palette */
-  --primary: #6366f1;
-  --primary-dark: #4f46e5;
-  --secondary: #06b6d4;
-  --accent: #f59e0b;
-  --dark: #0f172a;
-  --darker: #060913;
-  --card-bg: #0d1322;
-  --card-hover: #131b2e;
-  --light: #f8fafc;
-  --gray: #94a3b8;
-  --gray-dark: #475569;
+  /* Option 1: Volt Minimalist / Swiss Creative */
+  --primary: #ccff00;          /* Electric Volt Lime */
+  --primary-dark: #b8e600;     /* Deeper Volt */
+  --secondary: #38bdf8;        /* Clean Ice Blue */
+  --accent: #ccff00;           /* Volt Accent */
+  --dark: #121418;             /* Charcoal Surface */
+  --darker: #08090b;           /* Pitch Onyx */
+  --card-bg: #101216;          /* Card Dark */
+  --card-hover: #161920;       /* Card Hover */
+  --light: #f8fafc;            /* Pure Crisp White */
+  --gray: #a1a1aa;             /* Ash Gray */
+  --gray-dark: #52525b;        /* Darker Slate */
   --border-light: rgba(255, 255, 255, 0.08);
   --border-subtle: rgba(255, 255, 255, 0.04);
-  --glass-bg: rgba(15, 23, 42, 0.65);
+  --glass-bg: rgba(18, 20, 24, 0.7);
   --glass-border: rgba(255, 255, 255, 0.08);
 
   /* Modern Editorial Typography */
@@ -47,7 +47,7 @@ body, #root {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Subtle editorial background glow (maintaining original dark ambiance) */
+/* Subtle volt and ice ambient glow */
 .app-bg {
   position: fixed;
   top: 0;
@@ -56,8 +56,8 @@ body, #root {
   height: 100vh;
   z-index: -1;
   background: 
-    radial-gradient(circle at 18% 25%, rgba(99, 102, 241, 0.07), transparent 30%),
-    radial-gradient(circle at 82% 65%, rgba(6, 182, 212, 0.06), transparent 30%);
+    radial-gradient(circle at 18% 25%, rgba(204, 255, 0, 0.04), transparent 30%),
+    radial-gradient(circle at 82% 65%, rgba(56, 189, 248, 0.035), transparent 30%);
   pointer-events: none;
 }
 
@@ -82,11 +82,11 @@ body, #root {
   background: var(--darker);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(99, 102, 241, 0.5);
+  background: rgba(204, 255, 0, 0.35);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--secondary);
+  background: var(--primary);
 }
 
 /* Typography Utilities */
@@ -98,7 +98,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, var(--light) 30%, var(--secondary) 100%);
+  background: linear-gradient(135deg, var(--light) 40%, var(--primary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -176,11 +176,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-pill-dark:hover {
-  background: var(--secondary);
-  border-color: var(--secondary);
+  background: var(--primary);
+  border-color: var(--primary);
   color: var(--darker);
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px -5px rgba(6, 182, 212, 0.35);
+  box-shadow: 0 10px 25px -5px rgba(204, 255, 0, 0.4);
 }
 
 .btn-pill-outline {
@@ -190,8 +190,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-pill-outline:hover {
-  border-color: var(--light);
-  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--primary);
+  color: var(--primary);
+  background: rgba(204, 255, 0, 0.05);
   transform: translateY(-2px);
 }
 
@@ -210,7 +211,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .text-arrow-link:hover {
-  color: var(--secondary);
+  color: var(--primary);
   gap: 0.65rem;
 }
 
@@ -225,7 +226,7 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 10;
-  background: #0e1526;
+  background: #11141a;
   border-radius: 16px;
   overflow: hidden;
   border: 1px solid var(--border-light);
@@ -250,7 +251,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: rgba(6, 9, 19, 0.85);
+  background: rgba(8, 9, 11, 0.85);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.15);
   display: flex;
@@ -264,8 +265,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .project-editorial-card:hover .project-corner-arrow {
-  background: var(--light);
+  background: var(--primary);
   color: var(--darker);
+  border-color: var(--primary);
   transform: translate(2px, -2px);
 }
 
@@ -298,8 +300,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .project-expand-btn:hover {
-  border-color: var(--light);
-  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--primary);
+  color: var(--primary);
+  background: rgba(204, 255, 0, 0.08);
 }
 
 .project-title {
@@ -361,7 +364,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .accordion-header:hover .accordion-title {
-  color: var(--secondary);
+  color: var(--primary);
 }
 
 .accordion-toggle-icon {
@@ -371,7 +374,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .accordion-header:hover .accordion-toggle-icon {
-  color: var(--light);
+  color: var(--primary);
 }
 
 .accordion-body {
@@ -397,7 +400,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .minimal-input:focus {
-  border-bottom-color: var(--light);
+  border-bottom-color: var(--primary);
 }
 
 .minimal-input::placeholder {

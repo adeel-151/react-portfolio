@@ -88,7 +88,7 @@ const About = () => {
             <div style={{ color: 'var(--gray)', fontSize: '1.1rem', fontWeight: 500 }}>
               Adeel Qaiser
             </div>
-            <div style={{ fontSize: '0.9rem', color: 'var(--secondary)', fontFamily: 'var(--font-mono)', marginTop: '0.4rem' }}>
+            <div style={{ fontSize: '0.9rem', color: 'var(--primary)', fontFamily: 'var(--font-mono)', marginTop: '0.4rem' }}>
               Available for freelance & full-time roles
             </div>
 
@@ -102,7 +102,7 @@ const About = () => {
           {/* Right Column: Narrative & Story */}
           <div>
             <div style={{ fontSize: '1.6rem', fontWeight: 600, color: 'var(--light)', marginBottom: '1.5rem', letterSpacing: '-0.02em' }}>
-              I'm Adeel. Online, you'll find me as <a href="https://github.com/adeel-151" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--secondary)', textDecoration: 'none' }}>adeel-151</a>.
+              I'm Adeel. Online, you'll find me as <a href="https://github.com/adeel-151" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary)', textDecoration: 'none' }}>adeel-151</a>.
             </div>
 
             {/* Interactive Tab Switcher */}
@@ -133,7 +133,7 @@ const About = () => {
                         left: 0,
                         right: 0,
                         height: '2px',
-                        background: 'var(--secondary)'
+                        background: 'var(--primary)'
                       }}
                     />
                   )}
@@ -196,7 +196,7 @@ const About = () => {
                 <div style={{ fontSize: '1.25rem', fontWeight: 600, color: 'var(--light)', marginBottom: '0.25rem' }}>
                   {item.role}
                 </div>
-                <div style={{ fontSize: '0.95rem', color: 'var(--secondary)', marginBottom: '0.4rem', fontFamily: 'var(--font-mono)' }}>
+                <div style={{ fontSize: '0.95rem', color: 'var(--primary)', marginBottom: '0.4rem', fontFamily: 'var(--font-mono)' }}>
                   {item.context}
                 </div>
                 <div style={{ fontSize: '0.9rem', color: 'var(--gray)' }}>
@@ -245,7 +245,7 @@ const About = () => {
               background: 'rgba(6, 9, 19, 0.6)',
             }}
           >
-            <div style={{ color: 'var(--secondary)', fontSize: '1.8rem', marginBottom: '1.2rem' }}>
+            <div style={{ color: 'var(--primary)', fontSize: '1.8rem', marginBottom: '1.2rem' }}>
               <FiCamera />
             </div>
             <div style={{ fontSize: '1.2rem', fontWeight: 600, color: 'var(--light)', marginBottom: '0.6rem' }}>

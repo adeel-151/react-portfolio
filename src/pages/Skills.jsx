@@ -165,7 +165,7 @@ const Skills = () => {
                           <a
                             href={item.linkHref}
                             className="text-arrow-link"
-                            style={{ fontSize: '0.92rem', color: 'var(--secondary)' }}
+                            style={{ fontSize: '0.92rem', color: 'var(--primary)' }}
                             target={item.linkHref.startsWith('http') ? '_blank' : '_self'}
                             rel="noopener noreferrer"
                           >
