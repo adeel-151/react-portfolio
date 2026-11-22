@@ -1,7 +1,18 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiArrowUpRight, FiDownload, FiTerminal } from 'react-icons/fi';
+import { 
+  FiArrowUpRight, 
+  FiDownload, 
+  FiCheck, 
+  FiZap, 
+  FiLayers, 
+  FiShield, 
+  FiMapPin, 
+  FiBriefcase, 
+  FiCode 
+} from 'react-icons/fi';
 import cv from '../assets/Adeel-Qaiser.pdf';
+import profile from '../assets/profile.jpg';
 
 const About = () => {
   const [activeTab, setActiveTab] = useState('journey');
@@ -9,52 +20,114 @@ const About = () => {
   const tabs = [
     { id: 'journey', label: 'My Journey' },
     { id: 'philosophy', label: 'Philosophy' },
-    { id: 'focus', label: 'Current Focus' }
+    { id: 'focus', label: 'Current Focus' },
+    { id: 'values', label: 'Core Values' }
   ];
 
   const tabContent = {
     journey: (
-      <p style={{ lineHeight: '1.8', color: 'var(--gray)', fontSize: '1.05rem', fontWeight: 400 }}>
-        I started my programming journey driven by a fascination for system architecture and real-world digital tools. 
-        Over the past year, I have built production-grade platforms with the MERN stack—from intelligent hostel management 
-        systems with relational PostgreSQL to hospital operational software handling patient appointments and records.
-      </p>
+      <div>
+        <p style={{ lineHeight: '1.8', color: 'var(--gray)', fontSize: '1.02rem', fontWeight: 400, marginBottom: '1rem' }}>
+          I started my programming journey driven by a fascination for system architecture and real-world digital tools. 
+          Over the past year, I have built production-grade platforms with the MERN stack—from intelligent hostel management 
+          systems with relational PostgreSQL to hospital operational software handling patient appointments and records.
+        </p>
+        <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap', marginTop: '1.25rem' }}>
+          {['30+ Projects Completed', 'Full-Stack MERN Expertise', 'Clean Architecture', 'Relational & NoSQL Data'].map((t) => (
+            <span key={t} className="about-pill-tag">
+              <FiCheck style={{ color: 'var(--primary-accent)' }} /> {t}
+            </span>
+          ))}
+        </div>
+      </div>
     ),
     philosophy: (
-      <p style={{ lineHeight: '1.8', color: 'var(--gray)', fontSize: '1.05rem', fontWeight: 400 }}>
-        To me, great engineering is measured by resilience and clarity. A clean backend is meaningless if the client 
-        experience feels sluggish, and an attractive UI is fragile without robust data validation. I build every system 
-        to ensure both sides work in complete harmony.
-      </p>
+      <div>
+        <p style={{ lineHeight: '1.8', color: 'var(--gray)', fontSize: '1.02rem', fontWeight: 400, marginBottom: '1rem' }}>
+          To me, great engineering is measured by resilience and clarity. A clean backend is meaningless if the client 
+          experience feels sluggish, and an attractive UI is fragile without robust data validation. I build every system 
+          to ensure both sides work in complete harmony.
+        </p>
+        <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap', marginTop: '1.25rem' }}>
+          {['Predictable REST APIs', 'Zero Layout Shift', 'Type-Safe Standards', 'Human-Centric UX'].map((t) => (
+            <span key={t} className="about-pill-tag">
+              <FiCheck style={{ color: 'var(--primary-accent)' }} /> {t}
+            </span>
+          ))}
+        </div>
+      </div>
     ),
     focus: (
-      <p style={{ lineHeight: '1.8', color: 'var(--gray)', fontSize: '1.05rem', fontWeight: 400 }}>
-        I am currently deepening my mastery of distributed backend architectures, query optimization in PostgreSQL/MongoDB, 
-        and high-efficiency component patterns in React 19 to engineer web applications that scale effortlessly.
-      </p>
+      <div>
+        <p style={{ lineHeight: '1.8', color: 'var(--gray)', fontSize: '1.02rem', fontWeight: 400, marginBottom: '1rem' }}>
+          I am currently deepening my mastery of distributed backend architectures, query optimization in PostgreSQL/MongoDB, 
+          and high-efficiency component patterns in React 19 to engineer web applications that scale effortlessly.
+        </p>
+        <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap', marginTop: '1.25rem' }}>
+          {['React 19 Ecosystem', 'PostgreSQL Query Optimization', 'Scalable Microservices', 'AI-Augmented Velocity'].map((t) => (
+            <span key={t} className="about-pill-tag">
+              <FiCheck style={{ color: 'var(--primary-accent)' }} /> {t}
+            </span>
+          ))}
+        </div>
+      </div>
+    ),
+    values: (
+      <div>
+        <p style={{ lineHeight: '1.8', color: 'var(--gray)', fontSize: '1.02rem', fontWeight: 400, marginBottom: '1rem' }}>
+          Code maintainability, transparent communication, and unrelenting commitment to delivery timelines. Whether 
+          building an MVP from scratch or scaling an existing system, I treat every codebase as a long-term asset.
+        </p>
+        <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap', marginTop: '1.25rem' }}>
+          {['Ownership Mindset', 'Transparent Communication', 'High Iteration Velocity', 'Continuous Learning'].map((t) => (
+            <span key={t} className="about-pill-tag">
+              <FiCheck style={{ color: 'var(--primary-accent)' }} /> {t}
+            </span>
+          ))}
+        </div>
+      </div>
     )
   };
 
-  const experienceList = [
+  const milestones = [
     {
+      period: '2025 — PRESENT',
       role: 'Software Engineer (MERN)',
-      context: 'Freelance & Independent Projects (Remote)',
-      detail: 'Delivering production-ready web apps for clients and businesses.'
+      org: 'Freelance & Independent Client Builds',
+      detail: 'Architecting full-stack web applications, REST APIs, and database schemas for startups, businesses, and independent clients worldwide.',
+      stack: ['React', 'Node.js', 'PostgreSQL', 'MongoDB', 'Tailwind']
     },
     {
-      role: '30+ Completed Builds',
-      context: 'Full Stack & Frontend Applications',
-      detail: 'From EdTech systems to smart hostel and hospital platforms.'
+      period: 'PRODUCTION BUILDS',
+      role: '30+ Production Applications Delivered',
+      org: 'Management Systems & SaaS Platforms',
+      detail: 'Spearheaded complete development lifecycles for Smart Hostel Dera, Hospital ERP, School Management, and E-commerce platforms.',
+      stack: ['Vite', 'Express', 'JWT Auth', 'Vercel', 'Render']
     },
     {
-      role: '5+ Satisfied Clients',
-      context: 'Independent Client Engagements',
-      detail: 'High satisfaction across custom business logic and UI/UX implementation.'
+      period: 'ACADEMIC & CORE',
+      role: 'Computer Science Foundations',
+      org: 'Engineering & Algorithmic Rigor',
+      detail: 'Strong foundation in object-oriented programming, data structures, algorithm design, and system architecture using C++ and Python.',
+      stack: ['C++', 'Python', 'OOP', 'Data Structures']
+    }
+  ];
+
+  const bentoPrinciples = [
+    {
+      icon: <FiZap />,
+      title: 'Performance-First',
+      desc: 'Optimized rendering cycles, lightweight bundles, and sub-100ms API responses engineered for zero user friction.'
     },
     {
-      role: 'Core Engineering Background',
-      context: 'Computer Science & Software Foundations',
-      detail: 'Proficient in C++, Python, JavaScript/TypeScript, and data structures.'
+      icon: <FiShield />,
+      title: 'Structural Resilience',
+      desc: 'Robust schema validation, role-based JWT security, and resilient error handling across every server endpoint.'
+    },
+    {
+      icon: <FiLayers />,
+      title: 'Considered Usability',
+      desc: 'Pixel-precise layouts, accessible contrast, and smooth micro-interactions that make complex software intuitive to use.'
     }
   ];
 
@@ -68,78 +141,83 @@ const About = () => {
           <span>Mindset, journey & principles</span>
         </div>
 
-        {/* Two-Column Editorial Biography Layout */}
-        <div 
-          style={{ 
-            display: 'grid', 
-            gridTemplateColumns: '1fr 1.25fr', 
-            gap: '4rem', 
-            marginBottom: '6rem' 
-          }}
-          className="about-bio-grid"
-        >
-          {/* Left Column: Heading & Author */}
-          <div>
-            <h2 className="editorial-title" style={{ marginBottom: '2rem' }}>
-              Continuous growth.<br />Relentless craft.
-            </h2>
-            <div style={{ color: 'var(--gray)', fontSize: '1.1rem', fontWeight: 500 }}>
-              Adeel Qaiser
-            </div>
-            <div style={{ fontSize: '0.9rem', color: 'var(--primary)', fontFamily: 'var(--font-mono)', marginTop: '0.4rem', fontWeight: 500 }}>
-              Available for freelance & full-time roles
+        {/* Editorial Biography Grid */}
+        <div className="about-main-grid">
+          {/* Left Column: Visual Profile Card */}
+          <div className="about-profile-card">
+            <div className="about-image-frame">
+              <img src={profile} alt="Adeel Qaiser" className="about-profile-img" />
+              
+              {/* Online Availability Badge */}
+              <div className="about-status-badge">
+                <span className="status-dot-pulse" />
+                <span>Available for opportunities</span>
+              </div>
             </div>
 
-            <div style={{ marginTop: '2.5rem' }}>
-              <a href={cv} download className="btn-pill btn-pill-outline" style={{ display: 'inline-flex', gap: '0.6rem' }}>
-                <FiDownload /> Download Resume (PDF)
-              </a>
+            <div className="about-card-info">
+              <h3 className="about-name">Adeel Qaiser</h3>
+              <div className="about-role-tag">
+                <FiCode style={{ color: 'var(--primary-accent)' }} /> Software Engineer (MERN)
+              </div>
+
+              <div className="about-meta-list">
+                <div className="about-meta-item">
+                  <FiMapPin className="meta-icon" />
+                  <span>Pakistan • Remote Worldwide</span>
+                </div>
+                <div className="about-meta-item">
+                  <FiBriefcase className="meta-icon" />
+                  <span>Full-Stack & Frontend Roles</span>
+                </div>
+              </div>
+
+              <div className="about-card-actions">
+                <a href={cv} download className="btn-pill btn-pill-dark" style={{ width: '100%', justifyContent: 'center' }}>
+                  <FiDownload /> Download Resume (PDF)
+                </a>
+              </div>
             </div>
           </div>
 
-          {/* Right Column: Narrative & Story */}
-          <div>
-            <div style={{ fontSize: '1.6rem', fontWeight: 500, color: 'var(--light)', marginBottom: '1.5rem', letterSpacing: '-0.02em' }}>
-              I'm Adeel. Online, you'll find me as <a href="https://github.com/adeel-151" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary)', textDecoration: 'none' }}>adeel-151</a>.
+          {/* Right Column: Narrative, Interactive Tabs, and Social Connections */}
+          <div className="about-narrative-col">
+            <div className="about-headline-wrap">
+              <h2 className="about-statement-title">
+                Continuous growth.<br />Relentless craft.
+              </h2>
+              <p className="about-lead-text">
+                I am a Software Engineer specialized in the MERN stack. Online and across GitHub, you will find my builds under{' '}
+                <a href="https://github.com/adeel-151" target="_blank" rel="noopener noreferrer" className="about-inline-link">
+                  @adeel-151 <FiArrowUpRight />
+                </a>.
+              </p>
             </div>
 
             {/* Interactive Tab Switcher */}
-            <div style={{ display: 'flex', gap: '1.5rem', marginBottom: '1.5rem', borderBottom: '1px solid var(--border-light)', paddingBottom: '0.8rem' }}>
-              {tabs.map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  style={{
-                    background: 'none',
-                    border: 'none',
-                    color: activeTab === tab.id ? 'var(--light)' : 'var(--gray)',
-                    fontWeight: activeTab === tab.id ? 500 : 400,
-                    fontSize: '1rem',
-                    cursor: 'pointer',
-                    position: 'relative',
-                    paddingBottom: '0.4rem',
-                    transition: 'color 0.2s ease',
-                  }}
-                >
-                  {tab.label}
-                  {activeTab === tab.id && (
-                    <motion.div
-                      layoutId="about-tab-indicator"
-                      style={{
-                        position: 'absolute',
-                        bottom: '-0.85rem',
-                        left: 0,
-                        right: 0,
-                        height: '2px',
-                        background: 'var(--primary)'
-                      }}
-                    />
-                  )}
-                </button>
-              ))}
+            <div className="about-tabs-nav">
+              {tabs.map((tab) => {
+                const isActive = activeTab === tab.id;
+                return (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`about-tab-btn ${isActive ? 'about-tab-btn-active' : ''}`}
+                  >
+                    {tab.label}
+                    {isActive && (
+                      <motion.div
+                        layoutId="about-tab-active-indicator"
+                        className="about-tab-indicator"
+                      />
+                    )}
+                  </button>
+                );
+              })}
             </div>
 
-            <div style={{ minHeight: '140px', marginBottom: '2rem' }}>
+            {/* Tab Content Area */}
+            <div className="about-tab-content-box">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeTab}
@@ -153,128 +231,68 @@ const About = () => {
               </AnimatePresence>
             </div>
 
-            <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
-              <a href="https://github.com/adeel-151" target="_blank" rel="noopener noreferrer" className="text-arrow-link">
-                GitHub profile <FiArrowUpRight />
+            {/* Social Links Row */}
+            <div className="about-social-links-row">
+              <a href="https://github.com/adeel-151" target="_blank" rel="noopener noreferrer" className="about-social-chip">
+                GitHub <span>↗</span>
               </a>
-              <a href="https://www.linkedin.com/in/adeel-qaiser151/" target="_blank" rel="noopener noreferrer" className="text-arrow-link">
-                LinkedIn connection <FiArrowUpRight />
+              <a href="https://www.linkedin.com/in/adeel-qaiser151/" target="_blank" rel="noopener noreferrer" className="about-social-chip">
+                LinkedIn <span>↗</span>
+              </a>
+              <a href="https://www.instagram.com/adeel_qaiser_/" target="_blank" rel="noopener noreferrer" className="about-social-chip">
+                Instagram <span>↗</span>
               </a>
             </div>
           </div>
         </div>
 
-        {/* Experience & Education Strip */}
-        <div 
-          style={{ 
-            borderTop: '1px solid var(--border-light)', 
-            paddingTop: '3.5rem',
-            marginBottom: '6rem',
-            display: 'grid',
-            gridTemplateColumns: '1fr 2fr',
-            gap: '3rem'
-          }}
-          className="experience-strip"
-        >
-          <div>
-            <span style={{ fontSize: '0.9rem', color: 'var(--gray)', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', fontWeight: 400 }}>
-              Experience & milestones
-            </span>
+        {/* Milestones & Career Timeline */}
+        <div className="about-milestones-section">
+          <div className="milestones-header">
+            <span className="milestones-eyebrow">Experience & Track Record</span>
+            <h3 className="milestones-title">Proven delivery across client platforms.</h3>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-            {experienceList.map((item, idx) => (
-              <div 
-                key={idx} 
-                style={{ 
-                  borderBottom: idx !== experienceList.length - 1 ? '1px solid var(--border-subtle)' : 'none',
-                  paddingBottom: '1.5rem'
-                }}
-              >
-                <div style={{ fontSize: '1.25rem', fontWeight: 500, color: 'var(--light)', marginBottom: '0.25rem' }}>
-                  {item.role}
+          <div className="milestones-cards-grid">
+            {milestones.map((item, idx) => (
+              <div key={idx} className="milestone-card">
+                <div className="milestone-period-badge">
+                  {item.period}
                 </div>
-                <div style={{ fontSize: '0.95rem', color: 'var(--primary)', marginBottom: '0.4rem', fontFamily: 'var(--font-mono)', fontWeight: 400 }}>
-                  {item.context}
-                </div>
-                <div style={{ fontSize: '0.9rem', color: 'var(--gray)', fontWeight: 400 }}>
-                  {item.detail}
+                <h4 className="milestone-role">{item.role}</h4>
+                <div className="milestone-org">{item.org}</div>
+                <p className="milestone-detail">{item.detail}</p>
+                <div className="milestone-stack-pills">
+                  {item.stack.map((s) => (
+                    <span key={s} className="milestone-pill">{s}</span>
+                  ))}
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Feature Box */}
-        <div
-          style={{
-            background: 'var(--outside-box-bg)',
-            border: '1px solid var(--border-light)',
-            borderRadius: '24px',
-            padding: '3rem',
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: '3rem',
-            alignItems: 'center',
-            boxShadow: '0 20px 40px -15px rgba(0, 0, 0, 0.05)',
-            transition: 'background 0.3s ease, border-color 0.3s ease',
-          }}
-          className="outside-browser-box"
-        >
-          <div>
-            <h3 style={{ fontSize: '2.4rem', fontWeight: 500, color: 'var(--light)', marginBottom: '1rem', letterSpacing: '-0.02em' }}>
-              The engineering mindset.
-            </h3>
-            <p style={{ color: 'var(--gray)', fontSize: '1.05rem', lineHeight: '1.7', marginBottom: '2rem', fontWeight: 400 }}>
-              Driven by structural problem solving, system optimization, and technical curiosity. Constantly adopting modern web standards and building tools that make a tangible difference.
-            </p>
-            <a href="#contact" className="text-arrow-link" style={{ fontSize: '1rem', fontWeight: 500 }}>
-              Let's build together <FiArrowUpRight />
-            </a>
+        {/* Bento Principles Matrix */}
+        <div className="about-bento-section">
+          <div className="bento-header-wrap">
+            <span className="milestones-eyebrow">Engineering Mindset</span>
+            <h3 className="milestones-title">How I approach every codebase.</h3>
           </div>
 
-          {/* Right Frame Spotlight Card with Dashed Border */}
-          <div
-            style={{
-              border: '1px dashed var(--outside-dashed-border)',
-              borderRadius: '16px',
-              padding: '2.5rem',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'flex-start',
-              background: 'var(--outside-card-bg)',
-              transition: 'background 0.3s ease, border-color 0.3s ease',
-            }}
-          >
-            <div style={{ color: 'var(--primary)', fontSize: '1.8rem', marginBottom: '1.2rem' }}>
-              <FiTerminal />
-            </div>
-            <div style={{ fontSize: '1.2rem', fontWeight: 500, color: 'var(--light)', marginBottom: '0.6rem' }}>
-              Core Engineering Philosophy
-            </div>
-            <p style={{ color: 'var(--gray)', fontSize: '0.92rem', lineHeight: '1.6', fontWeight: 400 }}>
-              Focused on modern frontend standards, accessible web interfaces, and high-performance React architectures.
-            </p>
-            <div style={{ marginTop: '1.2rem', fontSize: '0.78rem', fontFamily: 'var(--font-mono)', color: 'var(--gray-dark)', fontWeight: 400 }}>
-              Reliability, security & clean maintainability
-            </div>
+          <div className="bento-principles-grid">
+            {bentoPrinciples.map((b, idx) => (
+              <div key={idx} className="bento-principle-card">
+                <div className="bento-icon-box">
+                  {b.icon}
+                </div>
+                <h4 className="bento-card-title">{b.title}</h4>
+                <p className="bento-card-desc">{b.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
 
       </div>
-
-      <style>
-        {`
-          @media (max-width: 992px) {
-            .about-bio-grid,
-            .experience-strip,
-            .outside-browser-box {
-              grid-template-columns: 1fr !important;
-              gap: 2.5rem !important;
-            }
-          }
-        `}
-      </style>
     </section>
   );
 };
