@@ -1,81 +1,12 @@
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 import { 
   FiArrowUpRight, 
   FiArrowDown, 
   FiLayers, 
-  FiDatabase, 
-  FiZap, 
-  FiLayout, 
-  FiCloud 
+  FiDatabase 
 } from 'react-icons/fi';
 import cv from '../assets/Adeel-Qaiser.pdf';
-
-// Sub-component for individual card with horizontal slide-in
-const HorizontalCard = ({ card, index, scrollYProgress, theme }) => {
-  const isLight = theme === 'light';
-  
-  // Base card (Card 1) stationed on screen
-  if (index === 0) {
-    return (
-      <div
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: 'clamp(320px, 30vw, 420px)',
-          padding: '28px 30px',
-          borderRadius: '22px',
-          background: card.bg,
-          color: card.textColor,
-          border: card.border || (isLight ? '1px solid rgba(0, 0, 0, 0.09)' : '1px solid rgba(255, 255, 255, 0.8)'),
-          boxShadow: isLight 
-            ? '0 20px 45px -12px rgba(0, 0, 0, 0.14), 0 0 0 1px rgba(0, 0, 0, 0.05)' 
-            : '0 25px 50px -12px rgba(0, 0, 0, 0.65)',
-          zIndex: 1,
-          transform: `rotate(${card.rotate}deg)`,
-        }}
-      >
-        <CardBody card={card} />
-      </div>
-    );
-  }
-
-  // Cards 2 through 6 slide in horizontally from the right
-  const start = 0.08 + (index - 1) * 0.15;
-  const end = Math.min(start + 0.14, 0.96);
-
-  const x = useTransform(scrollYProgress, [start, end], [750, card.finalX]);
-  const y = useTransform(scrollYProgress, [start, end], [card.finalY + 30, card.finalY]);
-  const opacity = useTransform(scrollYProgress, [start, start + 0.04], [0, 1]);
-  const rotate = useTransform(scrollYProgress, [start, end], [card.rotate + 8, card.rotate]);
-
-  return (
-    <motion.div
-      style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: 'clamp(320px, 30vw, 420px)',
-        padding: '28px 30px',
-        borderRadius: '22px',
-        background: card.bg,
-        color: card.textColor,
-        border: card.border || (isLight ? '1px solid rgba(0, 0, 0, 0.09)' : 'none'),
-        boxShadow: isLight
-          ? '0 25px 50px -15px rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.06)'
-          : '0 25px 60px -15px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.08)',
-        zIndex: index + 1,
-        x,
-        y,
-        opacity,
-        rotate,
-      }}
-    >
-      <CardBody card={card} />
-    </motion.div>
-  );
-};
 
 // Reusable card content layout matching the reference screenshot exactly
 const CardBody = ({ card }) => (
@@ -136,15 +67,7 @@ const CardBody = ({ card }) => (
 );
 
 const Home = ({ theme = 'dark' }) => {
-  const manifestoContainerRef = useRef(null);
-
-  // Tracks scroll progress through the tall container so the section stays pinned
-  const { scrollYProgress } = useScroll({
-    target: manifestoContainerRef,
-    offset: ['start start', 'end end']
-  });
-
-  // 6 Distinct Cards matching the visual hierarchy of the reference
+  // First 3 Cards matching the exact visual hierarchy requested
   const cards = [
     {
       id: 1,
@@ -157,9 +80,6 @@ const Home = ({ theme = 'dark' }) => {
       descColor: '#52525b',
       accentColor: '#090e1c',
       tagColor: '#71717a',
-      rotate: -3.5,
-      finalX: 0,
-      finalY: 0,
     },
     {
       id: 2,
@@ -172,9 +92,6 @@ const Home = ({ theme = 'dark' }) => {
       descColor: '#27272a',
       accentColor: '#090e1c',
       tagColor: '#3f3f46',
-      rotate: 2.5,
-      finalX: 45,
-      finalY: 35,
     },
     {
       id: 3,
@@ -188,57 +105,6 @@ const Home = ({ theme = 'dark' }) => {
       accentColor: '#10b981',
       tagColor: '#a7f3d0',
       border: '1px solid rgba(16, 185, 129, 0.35)',
-      rotate: -2,
-      finalX: 90,
-      finalY: 70,
-    },
-    {
-      id: 4,
-      tag: 'Performance',
-      icon: <FiZap />,
-      title: 'Blazing fast metrics.',
-      tech: 'Code Splitting / Core Web Vitals',
-      bg: '#181226',
-      textColor: '#ffffff',
-      descColor: '#94a3b8',
-      accentColor: '#f59e0b',
-      tagColor: '#fde68a',
-      border: '1px solid rgba(245, 158, 11, 0.35)',
-      rotate: 2,
-      finalX: 135,
-      finalY: 105,
-    },
-    {
-      id: 5,
-      tag: 'Experience',
-      icon: <FiLayout />,
-      title: 'Pixel-perfect craft.',
-      tech: 'Framer Motion / Tailwind / Smooth UX',
-      bg: '#0f172a',
-      textColor: '#ffffff',
-      descColor: '#94a3b8',
-      accentColor: '#06b6d4',
-      tagColor: '#a5f3fc',
-      border: '1px solid rgba(6, 182, 212, 0.35)',
-      rotate: -1.5,
-      finalX: 180,
-      finalY: 140,
-    },
-    {
-      id: 6,
-      tag: 'Deployment',
-      icon: <FiCloud />,
-      title: 'Production ready.',
-      tech: 'Vercel / Netlify / Git / CI-CD',
-      bg: 'linear-gradient(145deg, #111a33, #090e1c)',
-      textColor: '#ffffff',
-      descColor: '#94a3b8',
-      accentColor: '#38bdf8',
-      tagColor: '#bae6fd',
-      border: '1px solid rgba(255, 255, 255, 0.25)',
-      rotate: 1,
-      finalX: 225,
-      finalY: 175,
     },
   ];
 
@@ -469,126 +335,122 @@ const Home = ({ theme = 'dark' }) => {
 
       </div>
 
-      {/* Pinned Manifesto Section matching the exact screenshot */}
+      {/* Editorial Manifesto Section with 3 Vertical Cards Stacked (Ek dosre ke neche) */}
       <div 
         id="manifesto"
-        ref={manifestoContainerRef}
         style={{
-          position: 'relative',
-          height: '280vh', // Pinned scroll track
           marginTop: '6rem',
+          padding: '100px 0',
+          background: 'var(--darker)',
+          borderTop: '1px solid var(--border-light)',
+          borderBottom: '1px solid var(--border-light)',
+          transition: 'background-color 0.3s ease, border-color 0.3s ease',
         }}
       >
-        {/* Sticky 100vh Viewport */}
-        <div
-          style={{
-            position: 'sticky',
-            top: 0,
-            height: '100vh',
-            width: '100%',
-            overflow: 'hidden',
-            display: 'flex',
-            alignItems: 'center',
-            background: 'var(--darker)',
-            borderTop: '1px solid var(--border-light)',
-            borderBottom: '1px solid var(--border-light)',
-            zIndex: 10,
-            paddingTop: '60px',
-            transition: 'background-color 0.3s ease, border-color 0.3s ease',
-          }}
-        >
-          <div className="container" style={{ width: '100%', padding: '0 32px' }}>
-            <div 
-              style={{ 
-                display: 'grid', 
-                gridTemplateColumns: '1.05fr 0.95fr', 
-                gap: '3rem', 
-                alignItems: 'center'
-              }}
-              className="manifesto-grid"
-            >
-              {/* Left Column: Exactly like screenshot */}
+        <div className="container">
+          <div 
+            style={{ 
+              display: 'grid', 
+              gridTemplateColumns: '1.1fr 0.9fr', 
+              gap: '4rem', 
+              alignItems: 'start'
+            }}
+            className="manifesto-grid"
+          >
+            {/* Left Column: Fixed / Sticky on desktop */}
+            <div style={{ position: 'sticky', top: '130px' }}>
+              <h2
+                style={{
+                  fontSize: 'clamp(2.4rem, 5.2vw, 4.4rem)',
+                  fontWeight: 500,
+                  lineHeight: 1.08,
+                  letterSpacing: '-0.035em',
+                  color: 'var(--light)',
+                  marginBottom: '2rem'
+                }}
+              >
+                A developer's mind.<br />
+                A creative's eye.
+              </h2>
+
+              <p 
+                style={{ 
+                  color: 'var(--gray)', 
+                  fontSize: '1.15rem', 
+                  lineHeight: 1.7, 
+                  maxWidth: '460px',
+                  marginBottom: '2.5rem',
+                  fontWeight: 400,
+                }}
+              >
+                I connect clean code, modern architecture and thoughtful interfaces. Different disciplines, one considered experience.
+              </p>
+
               <div>
-                <h2
-                  style={{
-                    fontSize: 'clamp(2.4rem, 5.2vw, 4.4rem)',
-                    fontWeight: 500,
-                    lineHeight: 1.08,
-                    letterSpacing: '-0.035em',
-                    color: 'var(--light)',
-                    marginBottom: '2rem'
-                  }}
-                >
-                  A developer's mind.<br />
-                  A creative's eye.
-                </h2>
-
-                <p 
-                  style={{ 
-                    color: 'var(--gray)', 
-                    fontSize: '1.15rem', 
-                    lineHeight: 1.7, 
-                    maxWidth: '460px',
-                    marginBottom: '2.5rem',
-                    fontWeight: 400,
-                  }}
-                >
-                  I connect clean code, modern architecture and thoughtful interfaces. Different disciplines, one considered experience.
-                </p>
-
-                <div>
-                  <a href="#about" className="text-arrow-link" style={{ fontSize: '1.05rem', fontWeight: 500 }}>
-                    Meet the person behind the work <FiArrowUpRight />
-                  </a>
-                </div>
-
-                {/* Bottom tags like the reference */}
-                <div 
-                  style={{ 
-                    display: 'flex', 
-                    justifyContent: 'space-between', 
-                    paddingTop: '3.5rem', 
-                    marginTop: '3.5rem',
-                    borderTop: '1px solid var(--border-subtle)',
-                    color: 'var(--gray)',
-                    fontSize: '0.85rem',
-                    fontFamily: 'var(--font-mono)',
-                    fontWeight: 400,
-                  }}
-                  className="discipline-tags-row"
-                >
-                  <span>Engineering</span>
-                  <span>Architecture</span>
-                  <span>Interface Design</span>
-                </div>
+                <a href="#about" className="text-arrow-link" style={{ fontSize: '1.05rem', fontWeight: 500 }}>
+                  Meet the person behind the work <FiArrowUpRight />
+                </a>
               </div>
 
-              {/* Right Column: Cards sliding in horizontally and overlapping */}
+              {/* Bottom tags like the reference */}
               <div 
                 style={{ 
-                  height: '420px', 
                   display: 'flex', 
-                  alignItems: 'center', 
-                  justifyContent: 'center',
-                  position: 'relative',
-                  perspective: '1200px'
+                  justifyContent: 'space-between', 
+                  paddingTop: '3.5rem', 
+                  marginTop: '3.5rem',
+                  borderTop: '1px solid var(--border-subtle)',
+                  color: 'var(--gray)',
+                  fontSize: '0.85rem',
+                  fontFamily: 'var(--font-mono)',
+                  fontWeight: 400,
                 }}
-                className="stacked-cards-container"
+                className="discipline-tags-row"
               >
-                <div style={{ position: 'relative', width: '100%', maxWidth: '420px', height: '300px' }}>
-                  {cards.map((card, index) => (
-                    <HorizontalCard
-                      key={card.id}
-                      card={card}
-                      index={index}
-                      scrollYProgress={scrollYProgress}
-                      theme={theme}
-                    />
-                  ))}
-                </div>
+                <span>Engineering</span>
+                <span>Architecture</span>
+                <span>Interface Design</span>
               </div>
-
             </div>
+
+            {/* Right Column: Exactly 3 Cards stacked one below the other (no overlap) */}
+            <div 
+              style={{ 
+                display: 'flex', 
+                flexDirection: 'column', 
+                gap: '1.5rem',
+                width: '100%',
+                maxWidth: '440px',
+                marginLeft: 'auto'
+              }}
+              className="stacked-cards-list"
+            >
+              {cards.map((card, index) => (
+                <motion.div
+                  key={card.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-40px' }}
+                  transition={{ duration: 0.5, delay: index * 0.12 }}
+                  whileHover={{ y: -4 }}
+                  style={{
+                    width: '100%',
+                    padding: '28px 30px',
+                    borderRadius: '22px',
+                    background: card.bg,
+                    color: card.textColor,
+                    border: card.border || (theme === 'light' ? '1px solid rgba(0, 0, 0, 0.09)' : '1px solid rgba(255, 255, 255, 0.08)'),
+                    boxShadow: theme === 'light'
+                      ? '0 15px 35px -10px rgba(0, 0, 0, 0.09), 0 0 0 1px rgba(0, 0, 0, 0.04)'
+                      : '0 20px 45px -15px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.05)',
+                    transition: 'transform 0.25s ease, box-shadow 0.25s ease',
+                  }}
+                >
+                  <CardBody card={card} />
+                </motion.div>
+              ))}
+            </div>
+
           </div>
         </div>
       </div>
@@ -602,7 +464,11 @@ const Home = ({ theme = 'dark' }) => {
             }
             .manifesto-grid {
               grid-template-columns: 1fr !important;
-              gap: 2.5rem !important;
+              gap: 3rem !important;
+            }
+            .stacked-cards-list {
+              max-width: 100% !important;
+              margin-left: 0 !important;
             }
           }
           @media (max-width: 640px) {
