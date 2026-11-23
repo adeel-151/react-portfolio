@@ -33,12 +33,12 @@ const About = () => {
   const tabContent = {
     journey: (
       <div>
-        <p style={{ lineHeight: '1.8', color: 'var(--gray)', fontSize: '1.02rem', fontWeight: 400, marginBottom: '1rem' }}>
+        <p className="about-tab-paragraph">
           I started my programming journey driven by a fascination for system architecture and real-world digital tools. 
           Over the past year, I have built production-grade platforms with the MERN stack—from intelligent hostel management 
           systems with relational PostgreSQL to hospital operational software handling patient appointments and records.
         </p>
-        <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap', marginTop: '1.25rem' }}>
+        <div className="about-tab-pills-wrap">
           {['30+ Projects Completed', 'Full-Stack MERN Expertise', 'Clean Architecture', 'Relational & NoSQL Data'].map((t) => (
             <span key={t} className="about-pill-tag">
               <FiCheck style={{ color: 'var(--primary-accent)' }} /> {t}
@@ -49,12 +49,12 @@ const About = () => {
     ),
     philosophy: (
       <div>
-        <p style={{ lineHeight: '1.8', color: 'var(--gray)', fontSize: '1.02rem', fontWeight: 400, marginBottom: '1rem' }}>
+        <p className="about-tab-paragraph">
           To me, great engineering is measured by resilience and clarity. A clean backend is meaningless if the client 
           experience feels sluggish, and an attractive UI is fragile without robust data validation. I build every system 
           to ensure both sides work in complete harmony.
         </p>
-        <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap', marginTop: '1.25rem' }}>
+        <div className="about-tab-pills-wrap">
           {['Predictable REST APIs', 'Zero Layout Shift', 'Type-Safe Standards', 'Human-Centric UX'].map((t) => (
             <span key={t} className="about-pill-tag">
               <FiCheck style={{ color: 'var(--primary-accent)' }} /> {t}
@@ -65,11 +65,11 @@ const About = () => {
     ),
     focus: (
       <div>
-        <p style={{ lineHeight: '1.8', color: 'var(--gray)', fontSize: '1.02rem', fontWeight: 400, marginBottom: '1rem' }}>
+        <p className="about-tab-paragraph">
           I am currently deepening my mastery of distributed backend architectures, query optimization in PostgreSQL/MongoDB, 
           and high-efficiency component patterns in React 19 to engineer web applications that scale effortlessly.
         </p>
-        <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap', marginTop: '1.25rem' }}>
+        <div className="about-tab-pills-wrap">
           {['React 19 Ecosystem', 'PostgreSQL Query Optimization', 'Scalable Microservices', 'AI-Augmented Velocity'].map((t) => (
             <span key={t} className="about-pill-tag">
               <FiCheck style={{ color: 'var(--primary-accent)' }} /> {t}
@@ -80,11 +80,11 @@ const About = () => {
     ),
     values: (
       <div>
-        <p style={{ lineHeight: '1.8', color: 'var(--gray)', fontSize: '1.02rem', fontWeight: 400, marginBottom: '1rem' }}>
+        <p className="about-tab-paragraph">
           Code maintainability, transparent communication, and unrelenting commitment to delivery timelines. Whether 
           building an MVP from scratch or scaling an existing system, I treat every codebase as a long-term asset.
         </p>
-        <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap', marginTop: '1.25rem' }}>
+        <div className="about-tab-pills-wrap">
           {['Ownership Mindset', 'Transparent Communication', 'High Iteration Velocity', 'Continuous Learning'].map((t) => (
             <span key={t} className="about-pill-tag">
               <FiCheck style={{ color: 'var(--primary-accent)' }} /> {t}
