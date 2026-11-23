@@ -205,16 +205,15 @@ const Projects = () => {
             return (
               <motion.div
                 key={project.id}
-                layout
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-40px' }}
-                transition={{ duration: 0.4 }}
+                viewport={{ once: true, amount: 0.08 }}
+                transition={{ duration: 0.35, ease: 'easeOut' }}
                 className="project-editorial-card"
               >
                 {/* Image Frame with Floating Badges and Direct Action Link */}
                 <div className="project-image-box">
-                  <img src={project.image} alt={project.title} loading="lazy" />
+                  <img src={project.image} alt={project.title} loading="lazy" decoding="async" />
                   
                   {/* Subtle Gradient Vignette */}
                   <div className="project-image-overlay" />
