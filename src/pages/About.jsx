@@ -170,7 +170,7 @@ const About = () => {
               <div className="about-meta-list">
                 <div className="about-meta-item">
                   <FiMapPin className="meta-icon" />
-                  <span>Pakistan • Remote Worldwide</span>
+                  <span>Peshawar, Pakistan • Remote Worldwide</span>
                 </div>
                 <div className="about-meta-item">
                   <FiBriefcase className="meta-icon" />

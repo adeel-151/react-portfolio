@@ -176,7 +176,7 @@ const Contact = () => {
                   </div>
                   <div className="channel-info-text">
                     <span className="channel-label">Location & Presence</span>
-                    <span className="channel-value">Islamabad, Pakistan</span>
+                    <span className="channel-value">Peshawar, Pakistan</span>
                     <span className="channel-sub">Working with teams & clients worldwide (UTC+5)</span>
                   </div>
                 </div>
